@@ -1,2 +1,19 @@
 # Description
-Pour notre projet nous avons pensé à faire un site qui va permettre de faire en sorte de pouvoir organiser des LAN dans des salles réservées à cette effet nous pourrons nous inscrire à des évènements déjà crée où créer des évènements qui regrouperont votre équipe pour votre LAN ou encore utiliser les salles pour des présentations de jeux etc.
+
+Notre site permet de faciliter la création et gestion d'évènements "Gaming" LAN.
+Une LAN est répartie sur une durée et contiendra plusieurs évènements de type tournois ou ateliers/activité.
+
+## Fonctionnalités
+
+-   Administrateurs
+    -   Gestion des utilisateurs/roles
+-   Éditeurs
+    -   Gestion de LAN
+    -   Gestion d'événements d'une LAN
+    -   Création de news
+    -   Outils de tournois
+-   Utilisateurs
+    -   Inscription à des LAN
+    -   Inscription à des évènements
+    -   Création d'équipes
+    -   Modification des information du compte
