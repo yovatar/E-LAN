@@ -17,3 +17,15 @@ Une LAN est répartie sur une durée et contiendra plusieurs évènements de typ
     -   Inscription à des évènements
     -   Création d'équipes
     -   Modification des information du compte
+
+## Entités
+
+- Utilisateurs
+- Rôles
+- Lans
+- Lieux
+- Équipes
+- Événements
+- Tournois
+- Matches
+- Articles
