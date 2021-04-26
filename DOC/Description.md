@@ -7,7 +7,7 @@ Une LAN est répartie sur une durée et contiendra plusieurs évènements de typ
 
 -   Administrateurs
     -   Gestion des utilisateurs/roles
--   Éditeurs
+-   Modérateurs
     -   Gestion de LAN
     -   Gestion d'événements d'une LAN
     -   Création de news
