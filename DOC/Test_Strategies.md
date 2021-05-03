@@ -21,15 +21,6 @@
 | npm    | software | 7.5.4   | Dependency manager                            |
 | chrome | software | 85.x.x  | Navigateur pour tester le site                |
 
-### Tests
-
-| title                                                | description                                                     | date       | result | description du résultat |
-| ---------------------------------------------------- | --------------------------------------------------------------- | ---------- | :----: | ----------------------- |
-| [View] création de compte entrée valide              | Es-ce que la validation en temps réel fonctionne                | xx/xx/2021 |   ✅   |                         |
-| [Controller] validation d'entrées création de compte | Es-ce que la validation d'entrées dans le controller fonctionne | xx/xx/2021 |   ❌   | Injection XSS possibles |
-
-<br>
-
 ---
 
 ## Fonctionnalités à tester
