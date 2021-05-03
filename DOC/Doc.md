@@ -31,6 +31,10 @@
 
 Notre site permet de faciliter la création et gestion d'évènements "Gaming" LAN.
 Une LAN est répartie sur une durée et contiendra plusieurs évènements de type tournois ou ateliers/activité.
+Une LAN va comporter plusieurs types évenement par exemple un quiz, un stand autre, un évemenet autre ou encore des tournois de jeux-vidéo,
+le site permet une gestion complète et propre à chaque évènement.
+Il propose un système de profil utilisateur personalisable ainsi que des rôles facilitant l'oraganisation entre géstionnaires et utilisateurs.  
+
 
 ## Fonctionnalités
 
