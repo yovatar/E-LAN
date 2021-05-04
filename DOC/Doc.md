@@ -1,6 +1,6 @@
 # E-LAN
 
-## Objectifs :
+# Objectifs :
 * Interface Bootstrap, avec ou sans template
 * Groupes de 3
 * Sujet libre, mais avec:
@@ -36,6 +36,16 @@ le site permet une gestion complète et propre à chaque évènement.
 Il propose un système de profil utilisateur personalisable ainsi que des rôles facilitant l'oraganisation entre géstionnaires et utilisateurs.  
 
 
+## Dans quel contexte le projet est-il réalisé ?
+
+Nous réalisont se Projet de dévelopement web avec base de donnée lors de notre 2ème année d'apprentisage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétence en tant que développeur et de gestion de projet
+
+
+## Organisation
+
+
+
+
 ## Fonctionnalités
 
 -   Administrateurs
@@ -51,6 +61,59 @@ Il propose un système de profil utilisateur personalisable ainsi que des rôles
     -   Création d'équipes
     -   Modification des information du compte
 
+ 
+
+## Planification initiale
+
+
+
+### Stratégie de test
+
+
+### Canvas de test
+
+|                    |              |
+| ------------------ | ------------ |
+| **Bom du rapport** | [name]       |
+| **Date**           | [dd/mm/yyyy] |
+
+### Testeur
+
+| Name | Email | Github profile link |
+| ---- | ----- | ------------------- |
+|      |       |                     |
+
+### Materiel/Software de test
+
+| name   | type     | version | description                                   |
+| :----- | :------- | :------ | :-------------------------------------------- |
+| php    | software | 7.x.x   | Interpréteur php pour faire tourner le server |
+| npm    | software | 7.5.4   | Dependency manager                            |
+| chrome | software | 85.x.x  | Navigateur pour tester le site                |
+
+---
+
+### Fonctionnalités à tester
+
+-   Vues
+    -   Apparence (erreurs visuels / sens compréhensibilité des controls)
+    -   Charge de travail
+    -   Bon fonctionnement des contrôles
+    -   Retour utilisateur
+-   Controller
+    -   Traitement et assainissement des données
+    -   Sécurité (blockage des actions selon droits)
+-   Model
+    -   Format des données
+    -   Risques de corruption
+
+
+
+
+## Analyse des risques
+
+
+
 ## Entités
 
 - Utilisateurs (Contient tout les informations pour chaque rôle d'utilisateur cette entité est composé du Nom,Prénom,Email,Pseudo,Password )
@@ -64,16 +127,22 @@ Il propose un système de profil utilisateur personalisable ainsi que des rôles
 - état (l'état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
 
 
-# Notre Stratégie de test
+
+
+## Journal de bord
 
 
 
+## Bilan des objectifs atteints / non-atteints
 
 
 
+## Bilan des points positifs / négatifs
 
 
 
+## Difficultés particulières rencontrées
 
 
-# Analyse des Risque
+
+## Suites possibles
