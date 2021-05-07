@@ -83,7 +83,6 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 | npm    | software | 7.5.4   | Dependency manager                            |
 | chrome | software | 85.x.x  | Navigateur pour tester le site                |
 
----
 
 ### Fonctionnalités à tester
 
