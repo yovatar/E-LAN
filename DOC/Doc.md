@@ -65,6 +65,23 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ## Planification initiale
 
+Sprints (2 semaines par sprint)
+
+1. Analyse et planification
+    - 26/04/2021 - 09/05/2021
+    - MCD
+    - MLD
+    - Documentation du projet
+2. Conception
+    - 10/05/2021 - 23/05/2021
+    - Maquettes
+3. Réalisation
+    - 24/05/2021 - 06/06/2021
+4. Corréction de bugs et Ajout de fonctionnalités
+    - 07/06/2021 - 20/06/2021
+5. Bouclage et release
+    - 21/06/2021 - 24/06/2021
+
 ## Stratégie de test
 
 ### Testeurs
@@ -82,7 +99,6 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 | php    | software | 7.x.x   | Interpréteur php pour faire tourner le server |
 | npm    | software | 7.5.4   | Dependency manager                            |
 | chrome | software | 85.x.x  | Navigateur pour tester le site                |
-
 
 ### Fonctionnalités à tester
 
