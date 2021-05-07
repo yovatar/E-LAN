@@ -7,6 +7,8 @@ session_start();
 require_once("lib/utils.php");
 setlocale(LC_ALL, 'fr-CH');
 date_default_timezone_set("Europe/Zurich");
+require_once("config.php");
+$GLOBALS["config"] = getConfig();
 
 // Controllers
 require_once("controller/static.php");
