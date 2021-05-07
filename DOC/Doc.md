@@ -1,6 +1,6 @@
 # E-LAN
 
-# Objectifs :
+## Objectifs :
 
 -   Interface Bootstrap, avec ou sans template
 -   Groupes de 3
@@ -27,7 +27,7 @@
     -   Efficacité – Gestion du temps
     -   Documentation du produit (reproductibilité)
 
-# Description
+## Description
 
 Notre site permet de faciliter la création et gestion d'évènements "Gaming" LAN.
 Une LAN est répartie sur une durée et contiendra plusieurs évènements de type tournois ou ateliers/activité.
@@ -67,7 +67,7 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ## Stratégie de test
 
-#### Testeurs
+### Testeurs
 
 | Nom              | Email                                                       |
 | ---------------- | ----------------------------------------------------------- |
@@ -75,7 +75,7 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 | Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
 | Kenan Augsburger | [kenan.augsburger@cpnv.ch](mailto:kenan.augsburger@cpnv.ch) |
 
-#### Materiel/Software de test
+### Materiel/Software de test
 
 | name   | type     | version | description                                   |
 | :----- | :------- | :------ | :-------------------------------------------- |
@@ -85,7 +85,7 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ---
 
-#### Fonctionnalités à tester
+### Fonctionnalités à tester
 
 -   Vues
     -   Apparence (erreurs visuels / sens compréhensibilité des controls)
