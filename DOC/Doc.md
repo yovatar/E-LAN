@@ -67,18 +67,13 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ### Stratégie de test
 
-### Canvas de test
+### Testeurs
 
-|                    |              |
-| ------------------ | ------------ |
-| **Bom du rapport** | [name]       |
-| **Date**           | [dd/mm/yyyy] |
-
-### Testeur
-
-| Name | Email | Github profile link |
-| ---- | ----- | ------------------- |
-|      |       |                     |
+| Nom              | Email                                                       |
+| ---------------- | ----------------------------------------------------------- |
+| Pedro Pinto      | [pedro.pinto@cpnv.ch](mailto:pedro.pinto@cpnv.ch)           |
+| Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
+| Kenan Augsburger | [kenan.augsburger@cpnv.ch](mailto:kenan.augsburger@cpnv.ch) |
 
 ### Materiel/Software de test
 
