@@ -65,9 +65,9 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ## Planification initiale
 
-### Stratégie de test
+## Stratégie de test
 
-### Testeurs
+#### Testeurs
 
 | Nom              | Email                                                       |
 | ---------------- | ----------------------------------------------------------- |
@@ -75,7 +75,7 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 | Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
 | Kenan Augsburger | [kenan.augsburger@cpnv.ch](mailto:kenan.augsburger@cpnv.ch) |
 
-### Materiel/Software de test
+#### Materiel/Software de test
 
 | name   | type     | version | description                                   |
 | :----- | :------- | :------ | :-------------------------------------------- |
@@ -85,7 +85,7 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 ---
 
-### Fonctionnalités à tester
+#### Fonctionnalités à tester
 
 -   Vues
     -   Apparence (erreurs visuels / sens compréhensibilité des controls)
@@ -127,6 +127,10 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 -   état (l'état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
 
 ## Journal de bord
+
+| date             | description                 | participant                      |
+| ---------------- | --------------------------- | -------------------------------- |
+| 03/05/2021 15:30 | Validation du MCD par le PO | Pedro P. , Kenan A. et Xavier C. |
 
 ## Bilan des objectifs atteints / non-atteints
 
