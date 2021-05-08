@@ -24,7 +24,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
     </head>
 
     <body class="flex flex-col justify-between min-h-screen bg-white">
-        <header class="flex flex-col p-4 text-xl text-white bg-purple-500">
+        <header role="navigation" x-data="{ open: false }" class="flex flex-col p-4 text-xl text-white bg-purple-500">
             <div class="flex flex-row justify-between">
                 <div class="flex flex-row space-x-5">
                     <div class="flex flex-col justify-center">
@@ -54,8 +54,13 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         </a>
                     </div>
                 </div>
+                <button @click="open = true" class="lg:hidden px-3 py-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
-            <div class="flex flex-col lg:hidden">
+            <div x-show="open" @click.away="open = false" class="flex-col lg:hidden">
                 <div class="flex-col items-center flex border-t border-white mt-5">
                     <a href="/home" class="h-full hover:text-purple-900">Home</a>
                     <a href="/lans" class="h-full hover:text-purple-900">Lans</a>
