@@ -17,7 +17,7 @@ function selectUserByEmail($email)
 function selectUserByUsername($username)
 {
     require_once("model/database.php");
-    $query = "SELECT * FROM users WHERE email LIKE :username LIMIT 1";
+    $query = "SELECT * FROM users WHERE username LIKE :username LIMIT 1";
     return executeQuerySelect($query, createBinds([[":username", $username]]))[0] ?? null;
 }
 

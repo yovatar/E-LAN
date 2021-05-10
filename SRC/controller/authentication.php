@@ -35,10 +35,12 @@ function controllerRegister($request)
 
             if ($password != $request["passwordCheck"]) throw new Exception("Le mot de passe n'est pas identique");
 
-            //TODO unique constraints
+            // Check constraints
+            require_once("model/users.php");
+            if(!empty(selectUserByEmail($email)))throw new Exception("Email déjà utilisé");
+            if(!empty(selectUserByUsername($username)))throw new Exception("Nom d'utilisateur déjà utilisé");
 
             // Store in to the database
-            require_once("model/users.php");
             $row = insertUser($username,$email,$lastName,$firsName,$password);
             if($row !== true) throw new Exception("Unable to save user");
 
