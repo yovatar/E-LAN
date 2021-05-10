@@ -1,0 +1,10 @@
+insert into lans (id, name, description, places, start, end, Stats_id) values (1, 'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '16.06.2020', '23.11.2021', 2);
+insert into lans (id, name, description, places, start, end, Stats_id) values (2, 'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '03.02.2021', '15.06.2021', 1);
+insert into lans (id, name, description, places, start, end, Stats_id) values (3, 'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '16.08.2021', '29.01.2021', 2);
+insert into lans (id, name, description, places, start, end, Stats_id) values (4, 'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '19.04.2021', '26.06.2020', 2);
+insert into lans (id, name, description, places, start, end, Stats_id) values (5, 'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '04.07.2020', '08.09.2021', 1);
+insert into lans (id, name, description, places, start, end, Stats_id) values (6, 'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '30.08.2020', '05.05.2021', 2);
+insert into lans (id, name, description, places, start, end, Stats_id) values (7, 'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '31.12.2021', '03.04.2021', 2);
+insert into lans (id, name, description, places, start, end, Stats_id) values (8, 'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '04.09.2021', '09.06.2021', 1);
+insert into lans (id, name, description, places, start, end, Stats_id) values (9, 'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '20.01.2021', '05.08.2020', 1);
+insert into lans (id, name, description, places, start, end, Stats_id) values (10, 'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '15.08.2020', '10.04.2021', 2);
