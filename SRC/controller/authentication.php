@@ -30,7 +30,7 @@ function controllerRegister($request)
             $firsName = filter_var($request["firstName"], FILTER_SANITIZE_STRING);
             if (empty($firsName)) throw new Exception("Prénom invalide");
 
-            $password = filter_var($request["password"], FILTER_SANITIZE_STRING);
+            $password = $request["password"];
             if (empty($password)) throw new Exception("Mot de passe vide");
 
             if ($password != $request["passwordCheck"]) throw new Exception("Le mot de passe n'est pas identique");
@@ -43,6 +43,33 @@ function controllerRegister($request)
             header("Location: /home");
         } catch (Exception $e) {
             header("Location: /authentication/register?error=" . $e->getMessage());
+        }
+    }
+}
+
+function controllerLogin($request)
+{
+    require_once("view/login.php");
+    if (empty($request)) {
+        // Show login form
+        viewLogin();
+    } else {
+        try {
+            // Input validation
+            $email = filter_var($request["email"], FILTER_VALIDATE_EMAIL);
+            if (empty($email)) throw new Exception("Email invalide");
+
+            $password = $request["password"];
+            if (empty($password)) throw new Exception("Mot de passe vide");
+
+            // Compare to database
+
+            // Login
+
+            // Redirect
+            header("Location: /home");
+        } catch (Exception $e) {
+            header("Location: /authentication/login?error=" . $e->getMessage());
         }
     }
 }

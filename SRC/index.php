@@ -25,6 +25,9 @@ switch ($uri) {
     case '/home':
         controllerHome();
         break;
+    case '/authentication/login':
+        controllerLogin($_POST);
+        break;
     case '/authentication/register':
         controllerRegister($_POST);
         break;
