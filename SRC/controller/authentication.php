@@ -72,14 +72,27 @@ function controllerLogin($request)
             if (empty($password)) throw new Exception("Mot de passe vide");
 
             // Compare to database
+            require_once("model/users.php");
+            $user = selectUserByEmail($email);
+            if(empty($user)) throw new Exception("Aucun utilisateur avec cet email");
+
+            if(password_verify($password,$user["password"]) == false) throw new Exception("Mot de passe invalide");
 
             // Login
-
+            login($user);
+            
             // Redirect
             header("Location: /home");
         } catch (Exception $e) {
             header("Location: /authentication/login?error=" . $e->getMessage());
         }
+    }
+}
+
+function controllerLogout($request){
+    if(filter_var(@$request["confirm"],FILTER_VALIDATE_BOOLEAN)){
+        logout();
+        header("Location: /home");
     }
 }
 

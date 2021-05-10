@@ -39,20 +39,32 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     </div>
                 </div>
                 <div class="flex-col justify-center hidden lg:flex">
-                    <div class="flex flex-row space-x-3">
-                        <a href="/authentication/login" class="flex px-3 py-2 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white items-center space-x-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                            </svg>
-                            <p>Connexion</p>
-                        </a>
-                        <a href="/authentication/register" class="flex px-3 py-2 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white items-center space-x-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
-                            </svg>
-                            <p>Créer un compte</p>
-                        </a>
-                    </div>
+                    <?php if (empty($_SESSION["user"])) { ?>
+                        <div class="flex flex-row space-x-3">
+                            <a href="/authentication/login" class="flex px-3 py-2 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white items-center space-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                </svg>
+                                <p>Connexion</p>
+                            </a>
+                            <a href="/authentication/register" class="flex px-3 py-2 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white items-center space-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
+                                </svg>
+                                <p>Créer un compte</p>
+                            </a>
+                        </div>
+                    <?php } else { ?>
+                        <form action="/authentication/logout" method="POST">
+                            <input type="hidden" name="confirm" value="true">
+                            <button type="submit" class="flex px-3 py-2 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white items-center space-x-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                </svg>
+                                <p>Déconnexion</p>
+                            </button>
+                        </form>
+                    <?php } ?>
                 </div>
                 <button @click="open = true" :class="{'brightness-90':open}" class="lg:hidden px-3 py-2 focus:outline-none filter focus:text-blueGray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

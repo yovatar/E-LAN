@@ -10,8 +10,8 @@ function selectUsers()
 function selectUserByEmail($email)
 {
     require_once("model/database.php");
-    $query = "SELECT * FROM users WHERE email LIKE :email";
-    return executeQuerySelect($query, createBinds([[":email", $email]]));
+    $query = "SELECT * FROM users WHERE email LIKE :email LIMIT 1";
+    return executeQuerySelect($query, createBinds([[":email", $email]]))[0] ?? null;
 }
 
 function insertUser($username, $email, $lastName, $firstName, $password)
