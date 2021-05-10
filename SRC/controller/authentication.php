@@ -35,9 +35,18 @@ function controllerRegister($request)
 
             if ($password != $request["passwordCheck"]) throw new Exception("Le mot de passe n'est pas identique");
 
+            //TODO unique constraints
+
             // Store in to the database
+            require_once("model/users.php");
+            $row = insertUser($username,$email,$lastName,$firsName,$password);
+            if($row !== true) throw new Exception("Unable to save user");
+
+            $user = selectUserByEmail($email);
+            if(empty($user))throw new Exception("Error while retrieving user from the database");
 
             // Login
+            login($user);
 
             // Redirect
             header("Location: /home");
