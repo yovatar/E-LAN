@@ -323,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `E-LAN`.`Events_has_Users` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
+-- --------------------------------------`e-lan``events`---------------
 -- Table `E-LAN`.`Teams_has_Users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `E-LAN`.`Teams_has_Users` ;
