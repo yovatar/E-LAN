@@ -27,6 +27,9 @@ switch ($uri) {
     case '/forbidden':
         controllerForbidden();
         break;
+    case  '/protection':
+        controllerProtection();
+        break;
     default:
         controllerLost();
 }

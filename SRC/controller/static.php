@@ -29,3 +29,8 @@ function controllerForbidden()
     require_once("view/forbidden.php");
     viewForbidden();
 }
+
+function controllerProtection(){
+    require_once ("view/protection.php");
+    viewProtect();
+}
