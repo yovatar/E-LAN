@@ -30,6 +30,9 @@ switch ($uri) {
     case  '/protection':
         controllerProtection();
         break;
+    case '/condition':
+        controllerCondition();
+        break;
     default:
         controllerLost();
 }
