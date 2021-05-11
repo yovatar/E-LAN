@@ -114,12 +114,8 @@ Le site web cible desktop et mobile, le site doit donc etre responsive pour ces 
     -   Dans le but d’éviter d’être trop pénaliser par l’absence d’une personne nous mettons en place une distribution commune des documents. De ce fait nous pouvons rapidement reprendre le boulot et même l’attribuer a quelqu’un d’autre.
 -   Des problèmes matériels
     -   Nos documents seront disponibles sur un répertoire en ligne a l’abris de pannes matériel cependant si nous venions à perdre nos documents se trouvent sur le cloud le problème serait plus conséquent.
--   Un objectif irréalisable
-    -   Pour éviter un objectif trop ambitieux nous tenons des échanges réguliers avec le PO et fessons les choses petits à petit et ajoutons les suppléments après
--   Des délais trop sérés
-    -   Nous veillons à ce que le suivis du temps dû à chaque tache soit minuté et surveillé de manier à éviter au maximum de louper les deadlines
--   Mauvaise répartition des tâches en fonction des compétences de chacun
-    -   Pour éviter ce problème nous avons un gestionnaire de projet et fessons des scrum meating réguliers dans le but d’avoir la meilleure distribution des taches possible
+-   Compétences insuffisantes
+    -   Pour éviter ce problème nous faisons des scrum meetings qui nous permettent de parler de nos difficultés rencontrées.
 -   Pas d’accès aux technologies requise
     -   Pour éviter d’avoir recours à des technologies inaccessibles nous favorisons l’utilisation des logiciels mis à notre disposition ainsi qu’à des logiciels open source et restons dans la mesure du réalisable vis-à-vis de notre matériel
 
