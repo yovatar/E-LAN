@@ -37,7 +37,13 @@ Il propose un système de profil utilisateur personalisable ainsi que des rôles
 
 ## Dans quel contexte le projet est-il réalisé ?
 
-Nous réalisont se Projet de dévelopement web avec base de donnée lors de notre 2ème année d'apprentisage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétence en tant que développeur et de gestion de projet
+Nous réalisont se Projet de dévelopement web avec base de donnée lors de notre 2ème année d'apprentisage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétence en tant que développeur et de gestion de projet.
+Nous avons pour base les cours suivants :
+- ICT133 (PHP)
+- ICT151 (PHP+BD)
+- ICT105 (SQL)
+- MA8 (SQL)
+- Projet Web (PHP)
 
 ## Organisation
 
