@@ -1,43 +1,44 @@
+E-LAN
 # E-LAN
 
 ## Objectifs :
 
--   Interface Bootstrap, avec ou sans template
--   Groupes de 3
--   Sujet libre, mais avec:
-    -   MVC
-    -   CRUD
-    -   User / Password chiffré
-    -   2 Rôles user et admin
-    -   Concept d'événement
-        -   lieu
-        -   Date/heure
-        -   Titre
-        -   Description
-    -   Lien entre user et événement
--   Elèves choisissent un sujet qui respecte les consignes ci-dessus (Multiplex, Vaccin, Festival,…) et le font valider par le PO sur la base d’une liste de features et d’un MCD
--   Le Déploiment Swisscenter
--   Critère d'évaluation:
-    -   Analyse fonctionnelle (Tests)
-    -   Conception UX (maquettes)
-    -   Analyse technique (Tâches)
-    -   Réalisation (qualité du code – commentaires – choix des noms - historique).
-    -   Procédures de tests (comment le site a été testé)
-    -   Qualité du produit du point de vue utilisation (ergonomie, fonctionnalité)
-    -   Efficacité – Gestion du temps
-    -   Documentation du produit (reproductibilité)
+-   Interface Bootstrap, avec ou sans template
+-   Groupes de 3
+-   Sujet libre, mais avec :
+    -   MVC
+    -   CRUD
+    -   User / Password chiffré
+    -   2 Rôles user et admin
+    -   Concept d’événement
+        -   lieu
+        -   Date/heure
+        -   Titre
+        -   Description
+    -   Lien entre user et événement
+-   Élèves choisissent un sujet qui respecte les consignes ci-dessus (Multiplex, Vaccin, Festival, …) et le font valider par le PO sur la base d’une liste de features et d’un MCD
+-   Le Déploiement Swisscenter
+-   Critère d’évaluation :
+    -   Analyse fonctionnelle (Tests)
+    -   Conception UX (maquettes)
+    -   Analyse technique (Tâches)
+    -   Réalisation (qualité du code – commentaires – choix des noms - historique).
+    -   Procédures de tests (comment le site a été testé)
+    -   Qualité du produit du point de vue utilisation (ergonomie, fonctionnalité)
+    -   Efficacité – Gestion du temps
+    -   Documentation du produit (reproductibilité)
 
 ## Description
 
-Notre site permet de faciliter la création et gestion d'évènements "Gaming" LAN.
+Notre site permet de faciliter la création et gestion d’évènements "Gaming" LAN.
 Une LAN est répartie sur une durée et contiendra plusieurs évènements de type tournois ou ateliers/activité.
-Une LAN va comporter plusieurs types évenement par exemple un quiz, un stand autre, un évemenet autre ou encore des tournois de jeux-vidéo,
+Une LAN va comporter plusieurs types événement par exemple un quiz, un stand autre, un événement autre ou encore des tournois de jeux-vidéo,
 le site permet une gestion complète et propre à chaque évènement.
-Il propose un système de profil utilisateur personalisable ainsi que des rôles facilitant l'oraganisation entre géstionnaires et utilisateurs.
+Il propose un système de profil utilisateur personnalisable ainsi que des rôles facilitant l’organisation entre gestionnaires et utilisateurs.
 
 ## Dans quel contexte le projet est-il réalisé ?
 
-Nous réalisont se Projet de dévelopement web avec base de donnée lors de notre 2ème année d'apprentisage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétence en tant que développeur et de gestion de projet.
+Nous réalisons ce Projet de développement web avec base de donnée lors de notre 2ᵉ année d’apprentissage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétences en tant que développeur et de gestion de projet.
 Nous avons pour base les cours suivants :
 - ICT133 (PHP)
 - ICT151 (PHP+BD)
@@ -47,36 +48,36 @@ Nous avons pour base les cours suivants :
 
 ## Organisation
 
-| Nom              | Role          |
+| Nom              | Rôle          |
 | ---------------- | ------------- |
-| Carrel Xavier    | Product Owner |
-| Augsburger Kenan | Scrum Master  |
-| Pinto Pedro      | Team Member   |
-| Bonzon Yoann     | Team Member   |
+| Carrel Xavier    | Product Owner |
+| Augsburger Kenan | Scrum Master  |
+| Pinto Pedro      | Team Member   |
+| Bonzon Yoann     | Team Member   |
 
 ## Fonctionnalités
 
--   Administrateurs
-    -   Gestion des utilisateurs/roles
--   Modérateurs
-    -   Gestion de LAN
-    -   Gestion d'événements d'une LAN
-    -   Création de news
-    -   Outils de tournois
--   Utilisateurs
-    -   Inscription à des LAN
-    -   Inscription à des évènements
-    -   Création d'équipes
-    -   Modification des information du compte
+-   Administrateurs
+    -   Gestion des utilisateurs/rôles
+-   Modérateurs
+    -   Gestion de LAN
+    -   Gestion d’événements d’une LAN
+    -   Création de news
+    -   Outils de tournois
+-   Utilisateurs
+    -   Inscription à des LAN
+    -   Inscription à des évènements
+    -   Création d’équipes
+    -   Modification des informations du compte
 
 ## Planification initiale
 
 Sprints (2 semaines par sprint)
 
 1. 26/04/2021 - 09/05/2021
-    - Etre pret pour le premier vrai sprint
+    - Être prêt pour le premier vrai sprint
 2. 10/05/2021 - 25/05/2021
-    - Authentification
+    - Authentification
 3. 26/05/2021 - 07/06/2021
 4. 08/06/2021 - 21/06/2021
 5. 21/06/2021 - 24/06/2021
@@ -85,58 +86,58 @@ Sprints (2 semaines par sprint)
 
 ### Testeurs
 
-| Nom              | Email                                                       |
+| Nom              | Email                                                       |
 | ---------------- | ----------------------------------------------------------- |
-| Pedro Pinto      | [pedro.pinto@cpnv.ch](mailto:pedro.pinto@cpnv.ch)           |
-| Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
+| Pedro Pinto      | [pedro.pinto@cpnv.ch](mailto:pedro.pinto@cpnv.ch)           |
+| Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
 | Kenan Augsburger | [kenan.augsburger@cpnv.ch](mailto:kenan.augsburger@cpnv.ch) |
 
-### Materiel/Logiciel de test
+### Matériel/Logiciel de test
 
-| name                 | type     | version | description                                   |
+| name                 | type     | version | description                                   |
 | :------------------- | :------- | :------ | :-------------------------------------------- |
-| Dell Optiplex 7040   | Meteriel |         | Ordinateurs du cpnv en classe C214            |
-| Windows 10 Education | Logiciel | 2004+   | OS                                            |
-| php                  | Logiciel | 7.x.x   | Interpréteur php pour faire tourner le server |
-| chrome               | Logiciel | 85.x.x  | Navigateur pour tester le site                |
-| firefox              | Logiciel | 82.x.x  | Navigateur secondaire                         |
+| Dell Optiplex 7040   | Matériel |         | Ordinateurs du cpnv en classe C214            |
+| Windows 10 Education | Logiciel | 2004+   | OS                                            |
+| php                  | Logiciel | 7.x.x   | Interpréteur php pour faire tourner le serveur|
+| chrome               | Logiciel | 85.x.x  | Navigateur pour tester le site                |
+| firefox              | Logiciel | 82.x.x  | Navigateur secondaire                         |
 
 ### Contexte de testes
 
-Pour verifier le fonctionnement du site, les testes sont réalisés en servant en interne accessible par d'autres clients dans le meme réseau.
+Pour vérifier le fonctionnement du site, les testes sont réalisés en servant en interne accessible par d’autres clients dans le même réseau.
 La base de donnée est sur la même machine que le serveur.
-Le site web cible desktop et mobile, le site doit donc etre responsive pour ces critères.
+Le site web cible desktop et mobile, le site doit donc être responsive pour ces critères.
 
 ## Analyse des risques
 
--   L'absence d’un des participants du projet courte ou longue durée
-    -   Dans le but d’éviter d’être trop pénaliser par l’absence d’une personne nous mettons en place une distribution commune des documents. De ce fait nous pouvons rapidement reprendre le boulot et même l’attribuer a quelqu’un d’autre.
--   Des problèmes matériels
-    -   Nos documents seront disponibles sur un répertoire en ligne a l’abris de pannes matériel cependant si nous venions à perdre nos documents se trouvent sur le cloud le problème serait plus conséquent.
--   Compétences insuffisantes
-    -   Pour éviter ce problème nous faisons des scrum meetings qui nous permettent de parler de nos difficultés rencontrées.
--   Pas d’accès aux technologies requise
-    -   Pour éviter d’avoir recours à des technologies inaccessibles nous favorisons l’utilisation des logiciels mis à notre disposition ainsi qu’à des logiciels open source et restons dans la mesure du réalisable vis-à-vis de notre matériel
+-   L’absence d’un des participants du projet courte ou longue durée
+    -   Dans le but d’éviter d’être trop pénaliser par l’absence d’une personne, nous mettons en place une distribution commune des documents. De ce fait, nous pouvons rapidement reprendre le boulot et même l’attribuer a quelqu’un d’autre.
+-   Des problèmes matériels
+    -   Nos documents seront disponibles sur un répertoire en ligne a l’abri de pannes matériel cependant si nous venions à perdre nos documents se trouvent sur le cloud le problème serait plus conséquent.
+-   Compétences insuffisantes
+    -   Pour éviter ce problème nous faisons des Scrum meetings qui nous permettent de parler de nos difficultés rencontrées.
+-   Pas d’accès aux technologies requises
+    -   Pour éviter d’avoir recours à des technologies inaccessibles nous favorisons l’utilisation des logiciels mis à notre disposition ainsi qu’à des logiciels open source et restons dans la mesure du réalisable vis-à-vis de notre matériel
 
 ## Entités
 
--   Utilisateurs (Contient tout les informations pour chaque rôle d'utilisateur cette entité est composé du Nom,Prénom,Email,Pseudo,Password )
--   Rôles (Propose les rôles coréspondant au type d'utilisateur cette entité est composé du Nom,Description)
--   Lans (Comporte tout les informations des LANS cette entité est composé du Nom,Description,Places,Début,Fin)
--   Lieux (information de l'endroit ou se trouve les évenements cette entité est composé du Nom,Adresse)
--   Équipes (liste des nom de groupes de joueurs créer dans la LAN cette entité est composé du Nom,Abréviation)
--   Événements (liste les activités ordganisé cette entité est composé du nom,description, type , date de début et date de fin d'un événement)
--   Tournois (Contient les information lié au différent tournois cette entité est composé du nom du jeux,maximum d'équipe et du nom du tournoi)
--   Matches (Liste les differents matches liées aux tournois cette entité est composé de la date de début et date de fin, numéro de match)
--   état (l'état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
+-   Utilisateurs (Contient tout les informations pour chaque rôle d’utilisateur cette entité est composé du Nom, Prénom, Email, Pseudo, Password )
+-   Rôles (Propose les rôles correspondant au type d’utilisateur cette entité est composé du Nom, Description)
+-   Lans (Comporte tout les informations des LANS cette entité est composé du Nom, Description, Places, Début, Fin)
+-   Lieux (information de l’endroit ou se trouve les événements cette entité est composé du Nom, Adresse)
+-   Équipes (liste des noms de groupes de joueurs créer dans la LAN cette entité est composé du Nom, Abréviation)
+-   Événements (liste les activités organisées cette entité est composé du nom, description, type, date de début et date de fin d’un événement)
+-   Tournois (Contient les informations liées aux différents tournois cette entité est composé du nom du jeu, maximum d’équipe et du nom du tournoi)
+-   Matches (Liste les différents matches liés aux tournois cette entité est composé de la date de début et date de fin, numéro de match)
+-   état (l’état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
 
 ## Journal de bord
 
-| date             | description                                                 | participant                                 |
+| date             | description                                                 | participant                                 |
 | ---------------- | ----------------------------------------------------------- | ------------------------------------------- |
-| 03/05/2021 15:30 | Validation du MCD par le PO                                 | Pedro P. , Kenan A. et Xavier C.            |
-| 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
-| 11/05/2021 8:20  | Sprint 1 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
+| 03/05/2021 15:30 | Validation du MCD par le PO                                 | Pedro P. , Kenan A. et Xavier C.            |
+| 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
+| 11/05/2021 8:20  | Sprint 1 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
 
 ## Bilan des objectifs atteints / non-atteints
 
