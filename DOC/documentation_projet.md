@@ -106,6 +106,7 @@ Sprints (2 semaines par sprint)
 
 Pour verifier le fonctionnement du site, les testes sont réalisés en servant en interne accessible par d'autres clients dans le meme réseau.
 La base de donnée est sur la même machine que le serveur.
+Le site web cible desktop et mobile, le site doit donc etre responsive pour ces critères.
 
 ## Analyse des risques
 
