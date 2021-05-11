@@ -10,16 +10,51 @@ function viewHome()
 
     ob_start();
 ?>
-    <div class="flex flex-row justify-center">
-        <div class="flex flex-col space-y-2">
-            <div class="text-lg md:text-4xl font-medium text-purple-500">En construction!</div>
-            <svg class="animate-spin mx-auto h-6 md:h-16 w-6 md:w-16 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-0" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                </path>
-            </svg>
+
+
+        <h1 class="b w-full text-5xl text-center font-mono text-purple-600">E-LAN Acceuil</h1>
+
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Dec 7, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </div>
+            <div class="card">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Sep 2, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </div>
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <h2>About Me</h2>
+                <div class="fakeimg" style="height:100px;">Image</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+            </div>
+            <div class="card">
+                <h3>Popular Post</h3>
+                <div class="fakeimg">Image</div><br>
+                <div class="fakeimg">Image</div><br>
+                <div class="fakeimg">Image</div>
+            </div>
+            <div class="card">
+                <h3>Follow Me</h3>
+                <p>Some text..</p>
+            </div>
         </div>
     </div>
+
+    <div class="footer">
+        <h2>Footer</h2>
+    </div>
+
     <?php
     $content = ob_get_clean();
 

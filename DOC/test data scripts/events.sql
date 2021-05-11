@@ -1,0 +1,10 @@
+insert into events (id, name, description, type, start, end) values (1, 'Vagram', 'Dyche', 'Quizz', '23.08.2020', '16.03.2022');
+insert into events (id, name, description, type, start, end) values (2, 'Quo Lux', 'Olenchenko', 'Shop', '06.05.2020', '21.06.2021');
+insert into events (id, name, description, type, start, end) values (3, 'It', 'Smorthwaite', 'other', '16.07.2020', '27.04.2022');
+insert into events (id, name, description, type, start, end) values (4, 'Opela', 'Copyn', 'Tournement', '21.10.2021', '05.01.2021');
+insert into events (id, name, description, type, start, end) values (5, 'Alpha', 'Zellick', 'Quizz', '27.10.2020', '20.05.2021');
+insert into events (id, name, description, type, start, end) values (6, 'Konklux', 'Tomisch', 'other', '15.10.2021', '24.04.2022');
+insert into events (id, name, description, type, start, end) values (7, 'Tin', 'Caseley', 'Shop', '06.06.2020', '03.05.2021');
+insert into events (id, name, description, type, start, end) values (8, 'Solarbreeze', 'Auchterlony', 'other', '11.01.2021', '24.06.2021');
+insert into events (id, name, description, type, start, end) values (9, 'Voyatouch', 'Bradburne', 'other', '20.02.2021', '26.04.2022');
+insert into events (id, name, description, type, start, end) values (10, 'Subin', 'Batte', 'Shop', '22.04.2021', '20.09.2020');
