@@ -143,9 +143,11 @@ Sprints (2 semaines par sprint)
 
 ## Journal de bord
 
-| date             | description                 | participant                      |
-| ---------------- | --------------------------- | -------------------------------- |
-| 03/05/2021 15:30 | Validation du MCD par le PO | Pedro P. , Kenan A. et Xavier C. |
+| date             | description                                                 | participant                                 |
+| ---------------- | ----------------------------------------------------------- | ------------------------------------------- |
+| 03/05/2021 15:30 | Validation du MCD par le PO                                 | Pedro P. , Kenan A. et Xavier C.            |
+| 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
+| 11/05/2021 8:20  | Sprint 1 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
 
 ## Bilan des objectifs atteints / non-atteints
 
