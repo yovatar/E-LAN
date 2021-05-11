@@ -92,27 +92,20 @@ Sprints (2 semaines par sprint)
 | Yoann Bonzon     | [yoann.bonzon@cpnv.ch](mailto:yoann.bonzon@cpnv.ch)         |
 | Kenan Augsburger | [kenan.augsburger@cpnv.ch](mailto:kenan.augsburger@cpnv.ch) |
 
-### Materiel/Software de test
+### Materiel/Logiciel de test
 
-| name   | type     | version | description                                   |
-| :----- | :------- | :------ | :-------------------------------------------- |
-| php    | software | 7.x.x   | Interpréteur php pour faire tourner le server |
-| npm    | software | 7.5.4   | Dependency manager                            |
-| chrome | software | 85.x.x  | Navigateur pour tester le site                |
+| name                 | type     | version | description                                   |
+| :------------------- | :------- | :------ | :-------------------------------------------- |
+| Dell Optiplex 7040   | Meteriel |         | Ordinateurs du cpnv en classe C214            |
+| Windows 10 Education | Logiciel | 2004+   | OS                                            |
+| php                  | Logiciel | 7.x.x   | Interpréteur php pour faire tourner le server |
+| chrome               | Logiciel | 85.x.x  | Navigateur pour tester le site                |
+| firefox              | Logiciel | 82.x.x  | Navigateur secondaire                         |
 
-### Fonctionnalités à tester
+### Contexte de testes
 
--   Vues
-    -   Apparence (erreurs visuels / sens compréhensibilité des controls)
-    -   Charge de travail
-    -   Bon fonctionnement des contrôles
-    -   Retour utilisateur
--   Controller
-    -   Traitement et assainissement des données
-    -   Sécurité (blockage des actions selon droits)
--   Model
-    -   Format des données
-    -   Risques de corruption
+Pour verifier le fonctionnement du site, les testes sont réalisés en servant en interne accessible par d'autres clients dans le meme réseau.
+La base de donnée est sur la même machine que le serveur.
 
 ## Analyse des risques
 
