@@ -91,7 +91,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
             <div class="flex flex-col justify-center pt-2 font-medium text-gray-700 border-t-2 border-purple-500 lg:flex-row lg:space-x-3">
                 <a href="/about" class="text-center hover:text-gray-900 hover:underline">E-LAN</a>
                 <a href="/protection" class="text-center hover:text-gray-900 hover:underline">Protection des données</a>
-                <a href="/Condition" class="text-center hover:text-gray-900 hover:underline">Conditions d’utilisation</a>
+                <a href="/condition" class="text-center hover:text-gray-900 hover:underline">Conditions d’utilisation</a>
             </div>
         </footer>
         <?= $foot ?? "" ?>
