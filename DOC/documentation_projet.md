@@ -67,20 +67,13 @@ Nous réalisont se Projet de dévelopement web avec base de donnée lors de notr
 
 Sprints (2 semaines par sprint)
 
-1. Analyse et planification
-    - 26/04/2021 - 09/05/2021
-    - MCD
-    - MLD
-    - Documentation du projet
-2. Conception
-    - 10/05/2021 - 23/05/2021
-    - Maquettes
-3. Réalisation
-    - 24/05/2021 - 06/06/2021
-4. Corréction de bugs et Ajout de fonctionnalités
-    - 07/06/2021 - 20/06/2021
-5. Bouclage et release
-    - 21/06/2021 - 24/06/2021
+1. 26/04/2021 - 09/05/2021
+    - Etre pret pour le premier vrai sprint
+2. 10/05/2021 - 25/05/2021
+    - Authentification
+3. 26/05/2021 - 07/06/2021
+4. 08/06/2021 - 21/06/2021
+5. 21/06/2021 - 24/06/2021
 
 ## Stratégie de test
 
