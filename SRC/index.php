@@ -7,11 +7,12 @@ session_start();
 require_once("lib/utils.php");
 setlocale(LC_ALL, 'fr-CH');
 date_default_timezone_set("Europe/Zurich");
-require_once("config.php");
+include_once("config.php");
 $GLOBALS["config"] = getConfig();
 
 // Controllers
 require_once("controller/static.php");
+require_once("controller/authentication.php");
 
 // Router
 // Remove get parameters
@@ -24,8 +25,23 @@ switch ($uri) {
     case '/home':
         controllerHome();
         break;
+    case '/authentication/login':
+        controllerLogin($_POST);
+        break;
+    case '/authentication/logout':
+        controllerLogout($_POST);
+        break;
+    case '/authentication/register':
+        controllerRegister($_POST);
+        break;
     case '/forbidden':
         controllerForbidden();
+        break;
+    case  '/protection':
+        controllerProtection();
+        break;
+    case '/condition':
+        controllerCondition();
         break;
     default:
         controllerLost();
