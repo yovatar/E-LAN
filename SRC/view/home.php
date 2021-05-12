@@ -9,50 +9,63 @@ function viewHome()
     $title = "home";
 
     ob_start();
-?>
+    ?>
+    <br>
+    <div>
+        <h1 class=" text-5xl text-center font-mono font-bold text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500 ">
+            E-LAN Acceuil</h1>
 
+    </div><br>
+    <div class="bg-gradient-to-r h-96 from-purple-500 to-pink-300  flex flex-col justify-center items-center">
+        <div class="text-center text-gray-100 text-bold text-3xl">  Evénements du mois   </div> <br>
+        <div
+                class="max-w-2xl mx-auto relative"
+                x-data="{ activeSlide: 1, slides: [1, 2, 3, 4, 5] }"
+        >
+            <!-- Slides -->
+            <template x-for="slide in slides" :key="slide">
+                <div
+                        x-show="activeSlide === slide"
+                        class="p-24 font-bold text-5xl w-[3.23rem] flex items-center bg-pink-100 text-purple-900 rounded-lg">
+                    <span class="w-12 text-center" x-text="slide"></span>
+                    <span class="text-teal-300">/</span>
+                    <span class="w-12 text-center" x-text="slides.length"></span>
+                </div>
+            </template>
 
-        <h1 class="b w-full text-5xl text-center font-mono text-purple-600">E-LAN Acceuil</h1>
-
-
-    <div class="row">
-        <div class="leftcolumn">
-            <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Dec 7, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <!-- Prev/Next Arrows -->
+            <div class="absolute inset-0 flex">
+                <div class="flex items-center justify-start w-1/2">
+                    <button
+                            class="bg-pink-200 text-purple-250 hover:text-black-500 font-black hover:shadow-lg rounded-full w-30 h-16 -ml-6"
+                            @click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+                        &#8592;
+                    </button>
+                </div>
+                <div class="flex items-center justify-end w-1/2">
+                    <button
+                            class="bg-pink-200 text-purple-250 hover:text-black-500 font-black hover:shadow-lg rounded-full w-30 h-16 -mr-6"
+                            @click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+                        &#8594;
+                    </button>
+                </div>
             </div>
-            <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Sep 2, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+            <!-- Buttons -->
+            <div class="absolute w-full flex items-center justify-center px-4">
+                <template x-for="slide in slides" :key="slide">
+                    <button
+                            class="flex-1 w-4 h-2 mt-4 mx-2 mb-0 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:bg-teal-600 hover:shadow-lg"
+                            :class="{
+              'bg-orange-600': activeSlide === slide,
+              'bg-teal-300': activeSlide !== slide
+          }"
+                            @click="activeSlide = slide"
+                    ></button>
+                </template>
             </div>
         </div>
-        <div class="rightcolumn">
-            <div class="card">
-                <h2>About Me</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-            <div class="card">
-                <h3>Popular Post</h3>
-                <div class="fakeimg">Image</div><br>
-                <div class="fakeimg">Image</div><br>
-                <div class="fakeimg">Image</div>
-            </div>
-            <div class="card">
-                <h3>Follow Me</h3>
-                <p>Some text..</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="footer">
-        <h2>Footer</h2>
     </div>
 
     <?php
@@ -61,7 +74,7 @@ function viewHome()
     //Meta tag for nav
     ob_start();
     ?>
-<?php
+    <?php
     $head = ob_get_clean();
 
     require_once "view/template.php";
