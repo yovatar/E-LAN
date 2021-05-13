@@ -14,8 +14,9 @@ function viewRegister()
         <form action="/authentication/register" method="POST" class="flex flex-col px-6 py-3 space-y-2 bg-white rounded-md filter drop-shadow-md">
             <h1 class="mb-2 text-xl font-medium">Inscription</h1>
             <label for="username">Nom d'utilisateur</label>
-            <div role="username field" class="relative" x-data="{available : null}">
-                <input x-ref="iptUsername" x-on:change="if($refs.iptUsername.value.length){
+            <div role="username field" class="flex flex-col" x-data="{available : null}">
+                <div class="relative w-full">
+                    <input x-ref="iptUsername" x-on:change="if($refs.iptUsername.value.length){
                         let params = new FormData();
                         params.append('username',$refs.iptUsername.value);
                         $fetch({
@@ -33,10 +34,23 @@ function viewRegister()
                     } else {
                         available = null
                     }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div x-show="available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <p x-cloak x-show="available === false" class="text-red-500">Nom d'utilisateur déjà utilisé</p>
             </div>
             <label for="email">Email</label>
-            <div role="email field" class="relative" x-data="{available : null}">
-                <input x-ref="iptEmail" x-on:change="if($refs.iptEmail.value.length){
+            <div role="email field" class="flex flex-col" x-data="{available : null}">
+                <div class="relative w-full">
+                    <input x-ref="iptEmail" x-on:change="if($refs.iptEmail.value.length){
                         let params = new FormData();
                         params.append('email',$refs.iptEmail.value);
                         $fetch({
@@ -54,6 +68,18 @@ function viewRegister()
                     } else {
                         available = null
                     }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div x-show="available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+                <p x-cloak x-show="available === false" class="text-red-500">Email déjà Utilisé</p>
             </div>
             <label for="lastName">Nom</label>
             <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
