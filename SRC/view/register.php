@@ -14,22 +14,60 @@ function viewRegister()
         <form action="/authentication/register" method="POST" class="flex flex-col px-6 py-3 space-y-2 bg-white rounded-md filter drop-shadow-md">
             <h1 class="mb-2 text-xl font-medium">Inscription</h1>
             <label for="username">Nom d'utilisateur</label>
-            <input type="text" id="username" name="username" placeholder="bobby" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <div role="username field" class="relative" x-data="{available : null}">
+                <input x-ref="iptUsername" x-on:change="if($refs.iptUsername.value.length){
+                        let params = new FormData();
+                        params.append('username',$refs.iptUsername.value);
+                        $fetch({
+                                url:'/api/authentication/available/username',
+                                method:'post',
+                                headers:{
+                                    'content-type':'application/x-www-form-urlencoded'
+                                }
+                                , data:params
+                            }).then(res=>{
+                                if(res.data.code == 200){
+                                    available= res.data.data.available
+                                }
+                            })
+                    } else {
+                        available = null
+                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <div role="email field" class="relative" x-data="{available : null}">
+                <input x-ref="iptEmail" x-on:change="if($refs.iptEmail.value.length){
+                        let params = new FormData();
+                        params.append('email',$refs.iptEmail.value);
+                        $fetch({
+                                url:'/api/authentication/available/email',
+                                method:'post',
+                                headers:{
+                                    'content-type':'application/x-www-form-urlencoded'
+                                }
+                                , data:params
+                            }).then(res=>{
+                                if(res.data.code == 200){
+                                    available= res.data.data.available
+                                }
+                            })
+                    } else {
+                        available = null
+                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
             <label for="lastName">Nom</label>
             <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="firstName">Prénom</label>
             <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="password">Mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 w-full">
-                <button type="button" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-md" @click="show = !show">
-                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="button" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
+                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                         <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                     </svg>
-                    <svg x-show="show" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg x-show="show" x-cloak xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
                         <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
                     </svg>
@@ -37,13 +75,13 @@ function viewRegister()
             </div>
             <label for="passwordCheck">Confirmation du mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 w-full">
-                <button type="button" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 rounded-md" @click="show = !show">
-                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <input x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="button" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
+                    <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                         <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
                     </svg>
-                    <svg x-show="show" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg x-show="show" x-cloak xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
                         <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
                     </svg>

@@ -12,7 +12,7 @@ function apiAvailableUsername($request)
         if (empty($request)) throw new Exception("empty data received");
 
         $username = filter_var($request["username"], FILTER_SANITIZE_STRING);
-        if (empty($username)) throw new Exception("empty name given");
+        if (empty($username)) throw new Exception("empty username given");
 
         // Compare to database
         $response =  ["code" => 200, "status" => "success", "data" => ["available" => false]];
