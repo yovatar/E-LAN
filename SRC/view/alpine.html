@@ -123,9 +123,9 @@
                             dignissimos adipisci. Ipsum corrupti quis eum laudantium cupiditate a, eaque totam dicta!
                             Mollitia, ad?</div>
                         <div role="controls" class="flex flex-row justify-end w-full space-x-3">
-                            <button class="px-6 py-3 bg-red-500 rounded-md text-white font-medium"
+                            <button class="px-6 py-3 font-medium text-white bg-red-500 rounded-md"
                                 @click="open = false">no</button>
-                            <button class="px-6 py-3 bg-blue-500 rounded-md text-white font-medium"
+                            <button class="px-6 py-3 font-medium text-white bg-blue-500 rounded-md"
                                 @click="open = false">yes</button>
                         </div>
                     </div>
@@ -137,19 +137,19 @@
     <div class="flex flex-col items-center w-full max-w-3xl px-6 py-3 mx-auto mt-5 bg-gray-100 rounded-md">
         <h1 class="text-xl font-bold">Progress Bar</h1>
         <div role="progress bar" x-data="{progress : 0}" class="flex flex-col w-full space-y-2">
-            <div class="w-full relative p-1 rounded-lg bg-white">
+            <div class="relative w-full p-1 bg-white rounded-lg">
                 <div x-cloak x-bind:style="`width: ${progress * 10}%`"
-                    class="bg-green-500 h-4 rounded-md transition-all duration-1000"></div>
+                    class="h-4 transition-all duration-1000 bg-green-500 rounded-md"></div>
             </div>
-            <div class="flex flex-rown justify-between">
+            <div class="flex justify-between flex-rown">
                 <button type="button" @click="if(progress > 0) progress--">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
                     </svg>
                 </button>
                 <button type="button" @click="if(progress < 10) progress++">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -159,39 +159,39 @@
         </div>
     </div>
     <!-- Toast -->
-    <div class="flex flex-col items-center w-full max-w-3xl space-y-3 px-6 py-3 mx-auto mt-5 bg-gray-100 rounded-md">
+    <div class="flex flex-col items-center w-full max-w-3xl px-6 py-3 mx-auto mt-5 space-y-3 bg-gray-100 rounded-md">
         <h1 class="text-xl font-bold">Toasts</h1>
         <div role="toast triggers" x-data="{}" class="flex flex-col w-full space-y-3">
-            <div class="flex w-full justify-between space-x-3">
+            <div class="flex justify-between w-full space-x-3">
                 <button type="button"
                     @click="$dispatch('toast', { text: `Info` })"
-                    class="px-3 py-2 rounded-md bg-white hover:bg-blue-500 w-full hover:text-white">Info
+                    class="w-full px-3 py-2 bg-white rounded-md hover:bg-blue-500 hover:text-white">Info
                 </button>
                 <button type="button"
                     @click="$dispatch('toast', { text: 'Success', class : 'bg-green-500 text-white' })"
-                    class="px-3 py-2 rounded-md bg-white hover:bg-green-500 w-full hover:text-white">Success
+                    class="w-full px-3 py-2 bg-white rounded-md hover:bg-green-500 hover:text-white">Success
                 </button>
             </div>
-            <div class="flex w-full justify-between space-x-3">
+            <div class="flex justify-between w-full space-x-3">
                 <button type="button"
                     @click="$dispatch('toast', { text: 'Warning', class : 'bg-yellow-500 text-white' })"
-                    class="px-3 py-2 rounded-md bg-white hover:bg-yellow-500 w-full hover:text-white">Warning
+                    class="w-full px-3 py-2 bg-white rounded-md hover:bg-yellow-500 hover:text-white">Warning
                 </button>
                 <button type="button"
                     @click="$dispatch('toast', { text: 'Error', class : 'bg-red-500 text-white' })"
-                    class="px-3 py-2 rounded-md bg-white hover:bg-red-500 w-full hover:text-white">Error
+                    class="w-full px-3 py-2 bg-white rounded-md hover:bg-red-500 hover:text-white">Error
                 </button>
             </div>
         </div>
         <!-- Elsewhere in the body, preferably at the end -->
         <div role="toast area" x-data="{toasts : []}" @toast.window="toasts.push($event.detail)"
-            class="fixed right-2 bottom-4 flex flex-col items-end space-y-2">
+            class="fixed flex flex-col items-end space-y-2 right-2 bottom-4">
             <template x-for="(toast,index) in toasts" :key="index">
-                <div class="px-3 py-2 rounded-md flex flex-row items-center space-x-2"
+                <div class="flex flex-row items-center px-3 py-2 space-x-2 rounded-md"
                     :class="toast.class ?? 'bg-blue-500 text-white'">
                     <p x-text="`${toast.text}`" class="whitespace-pre-wrap"></p>
                     <button type="button" @click="toasts.splice(index,1)">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                 clip-rule="evenodd" />
