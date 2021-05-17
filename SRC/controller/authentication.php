@@ -6,7 +6,8 @@
 
 /**
  * Handles registration requests
- * @param array $request expects $_POST containing 
+ * @param array $request expects $_POST containing [username,email,lastName,firstName, password, passwordCheck]
+ * @return void
  */
 function controllerRegister($request)
 {
@@ -37,15 +38,15 @@ function controllerRegister($request)
 
             // Check constraints
             require_once("model/users.php");
-            if(!empty(selectUserByEmail($email)))throw new Exception("Email déjà utilisé");
-            if(!empty(selectUserByUsername($username)))throw new Exception("Nom d'utilisateur déjà utilisé");
+            if (!empty(selectUserByEmail($email))) throw new Exception("Email déjà utilisé");
+            if (!empty(selectUserByUsername($username))) throw new Exception("Nom d'utilisateur déjà utilisé");
 
             // Store in to the database
-            $row = insertUser($username,$email,$lastName,$firsName,$password);
-            if($row !== true) throw new Exception("Unable to save user");
+            $row = insertUser($username, $email, $lastName, $firsName, $password);
+            if ($row !== true) throw new Exception("Unable to save user");
 
             $user = selectUserByEmail($email);
-            if(empty($user))throw new Exception("Error while retrieving user from the database");
+            if (empty($user)) throw new Exception("Error while retrieving user from the database");
 
             // Login
             login($user);
@@ -58,6 +59,11 @@ function controllerRegister($request)
     }
 }
 
+/**
+ * Handles login requests
+ * @param array $request expects $_POST containing [email,password]
+ * @return void
+ */
 function controllerLogin($request)
 {
     require_once("view/login.php");
@@ -76,13 +82,13 @@ function controllerLogin($request)
             // Compare to database
             require_once("model/users.php");
             $user = selectUserByEmail($email);
-            if(empty($user)) throw new Exception("Aucun utilisateur avec cet email");
+            if (empty($user)) throw new Exception("Aucun utilisateur avec cet email");
 
-            if(password_verify($password,$user["password"]) == false) throw new Exception("Mot de passe invalide");
+            if (password_verify($password, $user["password"]) == false) throw new Exception("Mot de passe invalide");
 
             // Login
             login($user);
-            
+
             // Redirect
             header("Location: /home");
         } catch (Exception $e) {
@@ -91,8 +97,14 @@ function controllerLogin($request)
     }
 }
 
-function controllerLogout($request){
-    if(filter_var(@$request["confirm"],FILTER_VALIDATE_BOOLEAN)){
+/**
+ * Handles logout requests
+ * @param array $request expects $_POST containing [confirm] 
+ * @return void
+ */
+function controllerLogout($request)
+{
+    if (filter_var(@$request["confirm"], FILTER_VALIDATE_BOOLEAN)) {
         logout();
         header("Location: /home");
     }
@@ -114,9 +126,9 @@ function login($user)
 
 /**
  * Log user out by destroying his session
- * @return void
+ * @return bool
  */
 function logout()
 {
-    session_destroy();
+    return session_destroy();
 }
