@@ -30,11 +30,22 @@ function controllerForbidden()
     viewForbidden();
 }
 
-function controllerProtection(){
-    require_once ("view/protection.php");
+/**
+ * displays privacy page
+ * @return void
+ */
+function controllerProtection()
+{
+    require_once("view/protection.php");
     viewProtect();
 }
-function controllerCondition(){
-    require_once ("view/Condition.php");
+
+/**
+ * displays terms of services
+ * @return void
+ */
+function controllerCondition()
+{
+    require_once("view/Condition.php");
     viewCondition();
 }
