@@ -6,7 +6,7 @@
  */
 function viewHome()
 {
-    $title = "home";
+    $title = "Accueil";
 
     ob_start();
     ?>
@@ -44,7 +44,6 @@ function viewHome()
                             x-show="activeSlide === slide.id"
                             class="w-full flex flex-col rounded-lg justify-center h-64 px-24 overflow-hidden">
                         <div class="flex flex-row  items-start">
-
                             <img class="object-contain w-64 text-center" x-bind:src="`/${slide.src}`"/>
                             <div class="px-6 py-3 text-white font-medium text-xl h-full" x-text="slide?.text">
                             </div>
@@ -95,8 +94,13 @@ function viewHome()
         </div>
 
     </div>
+</div>
 
-    <?php
+<div class="footer">
+    <h2>Footer</h2>
+</div>
+
+<?php
     $content = ob_get_clean();
 
     //Meta tag for nav
