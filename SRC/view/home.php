@@ -95,11 +95,7 @@ function viewHome()
 
     </div>
 </div>
-
-<div class="footer">
-    <h2>Footer</h2>
-</div>
-
+    
 <?php
     $content = ob_get_clean();
 
