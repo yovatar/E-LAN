@@ -4,109 +4,110 @@ USE `elan`;
 -- Locations data
 -- -----------------------------------------------------
 
-INSERT INTO locations (id, Name, address) values (1, 'Bamity', '33664 Sachtjen Parkway');
-INSERT INTO locations (id, Name, address) values (2, 'Toughjoyfax', '330 Transport Hill');
-INSERT INTO locations (id, Name, address) values (3, 'Stronghold', '0 Warner Way');
-INSERT INTO locations (id, Name, address) values (4, 'Holdlamis', '7 Novick Street');
-INSERT INTO locations (id, Name, address) values (5, 'Bytecard', '55802 Sage Place');
-INSERT INTO locations (id, Name, address) values (6, 'Span', '8 Mandrake Circle');
-INSERT INTO locations (id, Name, address) values (7, 'Bytecard', '4 Elka Road');
-INSERT INTO locations (id, Name, address) values (8, 'Sonsing', '200 Donald Street');
-INSERT INTO locations (id, Name, address) values (9, 'Trippledex', '003 Merrick Alley');
-INSERT INTO locations (id, Name, address) values (10, 'Bitchip', '6 John Wall Center');
+INSERT INTO locations ( Name, address) values ( 'Bamity', '33664 Sachtjen Parkway');
+INSERT INTO locations ( Name, address) values ( 'Toughjoyfax', '330 Transport Hill');
+INSERT INTO locations ( Name, address) values ( 'Stronghold', '0 Warner Way');
+INSERT INTO locations ( Name, address) values ( 'Holdlamis', '7 Novick Street');
+INSERT INTO locations ( Name, address) values ( 'Bytecard', '55802 Sage Place');
+INSERT INTO locations ( Name, address) values ( 'Span', '8 Mandrake Circle');
+INSERT INTO locations ( Name, address) values ( 'Bytecard', '4 Elka Road');
+INSERT INTO locations ( Name, address) values ( 'Sonsing', '200 Donald Street');
+INSERT INTO locations ( Name, address) values ( 'Trippledex', '003 Merrick Alley');
+INSERT INTO locations ( Name, address) values ( 'Bitchip', '6 John Wall Center');
 
 -- -----------------------------------------------------
 -- Events data
 -- -----------------------------------------------------
 
-INSERT INTO events (id, name, description, type, start, end) values (1, 'Vagram', 'Dyche', 'Quizz', '23.08.2020', '16.03.2022');
-INSERT INTO events (id, name, description, type, start, end) values (2, 'Quo Lux', 'Olenchenko', 'Shop', '06.05.2020', '21.06.2021');
-INSERT INTO events (id, name, description, type, start, end) values (3, 'It', 'Smorthwaite', 'other', '16.07.2020', '27.04.2022');
-INSERT INTO events (id, name, description, type, start, end) values (4, 'Opela', 'Copyn', 'Tournement', '21.10.2021', '05.01.2021');
-INSERT INTO events (id, name, description, type, start, end) values (5, 'Alpha', 'Zellick', 'Quizz', '27.10.2020', '20.05.2021');
-INSERT INTO events (id, name, description, type, start, end) values (6, 'Konklux', 'Tomisch', 'other', '15.10.2021', '24.04.2022');
-INSERT INTO events (id, name, description, type, start, end) values (7, 'Tin', 'Caseley', 'Shop', '06.06.2020', '03.05.2021');
-INSERT INTO events (id, name, description, type, start, end) values (8, 'Solarbreeze', 'Auchterlony', 'other', '11.01.2021', '24.06.2021');
-INSERT INTO events (id, name, description, type, start, end) values (9, 'Voyatouch', 'Bradburne', 'other', '20.02.2021', '26.04.2022');
-INSERT INTO events (id, name, description, type, start, end) values (10, 'Subin', 'Batte', 'Shop', '22.04.2021', '20.09.2020');
+INSERT INTO events ( name, description, type, start, end) values ( 'Vagram', 'Dyche', 'Quizz', '23.08.2020', '16.03.2022');
+INSERT INTO events ( name, description, type, start, end) values ( 'Quo Lux', 'Olenchenko', 'Shop', '06.05.2020', '21.06.2021');
+INSERT INTO events ( name, description, type, start, end) values ( 'It', 'Smorthwaite', 'other', '16.07.2020', '27.04.2022');
+INSERT INTO events ( name, description, type, start, end) values ( 'Opela', 'Copyn', 'Tournement', '21.10.2021', '05.01.2021');
+INSERT INTO events ( name, description, type, start, end) values ( 'Alpha', 'Zellick', 'Quizz', '27.10.2020', '20.05.2021');
+INSERT INTO events ( name, description, type, start, end) values ( 'Konklux', 'Tomisch', 'other', '15.10.2021', '24.04.2022');
+INSERT INTO events ( name, description, type, start, end) values ( 'Tin', 'Caseley', 'Shop', '06.06.2020', '03.05.2021');
+INSERT INTO events ( name, description, type, start, end) values ( 'Solarbreeze', 'Auchterlony', 'other', '11.01.2021', '24.06.2021');
+INSERT INTO events ( name, description, type, start, end) values ( 'Voyatouch', 'Bradburne', 'other', '20.02.2021', '26.04.2022');
+INSERT INTO events ( name, description, type, start, end) values ( 'Subin', 'Batte', 'Shop', '22.04.2021', '20.09.2020');
 
 -- -----------------------------------------------------
 -- States data
 -- -----------------------------------------------------
 
-INSERT INTO states (id, type) values (1, 'enable');
-INSERT INTO states (id, type) values (2, 'disable');
+INSERT INTO states ( type) values ( 'enabled');
+INSERT INTO states ( type) values ( 'disabled');
 
 -- -----------------------------------------------------
 -- Lans data
 -- -----------------------------------------------------
 
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (1, 'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '16.06.2020', '23.11.2021', 2);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (2, 'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '03.02.2021', '15.06.2021', 1);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (3, 'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '16.08.2021', '29.01.2021', 2);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (4, 'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '19.04.2021', '26.06.2020', 2);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (5, 'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '04.07.2020', '08.09.2021', 1);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (6, 'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '30.08.2020', '05.05.2021', 2);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (7, 'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '31.12.2021', '03.04.2021', 2);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (8, 'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '04.09.2021', '09.06.2021', 1);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (9, 'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '20.01.2021', '05.08.2020', 1);
-INSERT INTO lans (id, name, description, places, start, end, state_id) values (10, 'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '15.08.2020', '10.04.2021', 2);
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '16.06.2020', '23.11.2021' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '03.02.2021', '15.06.2021' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '16.08.2021', '29.01.2021' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '19.04.2021', '26.06.2020' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '04.07.2020', '08.09.2021' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '30.08.2020', '05.05.2021' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '31.12.2021', '03.04.2021' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '04.09.2021', '09.06.2021' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '20.01.2021', '05.08.2020' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '15.08.2020', '10.04.2021' , id FROM states WHERE type LIKE 'disabled';
 
 -- -----------------------------------------------------
 -- Roles data
 -- -----------------------------------------------------
 
-INSERT INTO roles (id, name, description) values (1, 'moderator', 'Website moderator');
-INSERT INTO roles (id, name, description) values (2, 'user', 'default user');
+INSERT INTO roles ( name, description) values ( 'moderator', 'Website moderator');
+INSERT INTO roles ( name, description) values ( 'user', 'default user');
 
 -- -----------------------------------------------------
 -- Users data
 -- -----------------------------------------------------
 
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (1, 'Pedro', 'Pinto', 'Pedro.PINTO@cpnv.ch', 'Django', 'Pa$$w0rd', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (2, 'Yoann', 'Bonzon', 'Yoann.BONZON@cpnv.ch', 'Yoann', 'Pa$$w0rd', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (3, 'Kenan', 'Augsburger', 'Kenan.AUGSBURGER@cpnv.ch', 'Mon', 'Pa$$w0rd', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (4, 'Lancelot', 'Estrella', 'lestrella3@newyorker.com', 'lestrella3', 'y5yTZV5', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (5, 'Herbie', 'Perrelle', 'hperrelle4@soundcloud.com', 'hperrelle4', 'DHTGz7ag3mor', 2);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (6, 'Anastasia', 'Balsom', 'abalsom5@cpanel.net', 'abalsom5', 'SeyHG4JPzlmJ', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (7, 'Boonie', 'Ayer', 'bayer6@baidu.com', 'bayer6', 'SKh8VNEA', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (8, 'Gearalt', 'Fessby', 'gfessby7@ustream.tv', 'gfessby7', 'jVWICQi', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (9, 'Prue', 'Collington', 'pcollington8@engadget.com', 'pcollington8', '3PI6dvIbra', 2);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) values (10, 'Hildegaard', 'Harner', 'hharner9@myspace.com', 'hharner9', 'YC2ROf', 1);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) VALUES (11, 'Elliott', 'Neeve', 'eneeve0@furl.net', 'eneeve0', 'zVbMcyTu', 2);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) VALUES (12, 'Herman', 'Dodson', 'hdodson1@tiny.cc', 'hdodson1', 'hcMKY4k7nBHn', 2);
-INSERT INTO users (id, firstname, lastname, email, username, Password, role_id) VALUES (13, 'Laura', 'Earsman', 'learsman2@google.fr', 'learsman2', 'RKXSXRBFD2jk', 2);
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Pedro', 'Pinto', 'Pedro.PINTO@cpnv.ch', 'Django', 'Pa$$w0rd', id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Yoann', 'Bonzon', 'Yoann.BONZON@cpnv.ch', 'Yoann', 'Pa$$w0rd' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Kenan', 'Augsburger', 'Kenan.AUGSBURGER@cpnv.ch', 'Mon', 'Pa$$w0rd' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Lancelot', 'Estrella', 'lestrella3@newyorker.com', 'lestrella3', 'y5yTZV5' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herbie', 'Perrelle', 'hperrelle4@soundcloud.com', 'hperrelle4', 'DHTGz7ag3mor' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Anastasia', 'Balsom', 'abalsom5@cpanel.net', 'abalsom5', 'SeyHG4JPzlmJ' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Boonie', 'Ayer', 'bayer6@baidu.com', 'bayer6', 'SKh8VNEA' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Gearalt', 'Fessby', 'gfessby7@ustream.tv', 'gfessby7', 'jVWICQi' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Prue', 'Collington', 'pcollington8@engadget.com', 'pcollington8', '3PI6dvIbra' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Hildegaard', 'Harner', 'hharner9@myspace.com', 'hharner9', 'YC2ROf' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Elliott', 'Neeve', 'eneeve0@furl.net', 'eneeve0', 'zVbMcyTu' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herman', 'Dodson', 'hdodson1@tiny.cc', 'hdodson1', 'hcMKY4k7nBHn' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Laura', 'Earsman', 'learsman2@google.fr', 'learsman2', 'RKXSXRBFD2jk' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Bob', 'Ross', 'bob.ross@cpnv.ch', 'bobby', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
 
 -- -----------------------------------------------------
 -- Teams data
 -- -----------------------------------------------------
 
-INSERT INTO teams (id, name, abbreviation, owner_id) values (1, 'Flowdesk', 'FDK', 11);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (2, 'Zontrax', 'ZTX', 1);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (3, 'Fnatic', 'FNC', 6);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (4, 'Voltsillam', 'VSM', 3);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (5, 'Flexidy', 'FXY', 13);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (6, 'Cardguard', 'CGD', 7);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (7, 'Veribet', 'VBT', 2);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (8, 'Viva', 'Viva', 8);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (9, 'Home Ing', 'HI', 13);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (10, 'Tresomcorp', 'TCP' , 3);
-INSERT INTO teams (id, name, abbreviation, owner_id) values (11, 'lafrenchcolection', 'LFC' , 2);
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flowdesk', 'FDK' , id FROM users WHERE username LIKE 'eneeve0';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Zontrax', 'ZTX' , id FROM users WHERE username LIKE 'Django';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fnatic', 'FNC' , id FROM users WHERE username LIKE 'abalsom5';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Voltsillam', 'VSM' , id FROM users WHERE username LIKE 'Mon';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flexidy', 'FXY' , id FROM users WHERE username LIKE 'learsman2';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Cardguard', 'CGD' , id FROM users WHERE username LIKE 'bayer6';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Veribet', 'VBT' , id FROM users WHERE username LIKE 'Yoann';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Viva', 'Viva' , id FROM users WHERE username LIKE 'gfessby7';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Home Ing', 'HI' , id FROM users WHERE username LIKE 'learsman2';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Tresomcorp', 'TCP' , id FROM users WHERE username LIKE 'Mon';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'lafrenchcolection', 'LFC' , id FROM users WHERE username LIKE 'Yoann';
 
 -- -----------------------------------------------------
 -- Tournaments data
 -- -----------------------------------------------------
 
-INSERT INTO tournaments (id, game, max_teams, name) values (1, 'Zicam', 331, 'Y-Solowarm');
-INSERT INTO tournaments (id, game, max_teams, name) values (2, 'Bryophyllum e fol. 10', 60, 'Domainer');
-INSERT INTO tournaments (id, game, max_teams, name) values (3, 'Head and Shoulders', 310, 'Treeflex');
-INSERT INTO tournaments (id, game, max_teams, name) values (4, 'ISA KNOX WXII PLUS WHITENING REVOLUTION SERUM', 392, 'Gembucket');
-INSERT INTO tournaments (id, game, max_teams, name) values (5, 'Grains and Gluten Intolerances', 182, 'Greenlam');
-INSERT INTO tournaments (id, game, max_teams, name) values (6, 'Coppertone Tanning Dry Oil', 29, 'Wrapsafe');
-INSERT INTO tournaments (id, game, max_teams, name) values (7, 'Lotrel', 7, 'Zoolab');
-INSERT INTO tournaments (id, game, max_teams, name) values (8, 'Prednisone', 318, 'Prodder');
-INSERT INTO tournaments (id, game, max_teams, name) values (9, 'Goongsecret Calming Bath', 348, 'Glltournament');
-INSERT INTO tournaments (id, game, max_teams, name) values (10, 'Oxygen', 155, 'Daltfresh');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Zicam', 331, 'Y-Solowarm');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Bryophyllum e fol. 10', 60, 'Domainer');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Head and Shoulders', 310, 'Treeflex');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'ISA KNOX WXII PLUS WHITENING REVOLUTION SERUM', 392, 'Gembucket');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Grains and Gluten Intolerances', 182, 'Greenlam');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Coppertone Tanning Dry Oil', 29, 'Wrapsafe');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Lotrel', 7, 'Zoolab');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Prednisone', 318, 'Prodder');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Goongsecret Calming Bath', 348, 'Glltournament');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Oxygen', 155, 'Daltfresh');
 
 -- -----------------------------------------------------
 -- Matches data
