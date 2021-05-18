@@ -63,19 +63,19 @@ INSERT INTO roles ( name, description) values ( 'user', 'default user');
 -- Users data
 -- -----------------------------------------------------
 
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Pedro', 'Pinto', 'Pedro.PINTO@cpnv.ch', 'Django', 'Pa$$w0rd', id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Yoann', 'Bonzon', 'Yoann.BONZON@cpnv.ch', 'Yoann', 'Pa$$w0rd' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Kenan', 'Augsburger', 'Kenan.AUGSBURGER@cpnv.ch', 'Mon', 'Pa$$w0rd' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Lancelot', 'Estrella', 'lestrella3@newyorker.com', 'lestrella3', 'y5yTZV5' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herbie', 'Perrelle', 'hperrelle4@soundcloud.com', 'hperrelle4', 'DHTGz7ag3mor' , id FROM roles WHERE name LIKE 'user';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Anastasia', 'Balsom', 'abalsom5@cpanel.net', 'abalsom5', 'SeyHG4JPzlmJ' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Boonie', 'Ayer', 'bayer6@baidu.com', 'bayer6', 'SKh8VNEA' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Gearalt', 'Fessby', 'gfessby7@ustream.tv', 'gfessby7', 'jVWICQi' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Prue', 'Collington', 'pcollington8@engadget.com', 'pcollington8', '3PI6dvIbra' , id FROM roles WHERE name LIKE 'user';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Hildegaard', 'Harner', 'hharner9@myspace.com', 'hharner9', 'YC2ROf' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Elliott', 'Neeve', 'eneeve0@furl.net', 'eneeve0', 'zVbMcyTu' , id FROM roles WHERE name LIKE 'user';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herman', 'Dodson', 'hdodson1@tiny.cc', 'hdodson1', 'hcMKY4k7nBHn' , id FROM roles WHERE name LIKE 'user';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Laura', 'Earsman', 'learsman2@google.fr', 'learsman2', 'RKXSXRBFD2jk' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Pedro', 'Pinto', 'Pedro.PINTO@cpnv.ch', 'Django', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.', id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Yoann', 'Bonzon', 'Yoann.BONZON@cpnv.ch', 'Yoann', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Kenan', 'Augsburger', 'Kenan.AUGSBURGER@cpnv.ch', 'Mon', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Lancelot', 'Estrella', 'lestrella3@newyorker.com', 'lestrella3', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herbie', 'Perrelle', 'hperrelle4@soundcloud.com', 'hperrelle4', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Anastasia', 'Balsom', 'abalsom5@cpanel.net', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.', 'SeyHG4JPzlmJ' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Boonie', 'Ayer', 'bayer6@baidu.com', 'bayer6', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Gearalt', 'Fessby', 'gfessby7@ustream.tv', 'gfessby7', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Prue', 'Collington', 'pcollington8@engadget.com', 'pcollington8', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Hildegaard', 'Harner', 'hharner9@myspace.com', 'hharner9', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Elliott', 'Neeve', 'eneeve0@furl.net', 'eneeve0', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herman', 'Dodson', 'hdodson1@tiny.cc', 'hdodson1', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Laura', 'Earsman', 'learsman2@google.fr', 'learsman2', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Bob', 'Ross', 'bob.ross@cpnv.ch', 'bobby', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
 
 -- -----------------------------------------------------
