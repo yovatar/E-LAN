@@ -26,13 +26,13 @@ function viewHome()
                  slides: [
                  {id:1,src:'public/images/PolyLAN.png',text:`La polylan est la plus grosse lan de suisse, elle a lieu à l'EPFL a Lausanne. Elle comporte plusieurs evenements et acticitées`},
                  {id:2,src:'public/images/NumerikGames.PNG',text:`Le NumerikGames est une convention de jeux suisse ce deroulant a yverdon avec le soutien de la maison d'ailleurs`},
-                 {id:3,src:'public/images/E3.png',text:`la convention de jeux vidéos de los angeles c'est l'E3 top 3 des convetions de jeux les plus grose du monde`},
-                 {id:4,src:'public/images/gamescom.png',text:`La gamescom c'est le plus gors evenement vidéo ludique jamais organsié`},
-                 {id:5,src:'public/images/Japan_impact.png',text:`Japan Impact est une convention dédiée à la culture japonaise qui se déroule tous les ans sur un week-end en février à l'École polytechnique fédérale de Lausanne`},
+                 {id:3,src:'public/images/E3.png',text:`L'E3 est un salon consacré exclusivement aux jeux vidéo organisé par l'Entertainment Software Association. L'évènement se déroulera du 12 au 15 juin 2021.`},
+                 {id:4,src:'public/images/gamescom.png',text:`La Gamescom est un salon international consacré au jeu vidéo. Elle est à ce jour le plus gros évènement consacré au jeux vidéos  `},
+                 {id:5,src:'public/images/Japan_impact.png',text:`Japan Impact est une convention dédiée à la culture japonaise qui se déroule tous les ans sur un week-end en février à l'École polytechnique fédérale de Lausanne.On y trouve également plusieurs événement consacré aux jeux japonais`},
                  {id:6,src:'public/images/herofestival.png',text:`Le HeroFestival est un événement culturel qui a vu le jour à Marseille en 2014. Ce festival transgénérationnel se déroule autour du thème des héros de tout univers : BD, cinéma, séries, manga, comics, jeux vidéo, cosplay`},
-                 {id:7,src:'public/images/GameAwards.png',text:`Les game awards cont une convetion ou l'on distribute les prix des meilleurs devlopeurs, jeux, jouers de l'année.`},
-                 {id:8,src:'public/images/Blizzconline.png',text:`La blizzcon est une évenement de la societé blizzard qui aura pour bute de montrer leurs nouveautées et leurs nouvelles licences`},
-                 {id:9,src:'public/images/SummerGameFest.png',text:`Le SummerGameFest est unevenement diffusé en ligne et proposant une énorme quantité de contenu concernant les jeux vidéos`}
+                 {id:7,src:'public/images/GameAwards.png',text:`The Game Awards est une soirée de récompenses annuelle, qui distingue une sélection de jeux vidéo sortis tout au long de l'année, aussi bien que des jeux vidéo sortis récemment, ou même certains annoncés officiellement avant la soirée de remise de prix. Cette soirée est produite et présentée par le journaliste canadien Geoff Keighley. les Game Awards présentent également de nouveaux jeux et du gameplay de jeux récemment annoncés.`},
+                 {id:8,src:'public/images/Blizzconline.png',text:`La BlizzCon est une convention organisée chaque année depuis 2005 par Blizzard Entertainment au Anaheim Convention Center de Anaheim en Californie, pour présenter les nouveautés de leurs licences, mettre à disposition des versions de démonstration jouables, rencontrer les joueurs et proposer divers autres activités et panels liés aux univers de Warcraft, StarCraft, Diablo, Hearthstone, Heroes of the Storm et Overwatch.`},
+                 {id:9,src:'public/images/SummerGameFest.png',text:`Le Summer Game Fest est l’équivalent de l’E3 mais diffusée en direct en ligne sur plusieurs plateformes de streaming telles que Twitch ou YouTube. Ils compte également avec la présence de  Geoff Keighley.`}
                  ]
                 }"
         >
