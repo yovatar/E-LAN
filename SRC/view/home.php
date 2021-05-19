@@ -12,15 +12,15 @@ function viewHome()
     ?>
     <br>
     <div>
-        <h1 class=" text-5xl text-center font-mono font-bold text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500 ">
+        <h1 class="text-5xl text-center font-mono font-bold text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500 ">
             E-LAN Acceuil</h1>
 
     </div><br>
     <div class="bg-gradient-to-r h-96 from-purple-500 to-pink-300  flex flex-col justify-center items-center">
-        <div class="text-center text-gray-100 text-bold text-3xl"> Meilleurs evénements de l'année</div>
+        <div class=" text-center text-gray-100 text-bold text-3xl"> Meilleurs evénements de l'année</div>
         <br>
         <div
-                class="w-full px-12 mx-auto relative w-full flex-initial"
+                class=" w-full px-12 mx-auto relative w-full flex-initial"
                 x-data="{
                 activeSlide: 1,
                  slides: [
@@ -55,7 +55,7 @@ function viewHome()
                 <div class="absolute w-full inset-0 flex">
                     <div class="flex items-center justify-start w-1/2">
                         <button
-                                class="bg-pink-200 text-purple-250 hover:text-black-500 font-black hover:shadow-lg rounded-full w-30 h-16 -ml-6 flex justify-center items-center"
+                                class=" bg-pink-200 text-purple-250 hover:text-black-500 font-black hover:shadow-lg rounded-full w-30 h-16 -ml-6 flex justify-center items-center"
                                 @click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
@@ -94,9 +94,60 @@ function viewHome()
         </div>
 
     </div>
+    </div>
+
+
+    <!-- ----------------------NEWS1----------------------- -->
+    <br><br><br><br>
+    <div>
+        <h1 class="mx-auto text-5xl text-center font-mono font-bold text-gray-100 bg-gradient-to-r from-purple-300 to-purple-600">
+            LANs Suisses</h1>
+    </div>
+<div class="bg-gradient-to-r from-purple-300 to-purple-600">
+    <div class="flex w-full h-96 ">
+        <div class="flex-grow-0 bg-black rounded-3xl m-8 w-144">
+            <img src="public/images/PolyLAN.png" class="pt-16 px-8 " alt="Swiss LAN img">
+        </div>
+        <div class="w-full bg-white rounded-3xl m-8">
+            <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8 ">
+                Depuis 2002,
+                <a href="https://polylan.ch/" class="font-bold italic text-indigo-700 ">PolyLAN</a> organise des LAN
+                (ou LAN party) deux fois par an. Ces rassemblements, qui se sont déroulé à l'EPFL, successivement dans le hall du bâtiment
+                SG, au Rolex Learning Center, à l'Amphimax à l'UNIL et plus récemment au SwissTech Convention Center,
+                voient s'affronter jusqu'à 1250 personnes au travers d'un réseau local. Le comité, formé principalement
+                d'étudiantes et étudiants de la faculté IC, est composé d'une vingtaine
+                de membres, qui mettent en pratique les connaissances acquises dans le cadre de leurs études, et plus
+                encore. Bénéficiant de l'infrastructure électrique, informatique et logistique de l'EPFL, l'association
+                propose une manifestation de grande qualité pour un prix abordable. Contrairement aux autres événements
+                de ce type, où l'esprit de compétition prime avant tout, la convivialité ainsi que le côté ludique des
+                jeux vidéo sont privilégiés.
+            </h2>
+        </div>
+    </div>
+    <!-- ----------------------NEWS2----------------------- -->
+    <div class="flex w-full h-96 ">
+        <div class="bg-gradient-to-r from-purple-300 to-pink-300"><br></div>
+
+        <div class="flex-grow-0 w-full bg-white rounded-3xl m-8">
+
+            <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8 ">Le <a
+                        href="https://www.numerik-games.ch/" class="font-bold italic text-indigo-700">Numerik Games
+                    Festival</a>
+                est une manifestation tout public dédiée à l’art et la culture numériques.
+                Depuis 2016, cet événement convainc des foules de plus en plus nombreuses: enfants, familles,
+                adolescents, adultes – tous trouvent leur compte dans ce festival interdisciplinaire faisant la part
+                belle à une créativité qui, c’est le point commun de toutes les activités proposées, implique les
+                ressources permises par le digital.
+            </h2>
+        </div>
+
+        <div class="flex-grow-0 bg-white rounded-3xl m-8 w-144">
+            <img src="public/images/NumerikGames.PNG" class="pt-16 px-8 " alt="Swiss LAN img">
+        </div>
+
+    </div>
 </div>
-    
-<?php
+    <?php
     $content = ob_get_clean();
 
     //Meta tag for nav
