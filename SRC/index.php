@@ -47,6 +47,9 @@ if ($api == false) {
         case '/condition':
             controllerCondition();
             break;
+        case '/equipe':
+            controllerEquipe();
+            break;
         default:
             controllerLost();
     }

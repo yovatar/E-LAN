@@ -49,3 +49,8 @@ function controllerCondition()
     require_once("view/Condition.php");
     viewCondition();
 }
+
+function controllerEquipe(){
+    require_once ("view/equipe.php");
+    viewequipe();
+}
