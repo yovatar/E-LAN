@@ -54,7 +54,25 @@ module.exports = {
         '22/24': '91.666666%',
         '23/24': '95.833333%',
         '24/24': '100%',
-      }
+      },
+      strokeWidth: {
+        '3': '3',
+        '4': '4',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'translateX(-0.5rem)' },
+          '50%': { transform: 'translateX(0.5rem)' }
+        },
+        'wiggle-reverse': {
+          '0%, 50%': { transform: 'translateX(0.5rem)' },
+          '50%': { transform: 'translateX(-0.5rem)' }
+        },
+      },
+      animation: {
+        wiggle: 'wiggle 1.5s ease-in-out infinite',
+        'wiggle-reverse': 'wiggle 1.5s ease-in-out infinite',
+      },
     },
   },
   variants: {
@@ -62,7 +80,11 @@ module.exports = {
       margin: ['first', 'last'],
       backgroundColor: ['odd', 'even'],
       textColor: ['odd', 'even'],
-      brightness: ['hover', 'focus']
+      brightness: ['hover', 'focus'],
+      animation: ['hover', 'focus'],
+      strokeWidth: ['hover', 'focus'],
+      backgroundColor: ['active'],
+      textColor: ['active'],
     },
   },
   plugins: [
