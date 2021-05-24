@@ -39,8 +39,8 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 </div>
             </div>
             <div class="flex-col items-center justify-center hidden lg:flex">
-                <?php if (empty($_SESSION["user"])) { ?>
-                <div class="flex flex-row space-x-3">
+                <div class="flex flex-row space-x-3 items-center">
+                    <?php if (empty($_SESSION["user"])) { ?>
                     <a href="/authentication/login"
                         class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
@@ -57,21 +57,27 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         </svg>
                         <p>Créer un compte</p>
                     </a>
+                    <?php } else { ?>
+
+                    <div class="">
+                        <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
+                            alt="icône utilisateur" class="w-10 h-10 rounded-full object-cover">
+                    </div>
+                    <form action="/authentication/logout" method="POST">
+                        <input type="hidden" name="confirm" value="true">
+                        <button type="submit"
+                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p>Déconnexion</p>
+                        </button>
+                    </form>
+                    <?php } ?>
                 </div>
-                <?php } else { ?>
-                <form action="/authentication/logout" method="POST">
-                    <input type="hidden" name="confirm" value="true">
-                    <button type="submit"
-                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p>Déconnexion</p>
-                    </button>
-                </form>
-                <?php } ?>
             </div>
             <button @click="open = !open" :class="{'brightness-90':open}"
                 class="px-3 py-2 lg:hidden filter focus:text-blueGray-400">
@@ -90,7 +96,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900">Teams</a>
             </div>
             <div class="flex flex-col items-center pt-2 mt-2 text-lg border-t border-white">
-                <div class="flex flex-row space-x-3">
+                <div class="flex flex-row space-x-3 items-center">
                     <?php if (empty($_SESSION["user"])) { ?>
 
                     <a href="/authentication/login"
@@ -110,6 +116,11 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         <p>Créer un compte</p>
                     </a>
                     <?php } else { ?>
+                    <div class="">
+                        <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
+                            alt="icône utilisateur" class="w-10 h-10 rounded-full object-cover">
+                    </div>
+
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
                         <button type="submit"
@@ -123,6 +134,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                             <p>Déconnexion</p>
                         </button>
                     </form>
+
                     <?php } ?>
 
                 </div>

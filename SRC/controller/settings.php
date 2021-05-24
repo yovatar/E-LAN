@@ -22,8 +22,8 @@ function ControllerSettingsAccount($request, $files)
                 logout();
                 header("Location: /authentication/login?error=Session mismatch");
             } else {
+                // get profile picture if available
                 if ($user["image_id"] !== null) {
-                    // get profile picture
                     require_once("model/images.php");
                     $user["image"] = selectImageById($user["image_id"]);
                 }

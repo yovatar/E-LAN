@@ -121,6 +121,12 @@ function controllerLogout($request)
  */
 function login($user)
 {
+    // get profile picture if available
+    if ($user["image_id"] !== null) {
+        require_once("model/images.php");
+        $user["image"] = selectImageById($user["image_id"]);
+    }
+    // save user to session
     $_SESSION["user"] = $user;
 }
 
