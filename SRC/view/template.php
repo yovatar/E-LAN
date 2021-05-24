@@ -62,7 +62,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     <div role="dropdown profil" x-data="{open : false}" class="relative">
                         <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
                             alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full" @click="open = true">
-                        <ul x-show="open" @click.away="open = false"
+                        <ul x-cloak x-show="open" @click.away="open = false"
                             class="absolute px-4 py-2 text-black bg-white border border-gray-200 rounded-md text-base">
                             <li><a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
                                     href="/settings/account">Compte</a></li>
