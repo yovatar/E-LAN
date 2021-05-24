@@ -132,3 +132,12 @@ function logout()
 {
     return session_destroy();
 }
+
+/**
+ * Check if the user is authenticated
+ * @return bool
+ */
+function isAuthenticated()
+{
+    return !empty($_SESSION["user"]);
+}

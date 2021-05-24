@@ -9,7 +9,7 @@
  */
 function selectImages($limit = null, $offset = null)
 {
-    require_once("model/dbConnector.php");
+    require_once("model/database.php");
     $bindValue = [];
     if (isset($limit) && isset($offset)) {
         $query = "SELECT * FROM images LIMIT :offset, :limit";
@@ -32,11 +32,10 @@ function selectImages($limit = null, $offset = null)
  */
 function selectImageById($id)
 {
-    require_once("model/dbConnector.php");
+    require_once("model/database.php");
     $query = "SELECT * FROM images WHERE id = :id LIMIT 1";
 
-    $res = executeQuerySelect($query, createBinds([[":id", $id, PDO::PARAM_INT]]));
-    return $res;
+    return executeQuerySelect($query, createBinds([[":id", $id, PDO::PARAM_INT]]))[0] ?? null;
 }
 
 /**
@@ -44,9 +43,9 @@ function selectImageById($id)
  * @param string $fileName $_FILES["fileName"]
  * @param string $tempName $_FILES["tempName"]
  * @param string $directory file storage directory
- * @return int|null
+ * @return int|null last insert id
  */
-function addImage($fileName, $tempName, $directory = "/public/upload/img/")
+function insertImage($fileName, $tempName, $directory = "/public/upload/img/")
 {
     // Check file extension validity
     if (!preg_match("/.*(\.(?:(?:jpeg)|(?:jpg)|(?:png)|(?:gif)|(?:svg)))$/", $fileName, $extension)) {
@@ -62,7 +61,7 @@ function addImage($fileName, $tempName, $directory = "/public/upload/img/")
     move_uploaded_file($tempName, $_SERVER["DOCUMENT_ROOT"] . $directory . $uniqueId . $extension[1]);
 
     // Add entry to the database
-    require_once("model/dbConnector.php");
+    require_once("model/database.php");
     $query = "INSERT INTO images (path) VALUES (:path)";
 
     $res = executeQueryInsert($query, createBinds([[":path", $directory . $uniqueId . $extension[1]]]));

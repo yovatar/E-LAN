@@ -36,6 +36,19 @@ function selectUserByUsername($username)
 }
 
 /**
+ * updates user image
+ * @param int $userId
+ * @param int $imageId
+ * @return int|null number of affected rows
+ */
+function updateUserImage($userId, $imageId)
+{
+    require_once("model/database.php");
+    $query = "UPDATE users SET image_id = :imageId WHERE id = :userId";
+    return executeQueryIUDAffected($query, createBinds([[":imageId", $imageId, PDO::PARAM_INT], [":userId", $userId, PDO::PARAM_INT]]));
+}
+
+/**
  * store an user in the database
  * @param string $username
  * @param string $email
