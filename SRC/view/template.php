@@ -39,7 +39,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 </div>
             </div>
             <div class="flex-col items-center justify-center hidden lg:flex">
-                <div class="flex flex-row space-x-3 items-center">
+                <div class="flex flex-row items-center space-x-3">
                     <?php if (empty($_SESSION["user"])) { ?>
                     <a href="/authentication/login"
                         class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
@@ -59,9 +59,15 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     </a>
                     <?php } else { ?>
 
-                    <div class="">
+                    <div role="dropdown profil" x-data="{open : false}" class="relative">
                         <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
-                            alt="icône utilisateur" class="w-10 h-10 rounded-full object-cover">
+                            alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full" @click="open = true">
+                        <ul x-show="open" @click.away="open = false"
+                            class="absolute px-4 py-2 text-black bg-white border border-gray-200 rounded-md text-base">
+                            <li><a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                                    href="/settings/account">Compte</a></li>
+                        </ul>
+
                     </div>
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
@@ -87,8 +93,8 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 </svg>
             </button>
         </div>
-        <div class="relative flex flex-col overflow-hidden transition-all duration-300 lg:hidden" x-ref="collapsible"
-            x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'"
+        <div x-cloak class="relative flex flex-col overflow-hidden transition-all duration-300 lg:hidden"
+            x-ref="collapsible" x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'"
             x-bind:class="{ 'invisible': !open }">
             <div class="flex flex-col items-center mt-5 border-t border-white">
                 <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900">Home</a>
@@ -96,8 +102,8 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900">Teams</a>
             </div>
             <div class="flex flex-col items-center pt-2 mt-2 text-lg border-t border-white">
-                <div class="flex flex-row space-x-3 items-center">
-                    <?php if (empty($_SESSION["user"])) { ?>
+                <?php if (empty($_SESSION["user"])) { ?>
+                <div class="flex flex-row items-center space-x-3">
 
                     <a href="/authentication/login"
                         class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
@@ -115,11 +121,19 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         </svg>
                         <p>Créer un compte</p>
                     </a>
-                    <?php } else { ?>
-                    <div class="">
+                </div>
+                <?php } else { ?>
+                <div class="flex flex-col space-y-2 mb-3">
+                    <a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                        href="/settings/account">Compte</a>
+                </div>
+
+                <div class="flex flex-row items-center space-x-3 font-medium">
+
+                    <a href="/settings/account">
                         <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
-                            alt="icône utilisateur" class="w-10 h-10 rounded-full object-cover">
-                    </div>
+                            alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full">
+                    </a>
 
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
@@ -134,10 +148,10 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                             <p>Déconnexion</p>
                         </button>
                     </form>
-
-                    <?php } ?>
-
                 </div>
+                <?php } ?>
+
+
             </div>
         </div>
     </header>
