@@ -51,6 +51,9 @@ function ControllerSettingsAccount($request, $files)
 
                         if (empty($rows)) throw new Exception("Une erreur est survenue lors de l'ajout de votre image de profile");
 
+
+                        // Update session for next refresh
+                        refreshLogin($_SESSION["user"]["email"]);
                         // TODO : remove old image from the database and storage
 
                         break;

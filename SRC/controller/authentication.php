@@ -157,5 +157,5 @@ function isAuthenticated()
 function refreshLogin($email)
 {
     require_once("model/users.php");
-    $_SESSION["user"] = selectUserByEmail($email);
+    login(selectUserByEmail($email));
 }
