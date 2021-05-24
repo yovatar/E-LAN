@@ -118,10 +118,11 @@ function viewSettingsAccount($user)
                 </form>
             </div>
             <form action="/settings/account" method="POST" enctype="multipart/form-data"
-                class="flex flex-col items-center space-y-4 lg:items-start">
+                class="flex flex-col items-center space-y-4 lg:items-start" x-data="imageViewer()">
                 <div class="relative">
-                    <img src="<?= $user["image"]["path"] ?? "/public/images/userDefault.jpg" ?>" alt="Image de profile"
-                        class="object-cover w-64 h-64 rounded-full">
+                    <img src="<?= $user["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
+                        :src="imageUrl ?? '<?= $user["image"]["path"] ?? "/public/images/userDefault.jpg" ?>'"
+                        alt="Image de profile" class="object-cover w-64 h-64 rounded-full" loading="lazy">
                     <label for="profilePicture" tabindex="0"
                         class="absolute bottom-0 left-0 flex flex-row px-2 py-1 space-x-2 bg-white border-2 border-gray-100 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -132,7 +133,7 @@ function viewSettingsAccount($user)
                         <p>modifier</p>
                     </label>
                     <input type="file" name="profilePicture" id="profilePicture" class="hidden" accept=" .jpeg, .jpg,
-                        .png, .gif, .svg" required>
+                        .png, .gif, .svg" required @change="fileChosen">
                 </div>
                 <input type="hidden" name="action" value="updatePicture">
                 <button type="submit"
@@ -145,6 +146,12 @@ function viewSettingsAccount($user)
 <?php
     $content = ob_get_clean();
 
-    require_once "view/template.php";
-    viewTemplate($title, $content);
-}
+    ob_start();
+    ?>
+<script src="/public/js/settingsAccount.js">
+<?php
+        $scripts = ob_get_clean();
+
+        require_once "view/template.php";
+        viewTemplate($title, $content, null, $scripts);
+    }

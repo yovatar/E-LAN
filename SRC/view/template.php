@@ -189,7 +189,9 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         </template>
     </div>
     <?= $foot ?? "" ?>
-    <script type="module" src="/public/js/app.js"></script>
+    <script type="module" src="/public/js/compiled/app.js"></script>
+    <script src="/node_modules/alpine-magic-helpers/dist/index.js"></script>
+    <script src="/node_modules/alpinejs/dist/alpine.js"></script>
 </body>
 
 </html>
