@@ -141,3 +141,15 @@ function isAuthenticated()
 {
     return !empty($_SESSION["user"]);
 }
+
+/**
+ * refreshes the user session with a given email
+ * @warn potentially unsafe, if you aren't sure if the email is right, use logout() and redirect the user to /authentication/login
+ * @param string $email
+ * @return void
+ */
+function refreshLogin($email)
+{
+    require_once("model/users.php");
+    $_SESSION["user"] = selectUserByEmail($email);
+}

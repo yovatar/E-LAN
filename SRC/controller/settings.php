@@ -55,7 +55,26 @@ function ControllerSettingsAccount($request, $files)
 
                         break;
                     case "updatePassword":
-                        echo "password";
+                        // Validate input
+                        if (empty($request["oldPassword"])) throw new Exception("Aucun ancient mot de passe donné");
+                        if (empty($request["newPassword"])) throw new Exception("Aucun nouveau mot de passe donné");
+                        if (empty($request["newPasswordConfirm"])) throw new Exception("Aucune confirmation de mot de passe donnée");
+
+                        // Fetch user from the database
+                        require_once("model/users.php");
+                        $user = selectUserByEmail($_SESSION["user"]["email"]);
+                        if (empty($user)) throw new Exception("Session mismatch");
+
+                        // Check if the old password is right
+                        if (password_verify($request["oldPassword"], $user["password"]) == false) throw new Exception("Mot de passe invalide");
+
+                        // Check if the new password matches its confirmation
+                        if ($request["newPassword"] !== $request["newPasswordConfirm"]) throw new Exception("Le nouveau mot de passe et la confirmation ne sont pas identiques");
+
+                        // Update password
+                        updateUserPassword($user["id"], $request["newPassword"]);
+                        logout();
+
                         break;
                     default:
                         throw new Exception("Action inconnue");
