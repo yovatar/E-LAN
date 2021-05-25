@@ -79,8 +79,9 @@ Sprints (2 semaines par sprint)
 2. 10/05/2021 - 25/05/2021
     - Authentification
 3. 26/05/2021 - 07/06/2021
-4. 08/06/2021 - 21/06/2021
-5. 21/06/2021 - 24/06/2021
+    - Sprint review le mardi 25.05.2021
+5. 08/06/2021 - 21/06/2021
+6. 21/06/2021 - 24/06/2021
 
 ## Stratégie de test
 
@@ -138,6 +139,8 @@ Le site web cible desktop et mobile, le site doit donc être responsive pour ces
 | 03/05/2021 15:30 | Validation du MCD par le PO                                 | Pedro P. , Kenan A. et Xavier C.            |
 | 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
 | 11/05/2021 8:20  | Sprint 1 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
+| 25/05/2021 8:10  | Sprint 2 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
+
 
 ## Bilan des objectifs atteints / non-atteints
 
