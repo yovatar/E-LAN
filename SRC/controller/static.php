@@ -50,7 +50,7 @@ function controllerCondition()
     viewCondition();
 }
 
-function controllerteams(){
-    require_once("view/teams.php");
-    viewteams();
+function controllerCreateTeams(){
+    require_once("view/createTeams.php");
+    viewCreateTeams();
 }
