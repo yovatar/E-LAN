@@ -47,8 +47,8 @@ if ($api == false) {
         case '/condition':
             controllerCondition();
             break;
-        case '/teams':
-            controllerteams();
+        case '/createTeams':
+            controllerCreateTeams();
             break;
         default:
             controllerLost();
