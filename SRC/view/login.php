@@ -21,7 +21,7 @@ function viewLogin()
         <div role="passwordField" class="relative" x-data="{show : false}">
             <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required
                 class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
-            <button type="button"
+            <button type="button" tabindex="-1"
                 class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 @click="show = !show">
                 <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"

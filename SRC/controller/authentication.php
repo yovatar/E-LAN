@@ -121,6 +121,12 @@ function controllerLogout($request)
  */
 function login($user)
 {
+    // get profile picture if available
+    if ($user["image_id"] !== null) {
+        require_once("model/images.php");
+        $user["image"] = selectImageById($user["image_id"]);
+    }
+    // save user to session
     $_SESSION["user"] = $user;
 }
 
@@ -131,4 +137,25 @@ function login($user)
 function logout()
 {
     return session_destroy();
+}
+
+/**
+ * Check if the user is authenticated
+ * @return bool
+ */
+function isAuthenticated()
+{
+    return !empty($_SESSION["user"]);
+}
+
+/**
+ * refreshes the user session with a given email
+ * @warn potentially unsafe, if you aren't sure if the email is right, use logout() and redirect the user to /authentication/login
+ * @param string $email
+ * @return void
+ */
+function refreshLogin($email)
+{
+    require_once("model/users.php");
+    login(selectUserByEmail($email));
 }
