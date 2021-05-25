@@ -39,8 +39,72 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 </div>
             </div>
             <div class="flex-col items-center justify-center hidden lg:flex">
+                <div class="flex flex-row items-center space-x-3">
+                    <?php if (empty($_SESSION["user"])) { ?>
+                    <a href="/authentication/login"
+                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p>Connexion</p>
+                    </a>
+                    <a href="/authentication/register"
+                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                                d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
+                        </svg>
+                        <p>Créer un compte</p>
+                    </a>
+                    <?php } else { ?>
+
+                    <div role="dropdown profil" x-data="{open : false}" class="relative">
+                        <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
+                            alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full" @click="open = true">
+                        <ul x-cloak x-show="open" @click.away="open = false"
+                            class="absolute px-4 py-2 text-black bg-white border border-gray-200 rounded-md text-base">
+                            <li><a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                                    href="/settings/account">Compte</a></li>
+                        </ul>
+
+                    </div>
+                    <form action="/authentication/logout" method="POST">
+                        <input type="hidden" name="confirm" value="true">
+                        <button type="submit"
+                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <p>Déconnexion</p>
+                        </button>
+                    </form>
+                    <?php } ?>
+                </div>
+            </div>
+            <button @click="open = !open" :class="{'brightness-90':open}"
+                class="px-3 py-2 lg:hidden filter focus:text-blueGray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div x-cloak class="relative flex flex-col overflow-hidden transition-all duration-300 lg:hidden"
+            x-ref="collapsible" x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'"
+            x-bind:class="{ 'invisible': !open }">
+            <div class="flex flex-col items-center mt-5 border-t border-white">
+                <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900">Home</a>
+                <a href="/lans" class="h-full hover:text-purple-900 focus:text-purple-900">Lans</a>
+                <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900">Teams</a>
+            </div>
+            <div class="flex flex-col items-center pt-2 mt-2 text-lg border-t border-white">
                 <?php if (empty($_SESSION["user"])) { ?>
-                <div class="flex flex-row space-x-3">
+                <div class="flex flex-row items-center space-x-3">
+
                     <a href="/authentication/login"
                         class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
@@ -59,57 +123,18 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     </a>
                 </div>
                 <?php } else { ?>
-                <form action="/authentication/logout" method="POST">
-                    <input type="hidden" name="confirm" value="true">
-                    <button type="submit"
-                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p>Déconnexion</p>
-                    </button>
-                </form>
-                <?php } ?>
-            </div>
-            <button @click="open = !open" :class="{'brightness-90':open}"
-                class="px-3 py-2 lg:hidden filter focus:text-blueGray-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        <div class="relative flex flex-col overflow-hidden transition-all duration-300 lg:hidden" x-ref="collapsible"
-            x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'"
-            x-bind:class="{ 'invisible': !open }">
-            <div class="flex flex-col items-center mt-5 border-t border-white">
-                <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900">Home</a>
-                <a href="/lans" class="h-full hover:text-purple-900 focus:text-purple-900">Lans</a>
-                <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900">Teams</a>
-            </div>
-            <div class="flex flex-col items-center pt-2 mt-2 text-lg border-t border-white">
-                <div class="flex flex-row space-x-3">
-                    <?php if (empty($_SESSION["user"])) { ?>
+                <div class="flex flex-col space-y-2 mb-3">
+                    <a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                        href="/settings/account">Compte</a>
+                </div>
 
-                    <a href="/authentication/login"
-                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                clip-rule="evenodd" />
-                        </svg>
-                        <p>Connexion</p>
+                <div class="flex flex-row items-center space-x-3 font-medium">
+
+                    <a href="/settings/account">
+                        <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
+                            alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full">
                     </a>
-                    <a href="/authentication/register"
-                        class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                                d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
-                        </svg>
-                        <p>Créer un compte</p>
-                    </a>
-                    <?php } else { ?>
+
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
                         <button type="submit"
@@ -123,9 +148,10 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                             <p>Déconnexion</p>
                         </button>
                     </form>
-                    <?php } ?>
-
                 </div>
+                <?php } ?>
+
+
             </div>
         </div>
     </header>
@@ -163,7 +189,9 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         </template>
     </div>
     <?= $foot ?? "" ?>
-    <script type="module" src="/public/js/app.js"></script>
+    <script type="module" src="/public/js/compiled/app.js"></script>
+    <script src="/node_modules/alpine-magic-helpers/dist/index.js"></script>
+    <script src="/node_modules/alpinejs/dist/alpine.js"></script>
 </body>
 
 </html>
