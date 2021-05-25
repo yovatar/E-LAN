@@ -6,53 +6,77 @@
  */
 function viewHome()
 {
-    $title = "home";
+    $title = "Accueil";
 
     ob_start();
 ?>
+    <br>
+    <div>
+        <h1 class="font-mono text-5xl font-bold text-center text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500">
+            E-LAN Acceuil</h1>
 
+    </div><br>
+    <div class="flex flex-col items-center justify-center bg-gradient-to-r h-96 from-purple-500 to-pink-300">
+        <div class="text-3xl text-center text-gray-100 text-bold"> Meilleurs evénements de l'année</div>
+        <br>
+        <div class="relative flex-initial w-full px-12 mx-auto" x-data="{
+                activeSlide: 1,
+                 slides: [
+                 {id:1,src:'public/images/PolyLAN.png',text:`La polylan est la plus grosse lan de suisse, elle a lieu à l'EPFL a Lausanne. Elle comporte plusieurs evenements et acticitées`},
+                 {id:2,src:'public/images/NumerikGames.PNG',text:`Le NumerikGames est une convention de jeux suisse ce deroulant a yverdon avec le soutien de la maison d'ailleurs`},
+                 {id:3,src:'public/images/E3.png',text:`L'E3 est un salon consacré exclusivement aux jeux vidéo organisé par l'Entertainment Software Association. L'évènement se déroulera du 12 au 15 juin 2021.`},
+                 {id:4,src:'public/images/gamescom.png',text:`La Gamescom est un salon international consacré au jeu vidéo. Elle est à ce jour le plus gros évènement consacré au jeux vidéos  `},
+                 {id:5,src:'public/images/Japan_impact.png',text:`Japan Impact est une convention dédiée à la culture japonaise qui se déroule tous les ans sur un week-end en février à l'École polytechnique fédérale de Lausanne.On y trouve également plusieurs événement consacré aux jeux japonais`},
+                 {id:6,src:'public/images/herofestival.png',text:`Le HeroFestival est un événement culturel qui a vu le jour à Marseille en 2014. Ce festival transgénérationnel se déroule autour du thème des héros de tout univers : BD, cinéma, séries, manga, comics, jeux vidéo, cosplay`},
+                 {id:7,src:'public/images/GameAwards.png',text:`The Game Awards est une soirée de récompenses annuelle, qui distingue une sélection de jeux vidéo sortis tout au long de l'année, aussi bien que des jeux vidéo sortis récemment, ou même certains annoncés officiellement avant la soirée de remise de prix. Cette soirée est produite et présentée par le journaliste canadien Geoff Keighley. les Game Awards présentent également de nouveaux jeux et du gameplay de jeux récemment annoncés.`},
+                 {id:8,src:'public/images/Blizzconline.png',text:`La BlizzCon est une convention organisée chaque année depuis 2005 par Blizzard Entertainment au Anaheim Convention Center de Anaheim en Californie, pour présenter les nouveautés de leurs licences, mettre à disposition des versions de démonstration jouables, rencontrer les joueurs et proposer divers autres activités et panels liés aux univers de Warcraft, StarCraft, Diablo, Hearthstone, Heroes of the Storm et Overwatch.`},
+                 {id:9,src:'public/images/SummerGameFest.png',text:`Le Summer Game Fest est l’équivalent de l’E3 mais diffusée en direct en ligne sur plusieurs plateformes de streaming telles que Twitch ou YouTube. Ils compte également avec la présence de  Geoff Keighley.`}
+                 ]
+                }">
+            <div>
 
-        <h1 class="b w-full text-5xl text-center font-mono text-purple-600">E-LAN Acceuil</h1>
+                <!-- Slides -->
+                <template x-for="slide in slides" :key="slide">
+                    <div x-show="activeSlide === slide.id" class="flex flex-col justify-center w-full h-64 px-24 overflow-hidden rounded-lg">
+                        <div class="flex flex-row items-start">
+                            <img class="object-cover w-64 text-center rounded-lg ring-2 ring-white" x-bind:src="`/${slide.src}`" />
+                            <div class="h-full px-6 py-3 text-xl font-medium text-white" x-text="slide?.text">
+                            </div>
+                        </div>
+                    </div>
+                </template>
 
+                <!-- Prev/Next Arrows -->
+                <div class="absolute inset-0 flex w-full">
+                    <div class="flex items-center justify-start w-1/2">
+                        <button class="flex items-center justify-center h-16 -ml-6 font-black transition-colors duration-75 bg-pink-200 rounded-full stroke-2 hover:animate-wiggle focus:animate-wiggle active:text-white focus:stroke-4 text-purple-250 hover:text-black-500 hover:shadow-lg w-30 focus:outline-none focus:ring-4 focus:ring-white" @click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-end w-1/2">
+                        <button class="flex items-center justify-center h-16 -ml-6 font-black transition-colors duration-75 bg-pink-200 rounded-full stroke-2 hover:animate-wiggle-reverse focus:animate-wiggle-reverse active:text-white focus:stroke-4 text-purple-250 hover:text-black-500 hover:shadow-lg w-30 focus:outline-none focus:ring-4 focus:ring-white" @click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="leftcolumn">
-            <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Dec 7, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
             </div>
-            <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Sep 2, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <!-- Buttons -->
+            <div class="relative flex items-center justify-center w-full px-4">
+                <template x-for="slide in slides">
+                    <button type="button" class="w-full focus:outline-none focus:ring-2 focus:ring-white h-2 mx-2 mt-4 mb-0 overflow-hidden transition-colors duration-200 ease-out rounded-full hover:bg-teal-600 hover:shadow-lg" :class="{
+              'bg-white focus:bg-gray-200': activeSlide === slide.id,
+              'bg-purple-300': activeSlide !== slide.id
+          }" @click="activeSlide = slide.id"></button>
+                </template>
             </div>
         </div>
-        <div class="rightcolumn">
-            <div class="card">
-                <h2>About Me</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-            </div>
-            <div class="card">
-                <h3>Popular Post</h3>
-                <div class="fakeimg">Image</div><br>
-                <div class="fakeimg">Image</div><br>
-                <div class="fakeimg">Image</div>
-            </div>
-            <div class="card">
-                <h3>Follow Me</h3>
-                <p>Some text..</p>
-            </div>
-        </div>
+
     </div>
-
-    <div class="footer">
-        <h2>Footer</h2>
     </div>
 
     <?php

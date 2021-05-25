@@ -29,3 +29,28 @@ function controllerForbidden()
     require_once("view/forbidden.php");
     viewForbidden();
 }
+
+/**
+ * displays privacy page
+ * @return void
+ */
+function controllerProtection()
+{
+    require_once("view/protection.php");
+    viewProtect();
+}
+
+/**
+ * displays terms of services
+ * @return void
+ */
+function controllerCondition()
+{
+    require_once("view/Condition.php");
+    viewCondition();
+}
+
+function controllerEquipe(){
+    require_once ("view/equipe.php");
+    viewequipe();
+}
