@@ -6,7 +6,7 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "outDir": "public/js"
+        "outDir": "public/js/compiled"
     },
     "include": [
         "app/ts/*.ts"
