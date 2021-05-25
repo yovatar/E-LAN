@@ -5,7 +5,7 @@
  * @return void
  *
  */
-function viewequipe()
+function viewCreateTeams()
 {
     $title = "Création d'équipe";
 

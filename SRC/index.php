@@ -13,6 +13,7 @@ $GLOBALS["config"] = getConfig();
 // Controllers
 require_once("controller/static.php");
 require_once("controller/authentication.php");
+require_once("controller/settings.php");
 
 // Router
 // Remove get parameters
@@ -41,14 +42,18 @@ if ($api == false) {
         case '/forbidden':
             controllerForbidden();
             break;
+        case '/settings':
+        case '/settings/account':
+            ControllerSettingsAccount($_POST, $_FILES);
+            break;
         case  '/protection':
             controllerProtection();
             break;
         case '/condition':
             controllerCondition();
             break;
-        case '/equipe':
-            controllerEquipe();
+        case '/createTeams':
+            controllerCreateTeams();
             break;
         default:
             controllerLost();
@@ -61,12 +66,12 @@ if ($api == false) {
         case '/api':
             $response = ["code" => 200, "status" => "success", "data" => ["message" => "api online"]];
             break;
-            case '/api/authentication/available/username':
-                $response = apiAvailableUsername($_POST);
-                break;
-            case '/api/authentication/available/email':
-                $response = apiAvailableEmail($_POST);
-                break;
+        case '/api/authentication/available/username':
+            $response = apiAvailableUsername($_POST);
+            break;
+        case '/api/authentication/available/email':
+            $response = apiAvailableEmail($_POST);
+            break;
         default:
             $response = ["code" => 400, "status" => "fail", "data" => ["message" => "unknown route"]];
     }
