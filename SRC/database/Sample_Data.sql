@@ -19,16 +19,16 @@ INSERT INTO locations ( Name, address) values ( 'Bitchip', '6 John Wall Center')
 -- Events data
 -- -----------------------------------------------------
 
-INSERT INTO events ( name, description, type, start, end) values ( 'Vagram', 'Dyche', 'Quizz', '23.08.2020', '16.03.2022');
-INSERT INTO events ( name, description, type, start, end) values ( 'Quo Lux', 'Olenchenko', 'Shop', '06.05.2020', '21.06.2021');
-INSERT INTO events ( name, description, type, start, end) values ( 'It', 'Smorthwaite', 'other', '16.07.2020', '27.04.2022');
-INSERT INTO events ( name, description, type, start, end) values ( 'Opela', 'Copyn', 'Tournement', '21.10.2021', '05.01.2021');
-INSERT INTO events ( name, description, type, start, end) values ( 'Alpha', 'Zellick', 'Quizz', '27.10.2020', '20.05.2021');
-INSERT INTO events ( name, description, type, start, end) values ( 'Konklux', 'Tomisch', 'other', '15.10.2021', '24.04.2022');
-INSERT INTO events ( name, description, type, start, end) values ( 'Tin', 'Caseley', 'Shop', '06.06.2020', '03.05.2021');
-INSERT INTO events ( name, description, type, start, end) values ( 'Solarbreeze', 'Auchterlony', 'other', '11.01.2021', '24.06.2021');
-INSERT INTO events ( name, description, type, start, end) values ( 'Voyatouch', 'Bradburne', 'other', '20.02.2021', '26.04.2022');
-INSERT INTO events ( name, description, type, start, end) values ( 'Subin', 'Batte', 'Shop', '22.04.2021', '20.09.2020');
+INSERT INTO events ( name, description, type, start, end) values ( 'Vagram', 'Dyche', 'Quizz', '2020-08-23', '2022-03-16');
+INSERT INTO events ( name, description, type, start, end) values ( 'Quo Lux', 'Olenchenko', 'Shop', '2020-05-06', '2021-06-21');
+INSERT INTO events ( name, description, type, start, end) values ( 'It', 'Smorthwaite', 'other', '2020-07-16', '2022-04-27');
+INSERT INTO events ( name, description, type, start, end) values ( 'Opela', 'Copyn', 'Tournement', '2021-10-21', '2021-01-05');
+INSERT INTO events ( name, description, type, start, end) values ( 'Alpha', 'Zellick', 'Quizz', '2020-10-27', '2021-05-20');
+INSERT INTO events ( name, description, type, start, end) values ( 'Konklux', 'Tomisch', 'other', '2021-10-15', '2022-04-24');
+INSERT INTO events ( name, description, type, start, end) values ( 'Tin', 'Caseley', 'Shop', '2020-06-06', '2021-05-03');
+INSERT INTO events ( name, description, type, start, end) values ( 'Solarbreeze', 'Auchterlony', 'other', '2021-01-11', '2021-06-24');
+INSERT INTO events ( name, description, type, start, end) values ( 'Voyatouch', 'Bradburne', 'other', '2021-02-20', '2022-04-26');
+INSERT INTO events ( name, description, type, start, end) values ( 'Subin', 'Batte', 'Shop', '2021-04-22', '2020-09-20');
 
 -- -----------------------------------------------------
 -- States data
@@ -41,16 +41,16 @@ INSERT INTO states ( type) values ( 'disabled');
 -- Lans data
 -- -----------------------------------------------------
 
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '16.06.2020', '23.11.2021' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '03.02.2021', '15.06.2021' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '16.08.2021', '29.01.2021' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '19.04.2021', '26.06.2020' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '04.07.2020', '08.09.2021' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '30.08.2020', '05.05.2021' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '31.12.2021', '03.04.2021' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '04.09.2021', '09.06.2021' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '20.01.2021', '05.08.2020' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '15.08.2020', '10.04.2021' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '2020-06-16', '2021-11-23' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '2021-02-03', '2021-06-15' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '2021-08-16', '2021-01-29' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '2021-04-19', '2020-06-26' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '2020-07-04', '2021-09-08' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '2020-08-30', '2021-05-05' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '2021-12-31', '2021-04-03' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '2021-09-04', '2021-06-09' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '2021-01-20', '2020-08-05' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '2020-08-15', '2021-04-10' , id FROM states WHERE type LIKE 'disabled';
 
 -- -----------------------------------------------------
 -- Roles data
@@ -113,16 +113,16 @@ INSERT INTO tournaments ( game, max_teams, name) values ( 'Oxygen', 155, 'Daltfr
 -- Matches data
 -- -----------------------------------------------------
 
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '09.11.2020', '23.06.2020', 1, 3, 2, 1, 2, 1);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '23.12.2021', '05.06.2021', 2, 3, 1, 3, 4, 1);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '22.12.2021', '13.05.2020', 3, 0, 3, 3, 1, 1);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '26.12.2021', '04.02.2021', 4, 23, 27, 5, 7, 8);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ('08.12.2020', '13.04.2021', 5, 27, 18, 6, 8, 8);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '07.09.2021', '09.07.2020', 6, 16, 39, 7, 6, 8);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '27.06.2020', '16.06.2020', 7, 31, 34, 9, 10, 5);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ('27.08.2020', '01.04.2021', 8, 35, 37, 1, 4, 5);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '24.10.2020', '05.08.2020', 9, 74, 20, 10, 4, 5);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '18.09.2020', '16.03.2021', 10, 8, 10, 3, 11, 9);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '18.09.2020', '16.03.2021', 11, 8, 9, 6, 9, 9);
-INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '18.09.2020', '16.03.2021', 12, 10, 8, 11, 9, 9);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-11-09', '2020-06-23', 1, 3, 2, 1, 2, 1);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2021-12-23', '2021-06-05', 2, 3, 1, 3, 4, 1);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2021-12-22', '2020-05-13', 3, 0, 3, 3, 1, 1);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2021-12-26', '2021-02-04', 4, 23, 27, 5, 7, 8);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ('2020-12-08', '2021-04-13', 5, 27, 18, 6, 8, 8);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2021-09-07', '2020-07-09', 6, 16, 39, 7, 6, 8);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-06-27', '2020-06-16', 7, 31, 34, 9, 10, 5);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ('2020-08-27', '2021-04-01', 8, 35, 37, 1, 4, 5);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-10-24', '2020-08-05', 9, 74, 20, 10, 4, 5);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-09-18', '2021-03-16', 10, 8, 10, 3, 11, 9);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-09-18', '2021-03-16', 11, 8, 9, 6, 9, 9);
+INSERT INTO matches ( start, end, match_number, score_team1, score_team2, team1_id, team2_id, tournament_id) values ( '2020-09-18', '2021-03-16', 12, 10, 8, 11, 9, 9);
 
