@@ -57,6 +57,10 @@ function insertImage($fileName, $tempName, $directory = "/public/upload/img/")
         $uniqueId = uniqId();
     } while (file_exists($_SERVER["DOCUMENT_ROOT"] . $directory . $uniqueId . $extension[1]));
 
+    // Create directory if it doesn't exist
+    if (!file_exists($_SERVER["DOCUMENT_ROOT"] . $directory)) {
+        mkdir($_SERVER["DOCUMENT_ROOT"] . $directory, 0777, TRUE);
+    }
     // Move image in upload
     move_uploaded_file($tempName, $_SERVER["DOCUMENT_ROOT"] . $directory . $uniqueId . $extension[1]);
 
