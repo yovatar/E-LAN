@@ -79,6 +79,121 @@ function viewHome()
     </div>
     </div>
 
+    <!-- ----------------------NEWS1----------------------- -->
+    <br><br><br><br>
+    <div>
+        <h1 class="mx-auto text-5xl text-center font-mono font-bold text-gray-100 bg-gradient-to-r from-purple-300 to-purple-600">
+            LANs Suisses</h1>
+    </div>
+<div class="bg-gradient-to-r from-purple-300 to-purple-600">
+    <div class="flex w-full h-96 ">
+        <div class="flex-grow-0 bg-black rounded-3xl m-8 w-144">
+            <img src="public/images/PolyLAN.png" class="pt-16 px-8 " alt="Swiss LAN img">
+        </div>
+        <div class="w-full bg-white rounded-3xl m-8">
+            <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8 ">
+                Depuis 2002,
+                <a href="https://polylan.ch/" class="font-bold italic text-indigo-700 ">PolyLAN</a> organise des LAN
+                (ou LAN party) deux fois par an. Ces rassemblements, qui se sont déroulé à l'EPFL, successivement dans le hall du bâtiment
+                SG, au Rolex Learning Center, à l'Amphimax à l'UNIL et plus récemment au SwissTech Convention Center,
+                voient s'affronter jusqu'à 1250 personnes au travers d'un réseau local. Le comité, formé principalement
+                d'étudiantes et étudiants de la faculté IC, est composé d'une vingtaine
+                de membres, qui mettent en pratique les connaissances acquises dans le cadre de leurs études, et plus
+                encore. Bénéficiant de l'infrastructure électrique, informatique et logistique de l'EPFL, l'association
+                propose une manifestation de grande qualité pour un prix abordable. Contrairement aux autres événements
+                de ce type, où l'esprit de compétition prime avant tout, la convivialité ainsi que le côté ludique des
+                jeux vidéo sont privilégiés.
+            </h2>
+        </div>
+    </div>
+    <!-- ----------------------NEWS2----------------------- -->
+    <div class="flex w-full h-96 ">
+        <div class="bg-gradient-to-r from-purple-300 to-pink-300"><br></div>
+
+        <div class="flex-grow-0 w-full bg-white rounded-3xl m-8">
+
+            <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8 ">Le <a
+                        href="https://www.numerik-games.ch/" class="font-bold italic text-indigo-700">Numerik Games
+                    Festival</a>
+                est une manifestation tout public dédiée à l’art et la culture numériques.
+                Depuis 2016, cet événement convainc des foules de plus en plus nombreuses: enfants, familles,
+                adolescents, adultes – tous trouvent leur compte dans ce festival interdisciplinaire faisant la part
+                belle à une créativité qui, c’est le point commun de toutes les activités proposées, implique les
+                ressources permises par le digital.
+            </h2>
+        </div>
+
+        <div class="flex-grow-0 bg-white rounded-3xl m-8 w-144">
+            <img src="public/images/NumerikGames.PNG" class="pt-16 px-8 " alt="Swiss LAN img">
+        </div>
+
+    </div>
+</div>
+    <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Title
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Role
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10">
+                                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">
+                                            Jane Cooper
+                                        </div>
+                                        <div class="text-sm text-gray-500">
+                                            jane.cooper@example.com
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
+                                <div class="text-sm text-gray-500">Optimization</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  Active
+                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                Admin
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            </td>
+                        </tr>
+
+                        <!-- More people... -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
     $content = ob_get_clean();
 
