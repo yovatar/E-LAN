@@ -11,7 +11,7 @@ function viewTeam($team)
     ob_start();
 ?>
     <div class="flex flex-col items-center">
-        <div class="flex flex-col justify-center w-auto px-4 py-2 space-y-3 bg-white rounded-md md:flex-row filter drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
+        <div class="flex flex-col-reverse justify-center w-auto px-4 py-2 bg-white rounded-md md:flex-row filter drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
             <!-- Team members -->
             <div>
                 <div class="overflow-hidden border-2 rounded-md border-blueGray-200">
