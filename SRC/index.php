@@ -14,6 +14,7 @@ $GLOBALS["config"] = getConfig();
 require_once("controller/static.php");
 require_once("controller/authentication.php");
 require_once("controller/settings.php");
+require_once("controller/lans.php");
 
 // Router
 // Remove get parameters
@@ -46,7 +47,10 @@ if ($api == false) {
         case '/settings/account':
             ControllerSettingsAccount($_POST, $_FILES);
             break;
-        case  '/protection':
+        case '/lans':
+            controllerLanList($_GET);
+            break;
+        case '/protection':
             controllerProtection();
             break;
         case '/condition':
