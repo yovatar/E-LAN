@@ -81,7 +81,7 @@ function viewLansList($lans, $page, $maxPage)
         </div>
     </div>
     <div>
-       <button type="submit"class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700"><a href=/createLAN >crèer une LAN</button>
+       <button type="submit"class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700"><a href=/createLAN >créer une LAN</button>
     </div>
 <?php
     $content = ob_get_clean();
