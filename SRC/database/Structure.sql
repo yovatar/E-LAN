@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `elan`.`images` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `path` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `UniqueImage` (`path` ASC)
-) ENGINE = InnoDB;
+  UNIQUE INDEX `UniqueImage` (`path` ASC) VISIBLE)
+ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`users`
 -- -----------------------------------------------------
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `elan`.`users` (
   UNIQUE INDEX `UniqueUserEmail` (`email` ASC),
   CONSTRAINT `fk_Users_Roles1` FOREIGN KEY (`role_id`) REFERENCES `elan`.`roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_images1` FOREIGN KEY (`image_id`) REFERENCES `elan`.`images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`states`
@@ -83,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `elan`.`lans` (
   INDEX `fk_lans_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_Lans_Stats1` FOREIGN KEY (`state_id`) REFERENCES `elan`.`states` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lans_images1` FOREIGN KEY (`images_id`) REFERENCES `elan`.`images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`locations`
@@ -118,11 +120,22 @@ CREATE TABLE IF NOT EXISTS `elan`.`teams` (
   `name` VARCHAR(64) NOT NULL,
   `abbreviation` VARCHAR(5) NOT NULL,
   `owner_id` INT NULL,
+  `images_id` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `UniqueTeam` (`name` ASC),
-  INDEX `fk_Teams_Users1_idx` (`owner_id` ASC),
-  CONSTRAINT `fk_Teams_Users1` FOREIGN KEY (`owner_id`) REFERENCES `elan`.`users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+  UNIQUE INDEX `UniqueTeam` (`name` ASC) VISIBLE,
+  INDEX `fk_Teams_Users1_idx` (`owner_id` ASC) INVISIBLE,
+  INDEX `fk_teams_images1_idx` (`images_id` ASC) VISIBLE,
+  CONSTRAINT `fk_Teams_Users1`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `elan`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_teams_images1`
+    FOREIGN KEY (`images_id`)
+    REFERENCES `elan`.`images` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`tournaments`
 -- -----------------------------------------------------
