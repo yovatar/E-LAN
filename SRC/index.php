@@ -59,6 +59,9 @@ if ($api == false) {
         case '/createTeams':
             controllerCreateTeams();
             break;
+        case '/createLAN':
+            controllerCreateLAN();
+            break;
         default:
             controllerLost();
     }

@@ -54,3 +54,7 @@ function controllerCreateTeams(){
     require_once("view/createTeams.php");
     viewCreateTeams();
 }
+function controllerCreateLAN(){
+    require_once("view/createLAN.php");
+    viewCreateLAN();
+}
