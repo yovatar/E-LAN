@@ -19,9 +19,16 @@ function selectTeams()
 function selectTeamByName($name)
 {
     require_once("model/database.php");
-    $query = "SELECT * FROM teams WHERE name LIKE :name LIMIT 1";
+    $query = "SELECT teams.*, images.path FROM teams LEFT JOIN images ON teams.images_id = images.id WHERE name LIKE :name LIMIT 1";
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
+
+function selectTeamUsers($teamName){
+    require_once("model/database.php");
+    $query = "SELECT users.username, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
+    return executeQuerySelect($query,createBinds([[":teamName",$teamName]]));
+}
+
 
 /**
  * Fetch teams for pagination
