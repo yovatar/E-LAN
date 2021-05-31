@@ -11,9 +11,9 @@ function controllerTeam($name)
         require_once("view/lost.php");
         viewLost();
     } else {
-        // TODO: fetch team members
-        // $team["members"] = [["username" => "Paul"], ["username" => "Matt"], ["username" => "Steve"]];
+        // Fetch members
         $team["members"] = selectTeamUsers($team["name"]);
+        if(empty($team["members"][0]["username"])) $team["members"] = [];
         // Show team page
         require_once("view/team.php");
         viewTeam($team);
