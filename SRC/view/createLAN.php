@@ -18,9 +18,6 @@ function viewCreateLAN()
             <label for="name">Nom de LAN</label>
             <input type="name" id="name" name="name" placeholder="1Vs1 Tic-tac-to" required
                    class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
-            <label for="shortname">Nom des équipes</label>
-            <input type="name" id="teamName" name="teamName" placeholder="Yeti VS Tiger" required
-                   class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="date">Date de la LAN</label>
             <input type="date" id="date" name="date" placeholder="31.05.2021" required
                    class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
