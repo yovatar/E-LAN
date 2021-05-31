@@ -51,6 +51,9 @@ if ($api == false) {
         case '/lans':
             controllerLanList($_GET);
             break;
+        case '/teams':
+            controllerTeamsList($_GET);
+            break;
         case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
             controllerTeam($res[1]);
             break;
@@ -62,6 +65,9 @@ if ($api == false) {
             break;
         case '/createTeams':
             controllerCreateTeams();
+            break;
+        case '/createLAN':
+            controllerCreateLAN();
             break;
         default:
             controllerLost();
