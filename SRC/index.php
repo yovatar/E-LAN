@@ -15,6 +15,7 @@ require_once("controller/static.php");
 require_once("controller/authentication.php");
 require_once("controller/settings.php");
 require_once("controller/lans.php");
+require_once("controller/teams.php");
 
 // Router
 // Remove get parameters
@@ -49,6 +50,9 @@ if ($api == false) {
             break;
         case '/lans':
             controllerLanList($_GET);
+            break;
+        case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
+            controllerTeam($res[1]);
             break;
         case '/protection':
             controllerProtection();
