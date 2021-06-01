@@ -15,7 +15,11 @@ function viewHome()
         <h1 class="font-mono text-5xl font-bold text-center text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500">
             E-LAN Acceuil</h1>
 
-    </div><br>
+    </div>
+    <div class="border-solid border-26 border-purple-300 mt-20 mb-20 rounded-md">
+        <p class="text-justify m-3 font-sans font-size text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-500 ">Notre Site et un outil permettent à des créateurs de LAN d'organiser et proposer leurs événements. C’est un outil simple fiable et proposent de multiples fonctions. En tant qu’administrateur on peut non seulement créer des LAN mais aussi proposer des évènements dans ces LANs ainsi que d’organiser des tournois avec de multiples équipes et joueurs. Si l’on est un utilisateur nous pouvons visualiser les LANs en cours et à venir et également créer des équipes et participer aux tournois organisé par les LANs.</p>
+    </div>
+    <br>
     <div class="flex flex-col items-center justify-center bg-gradient-to-r h-96 from-purple-500 to-pink-300">
         <div class="text-3xl text-center text-gray-100 text-bold"> Meilleurs evénements de l'année</div>
         <br>
