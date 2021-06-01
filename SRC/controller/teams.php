@@ -14,9 +14,18 @@ function controllerTeam($name)
         // Fetch members
         $team["members"] = selectTeamUsers($team["name"]);
         if (empty($team["members"][0]["username"])) $team["members"] = [];
+        // Check if user is a member of the team
+        $res = false;
+        if(isAuthenticated()){
+            require_once("controller/authentication.php");
+            $user = getCurrentUser();
+            if(!empty("user")){
+                $res = isMember($team["members"],$user);
+            }  
+        }
         // Show team page
         require_once("view/team.php");
-        viewTeam($team);
+        viewTeam($team, $res);
     }
 }
 
@@ -60,7 +69,7 @@ function controllerJoinTeam($request)
             try {
                 // Get user from the database to avoid issues
                 require_once("model/users.php");
-                $user = selectUserByEmail($_SESSION["user"]["email"]);
+                $user = getCurrentUser();
                 if ($user === null) {
                     logout();
                     throw new Exception("Il semblerait que votre session utilisateur ait des problèmes");
@@ -72,9 +81,7 @@ function controllerJoinTeam($request)
                 // Fetch team members
                 $team["members"] = selectTeamUsers($teamName);
                 // Check if the user is in the list
-                foreach ($team["members"] as $member) {
-                    if ($member["email"] === $_SESSION["user"]["email"]) throw new Exception("Vous faites déjà partie de cette équipe");
-                }
+                if (isMember($team["members"], $user)) throw new Exception("Vous faites déjà partie de cette équipe");
                 // Add user to the team
                 $row = insertTeamMember($team["id"], $user["id"]);
                 if ($row === null) throw new Exception("Une erreur est survenue lors de l'ajout à l'équipe");
@@ -87,4 +94,23 @@ function controllerJoinTeam($request)
     } else {
         header("Location: /authentication/login");
     }
+}
+
+
+/**
+ * Check if an user is part of a given team
+ * @param array $members
+ * @param array $user
+ * @return bool
+ */
+function isMember($members, $user)
+{
+    $res = false;
+    foreach ($members as $member) {
+        if ($member["email"] === $user["email"]) {
+            $res = true;
+            break;
+        }
+    }
+    return $res;
 }

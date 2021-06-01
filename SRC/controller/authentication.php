@@ -167,3 +167,12 @@ function refreshLogin($email)
     require_once("model/users.php");
     login(selectUserByEmail($email));
 }
+
+/**
+ * gets the current user from the database using $_SESSION
+ * @return array|null
+ */
+function getCurrentUser(){
+    require_once("model/users.php");
+    return selectUserByEmail($_SESSION["user"]["email"]);
+}

@@ -10,13 +10,14 @@
 function ControllerSettingsAccount($request, $files)
 {
     // Check for authentication
+    require_once("controller/authentication.php");
     if (isAuthenticated()) {
         if (empty($request)) {
             // Display settings view
             require_once("view/settingsAccount.php");
             require_once("model/users.php");
             // Get user data
-            $user = selectUserByEmail($_SESSION["user"]["email"]);
+            $user = getCurrentUser();
             // Check validity
             if (empty($user)) {
                 logout();
@@ -45,7 +46,7 @@ function ControllerSettingsAccount($request, $files)
 
                         // Update profile
                         require_once("model/users.php");
-                        $user = selectUserByEmail($_SESSION["user"]["email"]);
+                        $user = getCurrentUser();
                         if (empty($user)) throw new Exception("Session mismatch");
                         $rows = updateUserImage($user["id"], $newPictureId);
 
@@ -65,7 +66,7 @@ function ControllerSettingsAccount($request, $files)
 
                         // Fetch user from the database
                         require_once("model/users.php");
-                        $user = selectUserByEmail($_SESSION["user"]["email"]);
+                        $user = getCurrentUser();
                         if (empty($user)) throw new Exception("Session mismatch");
 
                         // Check if the old password is right
