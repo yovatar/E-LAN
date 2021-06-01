@@ -20,6 +20,8 @@ require_once("controller/teams.php");
 // Router
 // Remove get parameters
 $uri = strtok($_SERVER["REQUEST_URI"], '?');
+// Decode url
+$uri = urldecode($uri);
 // Remove ending /
 $uri = (strlen($uri) > 1) ? preg_replace("/\/$/", '', $uri) : $uri;
 // Check for api requests
