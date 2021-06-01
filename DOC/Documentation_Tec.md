@@ -1,20 +1,23 @@
 # Documentation technique du projet (E-LAN)
 
 Cette documentation a pour but de fournir toutes les informations techniques nécessaires à un-e développeur-se qui rejoindrait l'équipe.  
-Il se présente donc en bonne partie sous forme de questions: les questions que poserait un-e nouvel-le arrivant-e.
+Il se présente donc en bonne partie sous forme de questions : les questions que poserait un-e nouvel-le arrivant-e.
 
 ## utilisation de notre site
-    notre site vise les communautés proposent des LAN Gaming nous voulont fournire un outils efficase dans la création et l'organisation de LAN.
-    
+    Notre site vise les communautés proposent des LAN Gaming nous voulons fournir un outil efficace dans la création et l'organisation de LAN et d’événements. Notre application aura également une gestion de tournois à multiples équipes.
+
 ## Hébergement
-    l'hébergement seras fait sur suissecenter depuis Filzilla.
-    mais durant la phase de dévelopement nous accederont au site en local.
+
+    L’hébergement seras fait sur SuisseCenter depuis Filezilla.
+    Mais durant la phase de développement nous accèderont au site en local.
+
 ## Accès
-    pour pouvoir accèder a notre site web vous devez installer votre interprèteur et lancer le site en local durant la phase de dévelopement avant de pouvoir accèder en ligne au site
+
+    Pour pouvoir accéder à notre site web vous devez installer votre interpréteur et lancer le site en local durant la phase de développement. Par la suite nous disposerons d’un accès en ligne.
 ## Donnée
 
-    Se site va manipuler les donné relative au MCD et MLD.
-    Vous trouvers ses document dans le github sous \GitHub\E-LAN\DOC\Données :
+    Ce site va manipuler les données relatives au MCD et MLD depuis une basse de données disponible en local. Vous trouverez ses documents dans le GitHub sous (https://github.com/yovatar/E-LAN/tree/master/DOC7Données) :
+Tables utilisées :
 - Users
 - Envents
 - Images
@@ -24,29 +27,46 @@ Il se présente donc en bonne partie sous forme de questions: les questions que 
 - Teams
 
 ## composants
-    le site se compose d'une architecture en MVC
+    Le site se compose d'une architecture en MVC.
+    Et des librairies AlpineJS pour le Java Script et TailwindCSS pour le CSS.
+   
+## Prérequis pour rejoindre le développement
+   Connaissances nécessaires :
+   -    PHP
+   -    HTML
+   -    CSS
+   -    JS
+   -    SQL
 
-## prérequit pour rejoindre le dévelopement
-    nous utilisont du PHP,HTML,CSS, et des plugin comme AlpineJS,TailwindCSS
-    
-
-## Instalation
-
--   Interpréteur
-    -   PHP
-    
--   Base de Donné
-    -   Connexion a la base
+## Installation obligatoires
+-   Interpréteur de code
+-   Base de Données 
+    -   Connexion à la DB
     -   Client SQL
-    -   executer Scripte BD
+    -   Scripte de création de la DB
 -   NPM
-    -   Run-Build
+    -   NPM Run
+    -   NPM Build
 -   Hébergement
     - Filezilla
-    - serveur PHP
+    - Serveur PHP
+
+### Installations facultatives 
+-   Alpine.js devtools extension chrome.
+-   Plugin Tailwind Intellisense (sur PHPStorm).
+-   Plugin Alpine.js Support (sur PHPStorm).
+
+
+## Astuces
+-   XXX
+-   XXX
+-   XXX
+-   etc...
 
 ## Interpréteur
-    l'instalation est a votre convenance
-
+L’installation est à votre convenance.
+   
 ## Base de Donné
-    pour installer la BD     
+Le scripte de création de la DB sera en langage SQL.
+Et la DB sera mise en place chez un client SQL.
+
