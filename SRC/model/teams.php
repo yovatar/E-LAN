@@ -23,10 +23,11 @@ function selectTeamByName($name)
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
 
-function selectTeamUsers($teamName){
+function selectTeamUsers($teamName)
+{
     require_once("model/database.php");
-    $query = "SELECT users.username, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
-    return executeQuerySelect($query,createBinds([[":teamName",$teamName]]));
+    $query = "SELECT users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
+    return executeQuerySelect($query, createBinds([[":teamName", $teamName]]));
 }
 
 
@@ -43,6 +44,13 @@ function selectTeamsList($limit, $offset = 0)
     $query = "SELECT teams.*, images.path FROM teams LEFT JOIN images ON teams.images_id = images.id LIMIT :offset , :limit";
     // Fetch teams
     return executeQuerySelect($query, createBinds([[":offset", $offset, PDO::PARAM_INT], [":limit", $limit, PDO::PARAM_INT]]));
+}
+
+function insertTeamMember($teamId, $userId)
+{
+    require_once("model/database.php");
+    $query = "INSERT INTO user_joins_team(team_id, user_id) VALUES(:teamId, :userId);";
+    return executeQueryInsert($query, createBinds([[":teamId", $teamId, PDO::PARAM_INT], [":userId", $userId, PDO::PARAM_INT]]));
 }
 
 /**
