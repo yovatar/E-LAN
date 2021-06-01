@@ -54,6 +54,9 @@ if ($api == false) {
         case '/teams':
             controllerTeamsList($_GET);
             break;
+        case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
+            controllerTeam($res[1]);
+            break;
         case '/protection':
             controllerProtection();
             break;
