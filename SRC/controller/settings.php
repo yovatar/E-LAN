@@ -6,6 +6,8 @@
 
 /**
  * Handles account update requests
+ * @param array $request expects $_POST
+ * @param array $files expects $_FILES
  */
 function ControllerSettingsAccount($request, $files)
 {

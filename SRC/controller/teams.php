@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Handles team view requests
+ * @param string $name name of the team
+ * @return void
+ */
 function controllerTeam($name)
 {
     // Fetch team
@@ -56,6 +61,11 @@ function controllerTeamsList($request)
     viewTeamsList($teams, $pageteams, $count / $items);
 }
 
+/**
+ * Handles requests to join a team
+ * @param array $request expects $_POST
+ * @return void
+ */
 function controllerJoinTeam($request)
 {
     // Check if the user is logged in

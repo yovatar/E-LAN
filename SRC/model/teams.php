@@ -23,6 +23,11 @@ function selectTeamByName($name)
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
 
+/**
+ * Fetches every team member
+ * @param string $teamName
+ * @return array|null
+ */
 function selectTeamUsers($teamName)
 {
     require_once("model/database.php");
@@ -46,6 +51,12 @@ function selectTeamsList($limit, $offset = 0)
     return executeQuerySelect($query, createBinds([[":offset", $offset, PDO::PARAM_INT], [":limit", $limit, PDO::PARAM_INT]]));
 }
 
+/**
+ * Add an user to a team
+ * @param int $teamId
+ * @param int $userId
+ * @return int|null
+ */
 function insertTeamMember($teamId, $userId)
 {
     require_once("model/database.php");

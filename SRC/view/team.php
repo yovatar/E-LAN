@@ -2,6 +2,8 @@
 
 /**
  * Team view
+ * @param array $team
+ * @param bool $isMember
  * @return void
  */
 function viewTeam($team, $isMember)
