@@ -13,6 +13,9 @@ function viewLansList($lans, $page, $maxPage)
 
     ob_start();
 ?>
+    <div class=" w-full flex justify-end my-2 ">
+        <button type="submit"class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700 "><a href=/createLAN >Créer une LAN</button>
+    </div>
     <? /* List */ ?>
     <div class="flex flex-row justify-center w-full px-6 py-3 bg-white rounded-md filter drop-shadow-md">
         <div class="flex flex-col w-full space-y-3">
@@ -80,9 +83,7 @@ function viewLansList($lans, $page, $maxPage)
             </a>
         </div>
     </div>
-    <div>
-       <button type="submit"class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700"><a href=/createLAN >créer une LAN</button>
-    </div>
+
 <?php
     $content = ob_get_clean();
 
