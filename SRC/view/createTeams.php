@@ -21,10 +21,13 @@ function viewCreateTeams()
             <label for="shortname">abréviation</label>
             <input type="shortname" id="shortname" name="shortname" placeholder="LFK" required
                    class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" placeholder="img" required
+                   class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+
+
             <div class="flex flex-col space-y-2 p-px lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
-                <label for="date">Image</label>
-                <input type="file" id="date" name="date" placeholder="31.05.2021" required
-                       class="border-2 px-4 py-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="submit"
                         class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">
                     <p>Créer l'équipe</p>
