@@ -62,6 +62,10 @@ function viewTeam($team, $isMember)
                         <button class="px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
                     </form>
                 <?php } else { ?>
+                    <form action="/quitTeam" method="POST" class="mt-4">
+                        <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
+                        <button class="px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
+                    </form>
                 <?php } ?>
             </div>
         </div>
