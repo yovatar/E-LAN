@@ -106,6 +106,51 @@ function controllerJoinTeam($request)
     }
 }
 
+/**
+ * Handles requests to quit a team
+ * @param array $request expects $_POST
+ * @return void
+ */
+function controllerQuitTeam($request){
+    // Check if the user is logged in
+    require_once("controller/authentication.php");
+    if(isAuthenticated() && !empty($request)){
+        // Validate input
+        $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            header("Location: /teams?error=Aucun nom d'équipe donné");
+        } else {
+            try {
+                // Get user from the database to avoid issues
+                require_once("model/users.php");
+                $user = getCurrentUser();
+                if ($user === null) {
+                    logout();
+                    throw new Exception("Il semblerait que votre session utilisateur ait des problèmes");
+                }
+                // Check if team exists
+                require_once("model/teams.php");
+                $team = selectTeamByName($teamName);
+                if (empty($team)) throw new Exception("Équipe invalide");
+                // Fetch team members
+                $team["members"] = selectTeamUsers($teamName);
+                // Check if the user is in the list
+                if (!isMember($team["members"], $user)) throw new Exception("Vous ne faites pas partie de cette équipe");
+                // Remove user from the team
+                $affected = deleteTeamMember($team["id"], $user["id"]);
+                if ($affected === null) throw new Exception("Une erreur est survenue lors de l'expulsion de l'équipe");
+                // Reload team page
+                header("Location: /teams/" . $teamName);
+            } catch (Exception $e) {
+                header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
+            }
+        }
+
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
 
 /**
  * Check if an user is part of a given team

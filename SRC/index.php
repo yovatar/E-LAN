@@ -68,6 +68,9 @@ if ($api == false) {
         case '/joinTeam':
             controllerJoinTeam($_POST);
             break;
+        case '/quitTeam':
+            controllerQuitTeam($_POST);
+            break;
         case '/createTeams':
             controllerCreateTeams();
             break;

@@ -65,6 +65,19 @@ function insertTeamMember($teamId, $userId)
 }
 
 /**
+ * Remove an user from a team
+ * @param int $teamId
+ * @param int $userId
+ * @return int
+ */
+function deleteTeamMember($teamId, $userId)
+{
+    require_once("model/database.php");
+    $query = "DELETE FROM user_joins_team WHERE team_id = :teamId AND user_id = :userId;";
+    return executeQueryIUDAffected($query, createBinds([[":teamId", $teamId, PDO::PARAM_INT], [":userId", $userId, PDO::PARAM_INT]]));
+}
+
+/**
  * Count the number of teams
  * @return int|null
  */
