@@ -21,12 +21,12 @@ function controllerTeam($name)
         if (empty($team["members"][0]["username"])) $team["members"] = [];
         // Check if user is a member of the team
         $res = false;
-        if(isAuthenticated()){
+        if (isAuthenticated()) {
             require_once("controller/authentication.php");
             $user = getCurrentUser();
-            if(!empty("user")){
-                $res = isMember($team["members"],$user);
-            }  
+            if (!empty("user")) {
+                $res = isMember($team["members"], $user);
+            }
         }
         // Show team page
         require_once("view/team.php");
@@ -111,10 +111,11 @@ function controllerJoinTeam($request)
  * @param array $request expects $_POST
  * @return void
  */
-function controllerQuitTeam($request){
+function controllerQuitTeam($request)
+{
     // Check if the user is logged in
     require_once("controller/authentication.php");
-    if(isAuthenticated() && !empty($request)){
+    if (isAuthenticated() && !empty($request)) {
         // Validate input
         $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
@@ -145,26 +146,70 @@ function controllerQuitTeam($request){
                 header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
             }
         }
-
     } else {
         header("Location: /authentication/login");
     }
 }
 
-function controllerCreateTeam($request){
+function controllerCreateTeam($request,$files)
+{
     // Check if the user is logged in
     require_once("controller/authentication.php");
-    if(isAuthenticated()){
+    if (isAuthenticated()) {
         // Todo: check if user owns a team
         // Check if there were inputs
-        if(empty($request)){
+        if (empty($request)) {
             // Show creation form
             require_once("view/createTeams.php");
-            viewCreateTeams();        
+            viewCreateTeams();
         } else {
             // Handle team creation
-        }
+            // Get user from the database to avoid issues
+            require_once("model/users.php");
+            $user = getCurrentUser();
+            if ($user === null) {
+                logout();
+                header("Location: /authentication/login?error=Il semblerait que votre session utilisateur ait des problèmes");
+            } else {
+                try {
+                    // Check input
+                    // Team name
+                    $name = filter_var($request["name"], FILTER_SANITIZE_STRING);
+                    if (empty($name)) throw new Exception("Vous n'avez pas fourni de nom d'équipe");
+                    // Team abréviation
+                    $abbreviation = filter_var($request["abbreviation"], FILTER_SANITIZE_STRING);
+                    if (empty($abbreviation)) throw new Exception("Vous n'avez pas fourni d'abréviation'");
+                    // Check unique constraints
+                    require_once("model/teams.php");
+                    if (!empty(selectTeamByName($name))) throw new Exception("Nom d'équipe indisponible");
+                    // Create team
+                    $teamId = insertTeam($name, $abbreviation, $user["id"]);
+                    if ($teamId === null) throw new Exception("Erreur lors de la sauvegarde de votre équipe");
+                    try {
+                        // Add user to the team as a member
+                        $row = insertTeamMember($teamId, $user["id"]);
+                        if (empty($row)) throw new Exception("Erreur lors de votre ajout à l'équipe");
+                        // Image handling
+                        if (!empty($files["image"])) {
+                            $picture = $files["image"];
+                            // Save image
+                            require_once("model/images.php");
+                            $newPictureId = insertImage($picture["name"], $picture["tmp_name"]);
+                            if ($newPictureId === null) throw new Exception("Erreur lors de la sauvegarde de votre image");
+                            $affected = updateTeamImage($teamId, $newPictureId);
+                            if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ajout de votre image d'équipe");
+                        }
+                    } catch (Exception $e) {
+                        header("Location: /teams/$name?error=" . $e->getMessage());
+                    }
 
+                    // Redirect to the team page
+                    header("Location: /teams/$name");
+                } catch (Exception $e) {
+                    header("Location: /createTeam?error=" . $e->getMessage());
+                }
+            }
+        }
     } else {
         header("Location : /authentication/login");
     }

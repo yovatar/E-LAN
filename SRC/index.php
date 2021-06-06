@@ -72,7 +72,7 @@ if ($api == false) {
             controllerQuitTeam($_POST);
             break;
         case '/createTeam':
-            controllerCreateTeam($_POST);
+            controllerCreateTeam($_POST,$_FILES);
             break;
         case '/createLAN':
             controllerCreateLAN();

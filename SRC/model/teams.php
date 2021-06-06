@@ -52,6 +52,20 @@ function selectTeamsList($limit, $offset = 0)
 }
 
 /**
+ * Insert a team in the database
+ * @param string $name
+ * @param string $abbreviation
+ * @param int $ownerId
+ * @return int|null
+ */
+function insertTeam($name, $abbreviation, $ownerId = null)
+{
+    require_once("model/database.php");
+    $query = "INSERT INTO teams (name, abbreviation, owner_id) VALUES (:name, :abbreviation, " . ($ownerId === null ? "NULL" : ":ownerId") . ")";
+    return executeQueryInsert($query, createBinds([[":name", $name], [":abbreviation", $abbreviation], [":ownerId", $ownerId, PDO::PARAM_INT]]));
+}
+
+/**
  * Add an user to a team
  * @param int $teamId
  * @param int $userId
@@ -62,6 +76,19 @@ function insertTeamMember($teamId, $userId)
     require_once("model/database.php");
     $query = "INSERT INTO user_joins_team(team_id, user_id) VALUES(:teamId, :userId);";
     return executeQueryInsert($query, createBinds([[":teamId", $teamId, PDO::PARAM_INT], [":userId", $userId, PDO::PARAM_INT]]));
+}
+
+/**
+ * updates team image
+ * @param int $teamId
+ * @param int $imageId
+ * @return int|null number of affected rows
+ */
+function updateTeamImage($teamId, $imageId)
+{
+    require_once("model/database.php");
+    $query = "UPDATE teams SET images_id = :imageId WHERE id = :teamId";
+    return executeQueryIUDAffected($query, createBinds([[":imageId", $imageId, PDO::PARAM_INT], [":teamId", $teamId, PDO::PARAM_INT]]));
 }
 
 /**
