@@ -151,6 +151,12 @@ function controllerQuitTeam($request)
     }
 }
 
+/**
+ * Handles team creation requests
+ * @param array $request expects $_POST
+ * @param array $files expects $_FILES
+ * @return void
+ */
 function controllerCreateTeam($request, $files)
 {
     // Check if the user is logged in

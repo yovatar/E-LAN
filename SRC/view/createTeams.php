@@ -3,7 +3,6 @@
 /**
  * Team creation form
  * @return void
- *
  */
 function viewCreateTeams()
 {
