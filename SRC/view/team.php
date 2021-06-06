@@ -67,14 +67,14 @@ function viewTeam($team, $isMember)
                 <h1 class="text-2xl font-medium"><?= $team["name"] ?></h1>
                 <p class="text-xl"> <?= $team["abbreviation"] ?></p>
                 <?php if (!$isMember) { ?>
-                    <form action="/joinTeam" method="POST" class="mt-4">
+                    <form action="/joinTeam" method="POST" class="w-full mt-4 md:w-auto">
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
-                        <button class="px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
+                        <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
                     </form>
                 <?php } else { ?>
-                    <form action="/quitTeam" method="POST" class="mt-4">
+                    <form action="/quitTeam" method="POST" class="w-full mt-4 md:w-auto">
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
-                        <button class="px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
+                        <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
                     </form>
                 <?php } ?>
             </div>

@@ -30,7 +30,7 @@ function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
                     <?php } else { ?>
                         <img class="object-cover w-32 h-32 bg-white rounded-md" src="<?= $team["path"] ?>" alt="Team image">
                     <?php } ?>
-                    <div class="flex flex-col flex-grow space-y-2">
+                    <div class="flex flex-col items-center flex-grow space-y-2 md:items-start">
                         <h1 class="text-xl font-medium"><?= $team["name"] ?></h1>
                         <p class="text-base"><?= $team["abbreviation"] ?></p>
                     </div>
