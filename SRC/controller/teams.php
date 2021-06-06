@@ -155,8 +155,7 @@ function controllerCreateTeam($request, $files)
 {
     // Check if the user is logged in
     require_once("controller/authentication.php");
-    if (isAuthenticated()) {
-        // Todo: check if user owns a team
+    if (canCreateTeam()) {
         // Check if there were inputs
         if (empty($request)) {
             // Show creation form
@@ -211,7 +210,7 @@ function controllerCreateTeam($request, $files)
             }
         }
     } else {
-        header("Location : /authentication/login");
+        header("Location: /authentication/login");
     }
 }
 
