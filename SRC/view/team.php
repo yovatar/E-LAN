@@ -13,7 +13,7 @@ function viewTeam($team, $isMember)
     ob_start();
 ?>
     <div class="flex flex-col items-center">
-        <div class="flex flex-col-reverse justify-center w-auto px-4 py-2 bg-white rounded-md md:flex-row filter drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
+        <div class="flex flex-col-reverse justify-center w-full px-4 py-2 space-y-5 space-y-reverse bg-white rounded-md md:w-auto md:flex-row filter md:drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
             <!-- Team members -->
             <div>
                 <div class="overflow-hidden border-2 rounded-md border-blueGray-200">
@@ -32,6 +32,12 @@ function viewTeam($team, $isMember)
                                         <img src="<?= $member["path"] ?>" alt="member profile image" class="object-cover w-6 h-6 rounded-full">
                                     <?php } ?>
                                     <p><?= $member["username"] ?></p>
+                                    <?php if ($member["id"] == $team["owner_id"]) { ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-yellow-300 fill-current" viewBox="0 0 24 24">
+                                            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l2 13h14l2-13-5 3-4-6-4 6-5-3z" />
+                                            <circle cx="12" cy="14" r="2" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        </svg>
+                                    <?php } ?>
                                 </div>
                             <?php } ?>
                         </div>

@@ -31,7 +31,7 @@ function selectTeamByName($name)
 function selectTeamUsers($teamName)
 {
     require_once("model/database.php");
-    $query = "SELECT users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
+    $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
     return executeQuerySelect($query, createBinds([[":teamName", $teamName]]));
 }
 
