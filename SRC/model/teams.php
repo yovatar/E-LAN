@@ -52,6 +52,18 @@ function selectTeamsList($limit, $offset = 0)
 }
 
 /**
+ * fetch id, username and email of the team owner
+ * @param string $teamName
+ * @return array|null
+ */
+function selectTeamOwner($teamName)
+{
+    require_once("model/database.php");
+    $query = "SELECT users.id, users.username, users.email FROM users LEFT JOIN users ON teams.owner_id = users.id WHERE teams.name LIKE :teamName LIMIT 1";
+    return executeQuerySelect($query, createBinds([[":teamName", $teamName]]))[0] ?? null;
+}
+
+/**
  * Insert a team in the database
  * @param string $name
  * @param string $abbreviation

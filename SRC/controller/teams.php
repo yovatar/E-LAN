@@ -58,7 +58,7 @@ function controllerTeamsList($request)
 
     // Display teams
     require_once("view/teamsList.php");
-    viewTeamsList($teams, $pageteams, $count / $items);
+    viewTeamsList($teams, $pageteams, $count / $items, canCreateTeam());
 }
 
 /**
@@ -151,7 +151,7 @@ function controllerQuitTeam($request)
     }
 }
 
-function controllerCreateTeam($request,$files)
+function controllerCreateTeam($request, $files)
 {
     // Check if the user is logged in
     require_once("controller/authentication.php");
@@ -233,4 +233,39 @@ function isMember($members, $user)
     return $res;
 }
 
-// TODO: isOwner($user,$team = null) if team is null then check if user owns any team (if it seem too dangerous split into 2 functions)
+/**
+ * check whether current user is the owner of the team
+ * @param string $teamName
+ * @return bool
+ */
+function isTeamOwner($teamName)
+{
+    require_once("controller/authentication.php");
+    $user = getCurrentUser();
+    if (!empty($user)) {
+        require_once("model/teams.php");
+        $owner = selectTeamOwner($teamName);
+        $res = $owner["email"] === $user["email"];
+    }
+    return $res ?? false;
+}
+
+/**
+ * check if user owns any team
+ * @return bool
+ */
+function ownsTeams($email)
+{
+    require_once("model/users.php");
+    $teams = selectOwnedTeams($email);
+    return !empty($teams);
+}
+
+/**
+ * check if user has the permissions to create a team
+ * @return bool
+ */
+function canCreateTeam()
+{
+    return isAuthenticated() && !ownsTeams($_SESSION["user"]["email"]);
+}
