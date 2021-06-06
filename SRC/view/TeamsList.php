@@ -7,12 +7,17 @@
  * @param int $maxPageTeams max page for pagination
  * @return void
  */
-function viewTeamsList($teams, $pageteams, $maxPageTeams)
+function viewTeamsList($teams, $pageteams, $maxPageTeams, $canCreate = false)
 {
     $title = "Teams";
 
     ob_start();
-    ?>
+?>
+    <?php if ($canCreate) { ?>
+        <div class="flex justify-end w-full my-2 ">
+            <a href="/createTeam" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une équipe</a>
+        </div>
+    <?php } ?>
     <? /* List */ ?>
     <div class="flex flex-row justify-center w-full px-6 py-3 bg-white rounded-md filter drop-shadow-md">
         <div class="flex flex-col w-full space-y-3">
@@ -53,10 +58,10 @@ function viewTeamsList($teams, $pageteams, $maxPageTeams)
                 <?php } ?>
                 <div class="px-3 py-2">...</div>
                 <a href="/teams?page=<?= $maxPageTeams ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white"><?= $maxPageTeams ?></a>
-                <?php
+            <?php
             } else if (($maxPageTeams - $pageteams) < 4) {
                 // late
-                ?>
+            ?>
                 <a href="/teams?page=1" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white">1</a>
                 <div class="px-3 py-2">...</div>
                 <?php for ($i = $maxPageTeams - 4; $i <= $maxPageTeams; $i++) { ?>
@@ -80,7 +85,7 @@ function viewTeamsList($teams, $pageteams, $maxPageTeams)
             </a>
         </div>
     </div>
-    <?php
+<?php
     $content = ob_get_clean();
 
     require_once "view/template.php";

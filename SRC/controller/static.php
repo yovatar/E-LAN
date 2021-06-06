@@ -51,15 +51,6 @@ function controllerCondition()
 }
 
 /**
- * displays team creation form
- * @return void
- */
-function controllerCreateTeams(){
-    require_once("view/createTeams.php");
-    viewCreateTeams();
-}
-
-/**
  * displays the lan creation form
  * @return void
  */

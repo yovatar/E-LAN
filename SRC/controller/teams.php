@@ -151,6 +151,24 @@ function controllerQuitTeam($request){
     }
 }
 
+function controllerCreateTeam($request){
+    // Check if the user is logged in
+    require_once("controller/authentication.php");
+    if(isAuthenticated()){
+        // Todo: check if user owns a team
+        // Check if there were inputs
+        if(empty($request)){
+            // Show creation form
+            require_once("view/createTeams.php");
+            viewCreateTeams();        
+        } else {
+            // Handle team creation
+        }
+
+    } else {
+        header("Location : /authentication/login");
+    }
+}
 
 /**
  * Check if an user is part of a given team
@@ -169,3 +187,5 @@ function isMember($members, $user)
     }
     return $res;
 }
+
+// TODO: isOwner($user,$team = null) if team is null then check if user owns any team (if it seem too dangerous split into 2 functions)

@@ -71,8 +71,8 @@ if ($api == false) {
         case '/quitTeam':
             controllerQuitTeam($_POST);
             break;
-        case '/createTeams':
-            controllerCreateTeams();
+        case '/createTeam':
+            controllerCreateTeam($_POST);
             break;
         case '/createLAN':
             controllerCreateLAN();
