@@ -28,9 +28,11 @@ function controllerTeam($name)
                 $res = isMember($team["members"], $user);
             }
         }
+        $user = getCurrentUser();
+        $isOwner = $user["id"] === $team["owner_id"];
         // Show team page
         require_once("view/team.php");
-        viewTeam($team, $res);
+        viewTeam($team, $res, $isOwner);
     }
 }
 

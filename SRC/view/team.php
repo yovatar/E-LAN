@@ -6,7 +6,7 @@
  * @param bool $isMember
  * @return void
  */
-function viewTeam($team, $isMember)
+function viewTeam($team, $isMember, $isOwner)
 {
     $title = $team["name"] ?? "Error";
 
@@ -19,7 +19,7 @@ function viewTeam($team, $isMember)
                 <table class="table w-full border-collapse rounded-md table-auto ring-purple-500 ring-2">
                     <thead class="table-header-group min-w-full divide-blueGray-200">
                         <tr class="table-row">
-                            <th class="table-cell px-6 py-3 text-2xl font-medium " colspan="2">Membres</th>
+                            <th class="table-cell px-6 py-3 text-2xl font-medium " colspan="<?= $isOwner ? "4" : "2" ?>">Membres</th>
                         </tr>
                     </thead>
                     <tbody class="table-row-group text-lg ">
@@ -43,6 +43,19 @@ function viewTeam($team, $isMember)
                                         </svg>
                                     <?php } ?>
                                 </td>
+                                <?php if ($isOwner) { ?>
+                                    <td class="items-center table-cell px-3 py-1">
+                                        <form action="/team/kick" method="POST" class="flex flex-row items-center">
+                                            <input type="hidden" name="team" value="<?= $team["name"] ?>">
+                                            <input type="hidden" name="target" value="<?= $member["email"] ?>">
+                                            <button type="submit" class="p-1 rounded-full hover:text-purple-500 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>
