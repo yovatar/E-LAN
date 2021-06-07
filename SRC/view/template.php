@@ -28,7 +28,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         <div class="flex flex-row justify-between">
             <div class="flex flex-row space-x-5">
                 <div class="flex flex-col justify-center ">
-                    <img class="h-16" alt="E-LAN logo" src="public/images/Logo_E-LAN-removebg.png">
+                    <img class="h-16" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
                     <p class="font-black text-purple-800 bg-purple-100 ml-1 mr-1">E-LAN</p>
                 </div>
                 <div class="flex flex-col justify-center">
