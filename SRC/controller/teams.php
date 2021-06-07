@@ -29,10 +29,9 @@ function controllerTeam($name)
             }
         }
         $user = getCurrentUser();
-        $isOwner = $user["id"] === $team["owner_id"];
         // Show team page
         require_once("view/team.php");
-        viewTeam($team, $res, $isOwner);
+        viewTeam($team, $res, isTeamOwner($name));
     }
 }
 
@@ -223,6 +222,50 @@ function controllerCreateTeam($request, $files)
 }
 
 /**
+ * Handles kick requests
+ * @param array $request expects $_POST
+ * @return void
+ */
+function controllerKickMember($request)
+{
+    require_once("controller/authentication.php");
+    if (isAuthenticated()) {
+        // Validate input
+        $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            header("Location: /teams?error=Aucun nom d'équipe donné");
+        } else {
+            try {
+                // Check for permissions
+                if (!isTeamOwner($teamName)) throw new Exception("Vous n'êtes pas le propriétaire de cette équipe");
+                // Validate input
+                if (empty($request["target"])) throw new Exception("Aucun utilisateur ciblé");
+                // Check if target is valid
+                require_once("model/teams.php");
+                require_once("model/users.php");
+                $target = selectUserByEmail($request["target"]);
+                if (empty($target)) throw new Exception("Utilisateur cible invalide");
+                $team = selectTeamByName($teamName);
+                $team["members"] = selectTeamUsers($teamName);
+                $tmp = false;
+                foreach ($team["members"] as $member) {
+                    if ($member["email"] == $target["email"]) $tmp = true;
+                }
+                if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
+                // Remove target from the team
+                $affected = deleteTeamMember($team["id"], $target["id"]);
+                if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
+                header("Location: /teams/$teamName");
+            } catch (Exception $e) {
+                header("Location: /teams/$teamName?error=" . $e->getMessage());
+            }
+        }
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
+/**
  * Check if an user is part of a given team
  * @param array $members
  * @param array $user
@@ -252,7 +295,11 @@ function isTeamOwner($teamName)
     if (!empty($user)) {
         require_once("model/teams.php");
         $owner = selectTeamOwner($teamName);
-        $res = $owner["email"] === $user["email"];
+        if (empty($owner)) {
+            $res = false;
+        } else {
+            $res = $owner["email"] === $user["email"];
+        }
     }
     return $res ?? false;
 }

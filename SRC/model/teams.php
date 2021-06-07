@@ -59,7 +59,7 @@ function selectTeamsList($limit, $offset = 0)
 function selectTeamOwner($teamName)
 {
     require_once("model/database.php");
-    $query = "SELECT users.id, users.username, users.email FROM users LEFT JOIN users ON teams.owner_id = users.id WHERE teams.name LIKE :teamName LIMIT 1";
+    $query = "SELECT users.id, users.username, users.email FROM users LEFT JOIN teams ON teams.owner_id = users.id WHERE teams.name LIKE :teamName LIMIT 1";
     return executeQuerySelect($query, createBinds([[":teamName", $teamName]]))[0] ?? null;
 }
 
@@ -107,7 +107,7 @@ function updateTeamImage($teamId, $imageId)
  * Remove an user from a team
  * @param int $teamId
  * @param int $userId
- * @return int
+ * @return int|null number of affected lines
  */
 function deleteTeamMember($teamId, $userId)
 {
