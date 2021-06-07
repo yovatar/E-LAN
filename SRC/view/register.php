@@ -33,7 +33,7 @@ function viewRegister()
                             })
                     } else {
                         available = null
-                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 h-11">
                     <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
@@ -67,7 +67,7 @@ function viewRegister()
                             })
                     } else {
                         available = null
-                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 h-11 focus:ring-purple-500">
                     <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
@@ -82,12 +82,12 @@ function viewRegister()
                 <p x-cloak x-show="available === false" class="text-red-500">Email déjà Utilisé</p>
             </div>
             <label for="lastName">Nom</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="password">Mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required class="w-full border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -101,7 +101,7 @@ function viewRegister()
             </div>
             <label for="passwordCheck">Confirmation du mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required class="w-full border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
