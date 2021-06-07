@@ -2,7 +2,7 @@
 
 /**
  * Fetch every team in the database
- * @return array|null
+ * @return array|null teams 2D array
  */
 function selectTeams()
 {
@@ -14,7 +14,7 @@ function selectTeams()
 /**
  * Fetch a team
  * @param string $name
- * @return array|null
+ * @return array|null team 1D array
  */
 function selectTeamByName($name)
 {
@@ -26,7 +26,7 @@ function selectTeamByName($name)
 /**
  * Fetches every team member
  * @param string $teamName
- * @return array|null
+ * @return array|null users 2D array
  */
 function selectTeamUsers($teamName)
 {
@@ -40,7 +40,7 @@ function selectTeamUsers($teamName)
  * Fetch teams for pagination
  * @param int $limit amount fetched
  * @param int $offset amount of matches skipped
- * @return array|null
+ * @return array|null teams 2D array
  */
 function selectTeamsList($limit, $offset = 0)
 {
@@ -54,12 +54,12 @@ function selectTeamsList($limit, $offset = 0)
 /**
  * fetch id, username and email of the team owner
  * @param string $teamName
- * @return array|null
+ * @return array|null team owner 1D array
  */
 function selectTeamOwner($teamName)
 {
     require_once("model/database.php");
-    $query = "SELECT users.id, users.username, users.email FROM users LEFT JOIN users ON teams.owner_id = users.id WHERE teams.name LIKE :teamName LIMIT 1";
+    $query = "SELECT users.id, users.username, users.email FROM users LEFT JOIN teams ON teams.owner_id = users.id WHERE teams.name LIKE :teamName LIMIT 1";
     return executeQuerySelect($query, createBinds([[":teamName", $teamName]]))[0] ?? null;
 }
 
@@ -68,7 +68,7 @@ function selectTeamOwner($teamName)
  * @param string $name
  * @param string $abbreviation
  * @param int $ownerId
- * @return int|null
+ * @return int|null insert id
  */
 function insertTeam($name, $abbreviation, $ownerId = null)
 {
@@ -81,7 +81,7 @@ function insertTeam($name, $abbreviation, $ownerId = null)
  * Add an user to a team
  * @param int $teamId
  * @param int $userId
- * @return int|null
+ * @return int|null insert id
  */
 function insertTeamMember($teamId, $userId)
 {
@@ -107,7 +107,7 @@ function updateTeamImage($teamId, $imageId)
  * Remove an user from a team
  * @param int $teamId
  * @param int $userId
- * @return int
+ * @return int|null number of affected lines
  */
 function deleteTeamMember($teamId, $userId)
 {
@@ -118,7 +118,7 @@ function deleteTeamMember($teamId, $userId)
 
 /**
  * Count the number of teams
- * @return int|null
+ * @return int|null number of teams
  */
 function countTeams()
 {

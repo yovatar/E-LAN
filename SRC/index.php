@@ -56,6 +56,9 @@ if ($api == false) {
         case '/teams':
             controllerTeamsList($_GET);
             break;
+        case '/team/kick':
+            controllerKickMember($_POST);
+            break;
         case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
             controllerTeam($res[1]);
             break;
@@ -72,7 +75,7 @@ if ($api == false) {
             controllerQuitTeam($_POST);
             break;
         case '/createTeam':
-            controllerCreateTeam($_POST,$_FILES);
+            controllerCreateTeam($_POST, $_FILES);
             break;
         case '/createLAN':
             controllerCreateLAN();
