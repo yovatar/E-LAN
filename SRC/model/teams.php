@@ -104,6 +104,19 @@ function updateTeamImage($teamId, $imageId)
 }
 
 /**
+ * update team owner
+ * @param int $teamId
+ * @param int $ownerId
+ * @return int|null number of affected rows
+ */
+function updateTeamOwner($teamId, $ownerId)
+{
+    require_once("model/database.php");
+    $query = "UPDATE teams SET owner_id = :ownerId WHERE id = :teamId";
+    return executeQueryIUDAffected($query, createBinds([[":ownerId", $ownerId, PDO::PARAM_INT], [":teamId", $teamId, PDO::PARAM_INT]]));
+}
+
+/**
  * Remove an user from a team
  * @param int $teamId
  * @param int $userId

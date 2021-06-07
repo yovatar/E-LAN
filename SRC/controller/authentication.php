@@ -174,5 +174,5 @@ function refreshLogin($email)
  */
 function getCurrentUser(){
     require_once("model/users.php");
-    return selectUserByEmail($_SESSION["user"]["email"]);
+    return selectUserByEmail($_SESSION["user"]["email"] ?? null);
 }

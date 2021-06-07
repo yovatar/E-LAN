@@ -255,11 +255,62 @@ function controllerKickMember($request)
                 }
                 if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
                 // Prevent self kicking
-                if($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous éjecter vous mêmes");
+                if ($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous éjecter vous mêmes");
                 // Remove target from the team
                 $affected = deleteTeamMember($team["id"], $target["id"]);
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
+                // Redirect to update visual
+                header("Location: /teams/$teamName");
+            } catch (Exception $e) {
+                // Redirect with error message
+                header("Location: /teams/$teamName?error=" . $e->getMessage());
+            }
+        }
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
+/**
+ * Handles ownership change requests
+ * @param array $request expects $_POST
+ * @return void
+ */
+function controllerGiveOwnership($request)
+{
+    require_once("controller/authentication.php");
+    if (isAuthenticated()) {
+        // Validate input
+        $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            header("Location: /teams?error=Aucun nom d'équipe donné");
+        } else {
+            try {
+                // Check for permissions
+                if (!isTeamOwner($teamName)) throw new Exception("Vous n'êtes pas le propriétaire de cette équipe");
+                // Validate input
+                if (empty($request["target"])) throw new Exception("Aucun utilisateur ciblé");
+                // Check if target is valid
+                require_once("model/teams.php");
+                require_once("model/users.php");
+                $target = selectUserByEmail($request["target"]);
+                if (empty($target)) throw new Exception("Utilisateur cible invalide");
+                // Fetch team info
+                $team = selectTeamByName($teamName);
+                $team["members"] = selectTeamUsers($teamName);
+                // Check if target is found in the team
+                $tmp = false;
+                foreach ($team["members"] as $member) {
+                    if ($member["email"] == $target["email"]) $tmp = true;
+                }
+                if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
+                // Prevent self kicking
+                if ($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous sélectionner vous mêmes");
+                // Update owner
+                $affected = updateTeamOwner($team["id"], $target["id"]);
+                // Handle save errors
+                if (empty($affected)) throw new Exception("Une erreur est survenue lors du changement.");
                 // Redirect to update visual
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
