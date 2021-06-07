@@ -4,6 +4,9 @@ Spruce.store('register', {
      */
     username: {
         available: null,
+        /**
+         * Check if username is available
+         */
         check(username) {
             if (username.length) {
                 $.post("/api/authentication/available/username", [{ name: "username", value: username }], (e) => {
@@ -24,6 +27,10 @@ Spruce.store('register', {
     email: {
         available: null,
         valid: null,
+        /**
+         * Check if email is valid and available
+         * @param {string} email
+         */
         check(email) {
             if (email.length) {
                 if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
@@ -51,16 +58,25 @@ Spruce.store('register', {
      */
     password: {
         valid: null,
-        password: null,
-        confirm: null,
-        set _password(value) {
-            this.password = value
+        _password: null,
+        _confirm: null,
+        get password(){
+            return this._password
+        },
+        set password(value) {
+            this._password = value
             this.check()
         },
-        set _confirm(value) {
-            this.confirm = value
+        get confirm() {
+            return this._confirm
+        },
+        set confirm(value) {
+            this._confirm = value
             this.check()
         },
+        /**
+         * Check if password matches
+         */
         check() {
             if (this.password && this.confirm) {
                 this.valid = this.password == this.confirm

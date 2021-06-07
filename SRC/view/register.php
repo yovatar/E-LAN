@@ -62,7 +62,7 @@ function viewRegister()
             <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="password">Mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="password" name="password" required @change="$store.register.password._password = $event.target.value" class="w-full border-2 rounded-md border-blueGray-200 h-11 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="password" name="password" required @change="$store.register.password.password = $event.target.value" class="w-full border-2 rounded-md border-blueGray-200 h-11 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -76,7 +76,7 @@ function viewRegister()
             </div>
             <label for="passwordCheck">Confirmation du mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required @change="$store.register.password._confirm = $event.target.value" class="w-full border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required @change="$store.register.password.confirm = $event.target.value" class="w-full border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
