@@ -1,20 +1,21 @@
-Spruce.store('passwordCheck', {
+Spruce.store('register', {
     valid: null,
+    passwordValid: null,
     password: null,
     confirm: null,
     set _password(value) {
         this.password = value
-        this.checkValid()
+        this.checkValidPassword()
     },
     set _confirm(value) {
         this.confirm = value
-        this.checkValid()
+        this.checkValidPassword()
     },
-    checkValid() {
+    checkValidPassword() {
         if (this.password && this.confirm) {
-            this.valid = this.password == this.confirm
+            this.passwordValid = this.password == this.confirm
         } else {
-            this.valid = null
+            this.passwordValid = null
         }
     }
 })
