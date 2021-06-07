@@ -85,7 +85,7 @@ function executeQueryIUDAffected($query, $binds = [])
  * This function is designed to insert value in database
  * @param string $query
  * @param array $binds [":queryBind",$value] for sql injection prevention
- * @return int|null : last inserted id | $statement->execute() return true is the insert was successful
+ * @return int|null : last inserted id
  */
 function executeQueryInsert($query, $binds = [])
 {
