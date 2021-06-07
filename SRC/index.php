@@ -59,6 +59,9 @@ if ($api == false) {
         case '/team/kick':
             controllerKickMember($_POST);
             break;
+        case '/team/ownership':
+            controllerGiveOwnership($_POST);
+            break;
         case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
             controllerTeam($res[1]);
             break;
