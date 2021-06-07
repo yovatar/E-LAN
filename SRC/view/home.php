@@ -13,7 +13,7 @@ function viewHome()
     <br>
     <div>
         <h1 class="font-mono text-5xl font-bold text-center text-gray-100 bg-gradient-to-r from-pink-400 to-purple-500">
-            E-LAN Acceuil</h1>
+            E-LAN Accueil</h1>
 
     </div>
     <div class="border-solid border-26 border-purple-300 mt-20 mb-20 rounded-md">
