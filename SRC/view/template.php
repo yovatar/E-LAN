@@ -63,8 +63,8 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>"
                             alt="icône utilisateur" class="object-cover w-10 h-10 rounded-full" @click="open = true">
                         <ul x-cloak x-show="open" @click.away="open = false"
-                            class="absolute px-4 py-2 text-black bg-white border border-gray-200 rounded-md text-base">
-                            <li><a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                            class="absolute px-4 py-2 text-base text-black bg-white border border-gray-200 rounded-md">
+                            <li><a class="px-1 rounded-md hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500"
                                     href="/settings/account">Compte</a></li>
                         </ul>
 
@@ -123,8 +123,8 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     </a>
                 </div>
                 <?php } else { ?>
-                <div class="flex flex-col space-y-2 mb-3">
-                    <a class="hover:underline focus:outline-none focus:ring-2 rounded-md px-1 focus:ring-purple-500"
+                <div class="flex flex-col mb-3 space-y-2">
+                    <a class="px-1 rounded-md hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500"
                         href="/settings/account">Compte</a>
                 </div>
 
@@ -189,6 +189,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         </template>
     </div>
     <?= $foot ?? "" ?>
+    <script src="/public/js/components.js"></script>
     <script type="module" src="/public/js/compiled/app.js"></script>
     <script src="/node_modules/alpine-magic-helpers/dist/index.js"></script>
     <script src="/node_modules/alpinejs/dist/alpine.js"></script>

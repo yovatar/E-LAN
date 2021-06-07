@@ -7,15 +7,17 @@
  * @param int $maxPage max page for pagination
  * @return void
  */
-function viewLansList($lans, $page, $maxPage)
+function viewLansList($lans, $page, $maxPage, $canCreate = false)
 {
     $title = "Lans";
 
     ob_start();
 ?>
-    <div class=" w-full flex justify-end my-2 ">
-        <button type="submit"class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700 "><a href=/createLAN >Créer une LAN</button>
-    </div>
+    <?php if($canCreate){ ?>
+        <div class="flex justify-end w-full my-2 ">
+            <a href="/createLAN" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une LAN</a>
+        </div>
+    <?php } ?>
     <? /* List */ ?>
     <div class="flex flex-row justify-center w-full px-6 py-3 bg-white rounded-md filter drop-shadow-md">
         <div class="flex flex-col w-full space-y-3">

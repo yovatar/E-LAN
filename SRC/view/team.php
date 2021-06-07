@@ -13,30 +13,40 @@ function viewTeam($team, $isMember)
     ob_start();
 ?>
     <div class="flex flex-col items-center">
-        <div class="flex flex-col-reverse justify-center w-auto px-4 py-2 bg-white rounded-md md:flex-row filter drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
+        <div class="flex flex-col-reverse justify-center w-full px-4 py-2 space-y-5 space-y-reverse bg-white rounded-md md:max-w-2xl md:flex-row filter md:drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
             <!-- Team members -->
-            <div>
-                <div class="overflow-hidden border-2 rounded-md border-blueGray-200">
-                    <div class="flex flex-col min-w-full divide-y-2 rounded-md table-auto divide-blueGray-200">
-                        <div class="flex flex-row">
-                            <div class="px-6 py-3 text-2xl font-medium">Membres</div>
-                        </div>
-                        <div class="flex flex-col text-lg divide-y divide-blueGray-200">
-                            <?php foreach ($team["members"] as $member) { ?>
-                                <div class="flex flex-row items-center px-6 py-3 space-x-3">
+            <div class="flex-grow">
+                <table class="table w-full border-collapse rounded-md table-auto ring-purple-500 ring-2">
+                    <thead class="table-header-group min-w-full divide-blueGray-200">
+                        <tr class="table-row">
+                            <th class="table-cell px-6 py-3 text-2xl font-medium " colspan="2">Membres</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-row-group text-lg ">
+                        <?php foreach ($team["members"] as $member) { ?>
+                            <tr class="table-row px-6 py-3 border-t-2 border-purple-500">
+                                <td class="table-cell px-3 py-1">
                                     <?php if (empty($member["path"])) { ?>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="object-cover w-6 h-6 text-white bg-purple-500 rounded-full" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="object-cover w-8 h-8 text-white bg-purple-500 rounded-full" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
                                         </svg>
                                     <?php } else { ?>
-                                        <img src="<?= $member["path"] ?>" alt="member profile image" class="object-cover w-6 h-6 rounded-full">
+                                        <img src="<?= $member["path"] ?>" alt="member profile image" class="object-cover w-8 h-8 rounded-full">
                                     <?php } ?>
-                                    <p><?= $member["username"] ?></p>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
+                                </td>
+                                <td class="flex flex-row items-center px-3 py-1">
+                                    <p class=text-xl><?= $member["username"] ?></p>
+                                    <?php if ($member["id"] == $team["owner_id"]) { ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 ml-3 text-yellow-300 fill-current" viewBox="0 0 24 24">
+                                            <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l2 13h14l2-13-5 3-4-6-4 6-5-3z" />
+                                            <circle cx="12" cy="14" r="2" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        </svg>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
             <!-- Team info -->
             <div class="flex flex-col items-center">
@@ -57,11 +67,15 @@ function viewTeam($team, $isMember)
                 <h1 class="text-2xl font-medium"><?= $team["name"] ?></h1>
                 <p class="text-xl"> <?= $team["abbreviation"] ?></p>
                 <?php if (!$isMember) { ?>
-                    <form action="/joinTeam" method="POST" class="mt-4">
+                    <form action="/joinTeam" method="POST" class="w-full mt-4 md:w-auto">
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
-                        <button class="px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
+                        <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
                     </form>
                 <?php } else { ?>
+                    <form action="/quitTeam" method="POST" class="w-full mt-4 md:w-auto">
+                        <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
+                        <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
+                    </form>
                 <?php } ?>
             </div>
         </div>

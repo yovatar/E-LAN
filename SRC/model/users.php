@@ -36,6 +36,19 @@ function selectUserByUsername($username)
 }
 
 /**
+ * fetch every team owned by an user
+ * @warn should only have one team but this can still be bypassed
+ * @param string $email
+ * @return array|null
+ */
+function selectOwnedTeams($email)
+{
+    require_once("model/database.php");
+    $query = "SELECT teams.* FROM teams LEFT JOIN users ON teams.owner_id = users.id WHERE users.email LIKE :email";
+    return executeQuerySelect($query, createBinds([[":email", $email]]));
+}
+
+/**
  * updates user image
  * @param int $userId
  * @param int $imageId

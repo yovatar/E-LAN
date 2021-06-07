@@ -3,16 +3,21 @@
 /**
  * Displays a list of Teams
  * @param array $teams teams to be displayed
- * @param int $pageteams current page for pagination
- * @param int $maxPageTeams max page for pagination
+ * @param int $page current page for pagination
+ * @param int $maxPage max page for pagination
  * @return void
  */
-function viewTeamsList($teams, $pageteams, $maxPageTeams)
+function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
 {
     $title = "Teams";
 
     ob_start();
-    ?>
+?>
+    <?php if ($canCreate) { ?>
+        <div class="flex justify-end w-full my-2 ">
+            <a href="/createTeam" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une équipe</a>
+        </div>
+    <?php } ?>
     <? /* List */ ?>
     <div class="flex flex-row justify-center w-full px-6 py-3 bg-white rounded-md filter drop-shadow-md">
         <div class="flex flex-col w-full space-y-3">
@@ -25,7 +30,7 @@ function viewTeamsList($teams, $pageteams, $maxPageTeams)
                     <?php } else { ?>
                         <img class="object-cover w-32 h-32 bg-white rounded-md" src="<?= $team["path"] ?>" alt="Team image">
                     <?php } ?>
-                    <div class="flex flex-col flex-grow space-y-2">
+                    <div class="flex flex-col items-center flex-grow space-y-2 md:items-start">
                         <h1 class="text-xl font-medium"><?= $team["name"] ?></h1>
                         <p class="text-base"><?= $team["abbreviation"] ?></p>
                     </div>
@@ -36,51 +41,51 @@ function viewTeamsList($teams, $pageteams, $maxPageTeams)
     <? /* Pagination */ ?>
     <div class="flex flex-row justify-center">
         <div role="pagination" class="flex flex-row items-center justify-center mt-3 overflow-hidden bg-white border-2 divide-x-2 rounded-md border-blueGray-200 w-min filter drop-shadow">
-            <a <?= $pageteams > 1 ? 'href="/teams?pageteams=' . ($pageteams - 1) . '"' : '' ?> class="px-3 py-2 h-full flex flex-col justify-center focus:outline-none focus:text-white focus:bg-purple-500 <?= $pageteams > 1 ? 'hover:bg-purple-500 hover:text-white' : 'bg-blueGray-100 text-gray-600' ?>">
+            <a <?= $page > 1 ? 'href="/teams?page=' . ($page - 1) . '"' : '' ?> class="px-3 py-2 h-full flex flex-col justify-center focus:outline-none focus:text-white focus:bg-purple-500 <?= $page > 1 ? 'hover:bg-purple-500 hover:text-white' : 'bg-blueGray-100 text-gray-600' ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
             </a>
-            <?php if ($maxPageTeams <= 7) {
+            <?php if ($maxPage <= 7) {
                 // all
-                for ($i = 1; $i <= $maxPageTeams; $i++) { ?>
-                    <a href="/teams?pageteams=<?= $i ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($pageteams == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
+                for ($i = 1; $i <= $maxPage; $i++) { ?>
+                    <a href="/teams?page=<?= $i ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($page == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
                 <?php }
-            } else if ($pageteams <= 4) {
+            } else if ($page <= 4) {
                 // early
                 for ($i = 1; $i <= 5; $i++) { ?>
-                    <a href="/teams?pageteams=<?= $i ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($pageteams == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
+                    <a href="/teams?page=<?= $i ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($page == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
                 <?php } ?>
                 <div class="px-3 py-2">...</div>
-                <a href="/teams?page=<?= $maxPageTeams ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white"><?= $maxPageTeams ?></a>
-                <?php
-            } else if (($maxPageTeams - $pageteams) < 4) {
+                <a href="/teams?page=<?= $maxPage ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white"><?= $maxPage ?></a>
+            <?php
+            } else if (($maxPage - $page) < 4) {
                 // late
-                ?>
+            ?>
                 <a href="/teams?page=1" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white">1</a>
                 <div class="px-3 py-2">...</div>
-                <?php for ($i = $maxPageTeams - 4; $i <= $maxPageTeams; $i++) { ?>
-                    <a href="/teams?pageteams=<?= $i ?>" class="py-2 px-3 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($pageteams == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
+                <?php for ($i = $maxPage - 4; $i <= $maxPage; $i++) { ?>
+                    <a href="/teams?page=<?= $i ?>" class="py-2 px-3 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($page == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
                 <?php }
             } else {
                 // middle
                 ?>
-                <a href="/teams?pageteams=1" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white">1</a>
+                <a href="/teams?page=1" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white">1</a>
                 <div class="px-3 py-2">...</div>
-                <?php for ($i = $pageteams - 1; $i <= $pageteams + 1; $i++) {  ?>
-                    <a href="/teams?pageteams=<?= $i ?>" class="py-2 px-3 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($pageteams == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
+                <?php for ($i = $page - 1; $i <= $page + 1; $i++) {  ?>
+                    <a href="/teams?page=<?= $i ?>" class="py-2 px-3 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white<?= ($page == $i) ? " bg-purple-100" : "" ?>"><?= $i ?></a>
                 <?php } ?>
                 <div class="px-3 py-2">...</div>
-                <a href="/teams?pageteams=<?= $maxPageTeams ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white"><?= $maxPageTeams ?></a>
+                <a href="/teams?page=<?= $maxPage ?>" class="px-3 py-2 hover:bg-purple-500 hover:text-white focus:outline-none focus:bg-purple-500 focus:text-white"><?= $maxPage ?></a>
             <?php } ?>
-            <a <?= $pageteams < $maxPageTeams ? 'href="/teams?pageteams=' . ($pageteams + 1) . '"' : '' ?> class="px-3 py-2 h-full flex flex-col justify-center focus:outline-none focus:text-white focus:bg-purple-500 <?= $pageteams < $maxPageTeams ? 'hover:bg-purple-500 hover:text-white' : 'bg-blueGray-100 text-gray-600' ?>">
+            <a <?= $page < $maxPage ? 'href="/teams?page=' . ($page + 1) . '"' : '' ?> class="px-3 py-2 h-full flex flex-col justify-center focus:outline-none focus:text-white focus:bg-purple-500 <?= $page < $maxPage ? 'hover:bg-purple-500 hover:text-white' : 'bg-blueGray-100 text-gray-600' ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
             </a>
         </div>
     </div>
-    <?php
+<?php
     $content = ob_get_clean();
 
     require_once "view/template.php";
