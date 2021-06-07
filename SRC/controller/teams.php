@@ -252,6 +252,7 @@ function controllerKickMember($request)
                     if ($member["email"] == $target["email"]) $tmp = true;
                 }
                 if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
+                if($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous éjecter vous mêmes");
                 // Remove target from the team
                 $affected = deleteTeamMember($team["id"], $target["id"]);
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
