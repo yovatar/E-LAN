@@ -27,15 +27,15 @@ function viewTemplate($title, $content, $head = null, $foot = null)
     <header role="navigation" x-data="{ open: false }" class="flex flex-col p-4 text-xl text-white bg-purple-500">
         <div class="flex flex-row justify-between">
             <div class="flex flex-row space-x-5">
-                <div class="flex flex-col justify-center ">
-                    <img class="h-16" alt="E-LAN logo" src="public/images/Logo_E-LAN-removebg.png">
-                    <p class="font-black text-purple-800 bg-purple-100 ml-1 mr-1">E-LAN</p>
-                </div>
+                <a href="/" class="flex flex-row items-center justify-center space-x-2 ">
+                    <img class="h-16" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
+                    <p class="ml-1 mr-1 font-black text-white">E-LAN</p>
+                </a>
                 <div class="flex flex-col justify-center">
                     <div class="items-center hidden space-x-3 lg:flex">
-                        <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900 font-bold font-bold ml-10">Home</a>
-                        <a href="/lans" class="h-full hover:text-purple-900 focus:text-purple-900 font-bold font-bold">Lans</a>
-                        <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900 font-bold font-bold">Teams</a>
+                        <a href="/home" class="h-full ml-10 font-bold hover:text-purple-900 focus:text-purple-900">Home</a>
+                        <a href="/lans" class="h-full font-bold hover:text-purple-900 focus:text-purple-900">Lans</a>
+                        <a href="/teams" class="h-full font-bold hover:text-purple-900 focus:text-purple-900">Teams</a>
                     </div>
                 </div>
             </div>
