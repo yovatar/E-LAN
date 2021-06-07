@@ -1,5 +1,5 @@
 Spruce.store('register', {
-    valid: null,
+    valid: null, // Whether the form is valid
     usernameValid: null,
     emailValid: null,
     passwordValid: null,
@@ -45,6 +45,7 @@ Spruce.store('register', {
         } else {
             this.usernameValid = null
         }
+        this.checkValid()
     },
     /**
      * Check if the email is available with a post request
@@ -61,6 +62,7 @@ Spruce.store('register', {
         } else {
             this.emailValid = null
         }
+        this.checkValid()
     },
     /**
      * Check if every required values are valid
@@ -69,7 +71,7 @@ Spruce.store('register', {
         if (this.passwordValid && this.usernameValid && this.emailValid) {
             this.valid = true
         } else {
-            this.valid = false
+            this.valid = null
         }
     }
 })

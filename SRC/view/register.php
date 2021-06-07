@@ -11,7 +11,15 @@ function viewRegister()
     ob_start();
 ?>
     <div class="flex flex-row justify-center w-full">
-        <form action="/authentication/register" method="POST" class="flex flex-col px-6 py-3 space-y-2 bg-white rounded-md filter drop-shadow-md">
+        <form role="register form" x-data :class="{'md:ring-2 md:ring-red-500 box-border border-4 border-red-500 md:border-none':$store.register.valid === false}" action="/authentication/register" method="POST" class="flex flex-col w-full px-6 py-3 space-y-2 bg-white md:rounded-md filter drop-shadow-md md:w-auto">
+            <div x-show="$store.register.valid === false" x-cloak class="flex flex-row items-center justify-between px-4 py-2 text-white bg-red-500 rounded-md">
+                <p class="text-lg font-medium md:text-2xl">Vérifiez que vos données soient valides</p>
+                <button type="button" class="flex flex-col justify-center focus:outline-none hover:text-red-900 focus:text-red-900" @click="$store.register.valid = null">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
             <h1 class="mb-2 text-xl font-medium">Inscription</h1>
             <label for="username">Nom d'utilisateur</label>
             <div role="username field" class="flex flex-col" x-data="{available : null}">
@@ -79,8 +87,9 @@ function viewRegister()
                     </svg>
                 </button>
             </div>
+            <p x-cloak x-show="$store.register.passwordValid === false" class="text-red-500">Les mots de passes ne correspondent pas</p>
             <div role="submit" x-data class="flex flex-col space-y-2 lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
-                <button type="submit" class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700" @click="if(!$store.register.valid)$event.preventDefault()">
+                <button type="submit" class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700" @click="if(!$store.register.valid){$event.preventDefault(); $store.register.valid = false}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                     </svg>
