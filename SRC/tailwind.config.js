@@ -86,6 +86,7 @@ module.exports = {
       dropShadow: ['hover', 'focus'],
       backgroundColor: ['active'],
       textColor: ['active'],
+      ringColor: ['active'],
     },
   },
   plugins: [

@@ -43,12 +43,12 @@ function viewTeam($team, $isMember, $isOwner)
                                         </svg>
                                     <?php } ?>
                                 </td>
-                                <?php if ($isOwner) { ?>
+                                <?php if ($isOwner && $member["id"] != $team["owner_id"]) { ?>
                                     <td class="items-center table-cell px-3 py-1">
                                         <form action="/team/kick" method="POST" class="flex flex-row items-center">
                                             <input type="hidden" name="team" value="<?= $team["name"] ?>">
                                             <input type="hidden" name="target" value="<?= $member["email"] ?>">
-                                            <button type="submit" class="p-1 rounded-full hover:text-purple-500 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
+                                            <button type="submit" class="p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
                                                 </svg>
