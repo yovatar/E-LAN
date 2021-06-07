@@ -58,6 +58,25 @@ function viewTeam($team, $isMember, $isOwner)
                                         <?php } ?>
                                     </td>
                                 <?php } ?>
+                                <?php if ($isOwner) { ?>
+                                    <td class="items-center table-cell px-3 py-1">
+                                        <?php if ($member["id"] != $team["owner_id"]) { ?>
+                                            <form action="/team/ownership" method="POST" class="flex flex-row items-center">
+                                                <input type="hidden" name="team" value="<?= $team["name"] ?>">
+                                                <input type="hidden" name="target" value="<?= $member["email"] ?>">
+                                                <button type="submit" class="flex flex-row items-center p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-yellow-300 fill-current" viewBox="0 0 24 24">
+                                                        <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l2 13h14l2-13-5 3-4-6-4 6-5-3z" />
+                                                        <circle cx="12" cy="14" r="2" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        <?php } ?>
+                                    </td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>
