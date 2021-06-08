@@ -28,7 +28,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         <div class="flex flex-row justify-between">
             <div class="flex flex-row space-x-5">
                 <a href="/" class="flex flex-row items-center justify-center space-x-2 ">
-                    <img class="h-16" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
+                    <img class="object-contain h-14" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
                     <p class="ml-1 mr-1 font-black text-white">E-LAN</p>
                 </a>
                 <div class="flex flex-col justify-center">
@@ -73,7 +73,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
                         <button type="submit"
-                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -139,7 +139,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     <form action="/authentication/logout" method="POST">
                         <input type="hidden" name="confirm" value="true">
                         <button type="submit"
-                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -193,6 +193,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
     <script src="/public/js/components.js"></script>
     <script type="module" src="/public/js/compiled/app.js"></script>
     <script src="/node_modules/alpine-magic-helpers/dist/index.js"></script>
+    <script src="/node_modules/@ryangjchandler/spruce/dist/spruce.umd.js"></script>
     <script src="/node_modules/alpinejs/dist/alpine.js"></script>
 </body>
 
