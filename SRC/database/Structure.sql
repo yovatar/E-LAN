@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `elan`.`images` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `path` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `UniqueImage` (`path` ASC) VISIBLE)
+  UNIQUE INDEX `UniqueImage` (`path` ASC))
  ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`users`
@@ -122,9 +122,9 @@ CREATE TABLE IF NOT EXISTS `elan`.`teams` (
   `owner_id` INT NULL,
   `images_id` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `UniqueTeam` (`name` ASC) VISIBLE,
-  INDEX `fk_Teams_Users1_idx` (`owner_id` ASC) INVISIBLE,
-  INDEX `fk_teams_images1_idx` (`images_id` ASC) VISIBLE,
+  UNIQUE INDEX `UniqueTeam` (`name` ASC),
+  INDEX `fk_Teams_Users1_idx` (`owner_id` ASC),
+  INDEX `fk_teams_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_Teams_Users1`
     FOREIGN KEY (`owner_id`)
     REFERENCES `elan`.`users` (`id`)
