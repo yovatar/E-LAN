@@ -105,7 +105,7 @@ function viewRegister()
 
     ob_start();
     ?>
-    <script src="/public/js/register.js" defer></script>
+    <script src="/public/js/register.js"></script>
 <?php
     $scripts = ob_get_clean();
 
