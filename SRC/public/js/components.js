@@ -29,12 +29,6 @@ document.addEventListener("alpine:initializing", () => {
 
     }))
 
-    Alpine.data('toastArea', {
-        test() {
-            return "this is a test"
-        }
-    })
-
     Alpine.store('toasts', {
         toasts: [],
         error(message) {

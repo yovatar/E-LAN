@@ -160,10 +160,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         <?= $foot ?? "" ?>
         <script src="/public/js/components.js"></script>
         <script type="module" src="/public/js/compiled/app.js"></script>
-        <!-- <script src="/node_modules/alpine-magic-helpers/dist/index.js"></script> -->
-        <!-- <script src="/node_modules/@ryangjchandler/spruce/dist/spruce.umd.js"></script> -->
-        <!-- <script src="/node_modules/alpinejs/dist/alpine.js"></script> -->
-        <script src="/public/js/alpinev3.js"></script>
+        <script src="/node_modules/alpinejs/dist/cdn.min.js"></script>
     </body>
 
     </html>
