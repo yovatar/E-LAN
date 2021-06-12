@@ -29,6 +29,19 @@ document.addEventListener("alpine:initializing", () => {
 
     }))
 
+    Alpine.data('modal', () => ({
+        open: false,
+
+        toggle() {
+            this.open = !this.open
+        }
+
+    }))
+
+    Alpine.store('modal',{
+        
+    })
+
     Alpine.store('toasts', {
         toasts: [],
         error(message) {

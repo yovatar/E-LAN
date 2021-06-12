@@ -46,10 +46,10 @@ function viewTeam($team, $isMember, $isOwner)
                                 <?php if ($isOwner) { ?>
                                     <td class="items-center table-cell px-3 py-1">
                                         <?php if ($member["id"] != $team["owner_id"]) { ?>
-                                            <form action="/team/kick" method="POST" class="flex flex-row items-center">
+                                            <form x-data action="/team/kick" method="POST" class="flex flex-row items-center">
                                                 <input type="hidden" name="team" value="<?= $team["name"] ?>">
                                                 <input type="hidden" name="target" value="<?= $member["email"] ?>">
-                                                <button type="submit" class="p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
+                                                <button type="submit" class="p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500" @click="$event.preventDefault();$store.modal.kick.team = '<?=$team["name"]?>';$store.modal.kick.username = '<?=$member["username"]?>';$store.modal.kick.member = '<?=$member["email"]?>';$store.modal.kick.open = true;">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
                                                     </svg>
@@ -113,6 +113,27 @@ function viewTeam($team, $isMember, $isOwner)
                 <?php } ?>
             </div>
         </div>
+    </div>
+    <div x-cloak x-data x-show="$store.modal.kick.open" x-init="$store.modal.kick = {open:false,team:null,member:null,username:null}" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.kick.open && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
+        <form action="/team/kick" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
+            <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
+                <h2 class="font-medium">Expulsion</h2>
+                <button type="button" @click="$store.modal.kick.open = false">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-row items-center px-4 py-2">
+                    <p>Voulez-vous vraiment expulser <span class="text-purple-700" x-text="$store.modal.kick.username"></span> ?</p>
+            </div>
+            <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
+                <input type="hidden" name="team" :value="$store.modal.kick.team">
+                <input type="hidden" name="target" :value="$store.modal.kick.member">
+                <button type="button" @click="$store.modal.kick.open = false" class="px-4 py-2 text-white rounded-md bg-blueGray-500">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md">Oui</button>
+            </div>
+        </form>
     </div>
 <?php
     $content = ob_get_clean();
