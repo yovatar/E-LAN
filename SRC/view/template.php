@@ -24,7 +24,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
     </head>
 
     <body class="flex flex-col justify-between min-h-screen bg-white">
-        <header role="navigation" x-data="{ open: false }" class="flex flex-col p-4 text-xl text-white bg-purple-500">
+        <header role="navigation" x-data="dropdown" class="flex flex-col p-4 text-xl text-white bg-purple-500">
             <div class="flex flex-row justify-between">
                 <div class="flex flex-row space-x-5">
                     <a href="/" class="flex flex-row items-center justify-center space-x-2 ">
@@ -56,7 +56,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                             </a>
                         <?php } else { ?>
 
-                            <div role="dropdown profil" x-data="{open : false}" class="relative">
+                            <div role="dropdown profil" x-data="dropdown" class="relative">
                                 <div class="flex flex-row items-center space-x-2 cursor-pointer" @click="open = true">
                                     <p class="font-medium"><?= $_SESSION["user"]["username"] ?></p>
                                     <img src="<?= $_SESSION["user"]["image"]["path"] ?? "/public/images/userDefault.jpg" ?>" alt="icône utilisateur" class="object-cover w-10 h-10 bg-white rounded-full">
@@ -78,7 +78,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                         <?php } ?>
                     </div>
                 </div>
-                <button @click="open = !open" :class="{'brightness-90':open}" class="px-3 py-2 lg:hidden filter focus:text-blueGray-400">
+                <button @click="toggle()" :class="{'brightness-90':open}" class="px-3 py-2 lg:hidden filter focus:text-blueGray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -145,17 +145,11 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 <a href="/condition" class="text-center hover:text-gray-900 hover:underline">Conditions d’utilisation</a>
             </div>
         </footer>
-        <div role="toast area" x-data="{toasts : []}" @toast.window="toasts.push($event.detail)" class="fixed flex flex-col items-end space-y-2 right-2 bottom-4" x-init="$nextTick(() => {
-                const urlParams = new URLSearchParams(window.location.search)
-                if(urlParams.has('error')){
-                    $dispatch('toast', { text: urlParams.get('error'), class : 'bg-red-500 text-white' })
-                }
-            })
-        ">
-            <template x-for="(toast,index) in toasts" :key="index">
+        <div role="toast area" x-data class="fixed flex flex-col items-end space-y-2 right-2 bottom-4">
+            <template x-for="(toast,index) in $store.toasts.toasts" :key="index">
                 <div class="flex flex-row items-center px-3 py-2 space-x-2 rounded-md" :class="toast.class ?? 'bg-blue-500 text-white'">
-                    <p x-text="`${toast.text}`" class="whitespace-pre-wrap"></p>
-                    <button type="button" @click="toasts.splice(index,1)">
+                    <p x-text="`${toast.message}`" class="whitespace-pre-wrap"></p>
+                    <button type="button" @click="$store.toasts.toasts.splice(index,1)" class="focus:outline-none filter focus:brightness-75 hover:brightness-75">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
