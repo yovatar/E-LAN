@@ -43,6 +43,7 @@ function selectImageById($id)
  * @param string $fileName $_FILES["fileName"]
  * @param string $tempName $_FILES["tempName"]
  * @param string $directory file storage directory
+ * @throws Exception "invalid filename"
  * @return int|null last insert id
  */
 function insertImage($fileName, $tempName, $directory = "/public/upload/img/")

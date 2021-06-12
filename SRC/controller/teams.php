@@ -269,6 +269,7 @@ function controllerKickMember($request)
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
                 // Redirect to update visual
+                toast($target["username"] . " a été expulsé","success");
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
@@ -322,6 +323,7 @@ function controllerGiveOwnership($request)
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors du changement.");
                 // Redirect to update visual
+                toast($target["username"] . " est le nouveau propriétaire de l'équipe","success");
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message

@@ -58,6 +58,7 @@ function ControllerSettingsAccount($request, $files)
 
                         // Update session for next refresh
                         refreshLogin($_SESSION["user"]["email"]);
+                        toast("Image de profil mise à jour","success");
                         // TODO : remove old image from the database and storage
 
                         break;
