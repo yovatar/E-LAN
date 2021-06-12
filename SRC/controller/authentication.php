@@ -57,7 +57,8 @@ function controllerRegister($request)
                 // Redirect
                 header("Location: /home");
             } catch (Exception $e) {
-                header("Location: /authentication/register?error=" . $e->getMessage());
+                toast($e->getMessage(),"error");
+                header("Location: /authentication/register");
             }
         }
     }
@@ -99,7 +100,8 @@ function controllerLogin($request)
                 // Redirect
                 header("Location: /home");
             } catch (Exception $e) {
-                header("Location: /authentication/login?error=" . $e->getMessage());
+                toast($e->getMessage(),"error");
+                header("Location: /authentication/login");
             }
         }
     }

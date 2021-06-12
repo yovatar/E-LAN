@@ -75,7 +75,8 @@ function controllerJoinTeam($request)
         // Validate input
         $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Get user from the database to avoid issues
@@ -99,7 +100,8 @@ function controllerJoinTeam($request)
                 // Reload team page
                 header("Location: /teams/" . $teamName);
             } catch (Exception $e) {
-                header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/" . $teamName);
             }
         }
     } else {
@@ -120,7 +122,8 @@ function controllerQuitTeam($request)
         // Validate input
         $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Get user from the database to avoid issues
@@ -144,7 +147,8 @@ function controllerQuitTeam($request)
                 // Reload team page
                 header("Location: /teams/" . $teamName);
             } catch (Exception $e) {
-                header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/" . $teamName);
             }
         }
     } else {
@@ -175,7 +179,8 @@ function controllerCreateTeam($request, $files)
             $user = getCurrentUser();
             if ($user === null) {
                 logout();
-                header("Location: /authentication/login?error=Il semblerait que votre session utilisateur ait des problèmes");
+                toast("Il semblerait que votre session utilisateur ait des problèmes", "error");
+                header("Location: /authentication/login");
             } else {
                 try {
                     // Check input
@@ -206,13 +211,15 @@ function controllerCreateTeam($request, $files)
                             if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ajout de votre image d'équipe");
                         }
                     } catch (Exception $e) {
-                        header("Location: /teams/$name?error=" . $e->getMessage());
+                        toast($e->getMessage(), "error");
+                        header("Location: /teams/$name");
                     }
 
                     // Redirect to the team page
                     header("Location: /teams/$name");
                 } catch (Exception $e) {
-                    header("Location: /createTeam?error=" . $e->getMessage());
+                    toast($e->getMessage(), "error");
+                    header("Location: /createTeam");
                 }
             }
         }
@@ -233,7 +240,8 @@ function controllerKickMember($request)
         // Validate input
         $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Check for permissions
@@ -264,7 +272,8 @@ function controllerKickMember($request)
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
-                header("Location: /teams/$teamName?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
             }
         }
     } else {
@@ -284,7 +293,8 @@ function controllerGiveOwnership($request)
         // Validate input
         $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Check for permissions
@@ -315,7 +325,8 @@ function controllerGiveOwnership($request)
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
-                header("Location: /teams/$teamName?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
             }
         }
     } else {

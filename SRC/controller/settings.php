@@ -23,7 +23,8 @@ function ControllerSettingsAccount($request, $files)
             // Check validity
             if (empty($user)) {
                 logout();
-                header("Location: /authentication/login?error=Session mismatch");
+                toast("Session non cohérente","error");
+                header("Location: /authentication/login");
             } else {
                 // get profile picture if available
                 if ($user["image_id"] !== null) {
@@ -88,7 +89,8 @@ function ControllerSettingsAccount($request, $files)
                 // Redirect to account settings with updated infos
                 header("Location: /settings/account");
             } catch (Exception $e) {
-                header("Location: /settings/account?error=" . $e->getMessage());
+                toast($e->getMessage(),"error");
+                header("Location: /settings/account");
             }
         }
     } else {

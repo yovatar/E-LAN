@@ -20,7 +20,7 @@ function viewLogin()
         <label for="password">Mot de passe</label>
         <div role="passwordField" class="relative" x-data="{show : false}">
             <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required
-                class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 h-11">
             <button type="button" tabindex="-1"
                 class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 @click="show = !show">
@@ -41,7 +41,7 @@ function viewLogin()
                 </svg>
             </button>
         </div>
-        <div class="flex flex-col space-y-2  lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
+        <div class="flex flex-col space-y-2 lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
             <button type="submit"
                 class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
