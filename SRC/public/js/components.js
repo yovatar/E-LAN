@@ -45,18 +45,3 @@ document.addEventListener("alpine:initializing", () => {
         }
     })
 })
-
-document.addEventListener("alpine:initialized", () => {
-    fetchUrlToasts()
-})
-
-function fetchUrlToasts() {
-
-    // Check url query params for alert messages
-    const urlParams = new URLSearchParams(window.location.search)
-    if (urlParams.has('error')) Alpine.store('toasts').error(urlParams.get('error'))
-    if (urlParams.has('success')) Alpine.store('toasts').success(urlParams.get('success'))
-    if (urlParams.has('warning')) Alpine.store('toasts').warning(urlParams.get('warning'))
-    if (urlParams.has('info')) Alpine.store('toasts').info(urlParams.get('info'))
-
-}
