@@ -30,16 +30,21 @@ document.addEventListener("alpine:initializing", () => {
     }))
 
     Alpine.data('modal', () => ({
-        open: false,
-
-        toggle() {
-            this.open = !this.open
-        }
-
+        visible: false,
+        open() { this.visible = true },
+        close() { this.visible = false },
+        toggle() { this.visible = !this.visible }
     }))
 
-    Alpine.store('modal',{
-        
+    Alpine.store('modal', {
+        new(name, value = {
+            visible: false,
+            open() { this.visible = true },
+            close() { this.visible = false },
+            toggle() { this.visible = !this.visible }
+        }) {
+            this[name] = value
+        }
     })
 
     Alpine.store('toasts', {
