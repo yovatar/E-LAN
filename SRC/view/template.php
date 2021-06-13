@@ -20,6 +20,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $title ?? "no title" ?></title>
         <link rel="stylesheet" href="/public/css/style.css">
+        <link rel="shortcut icon" href="/public/images/elan-icon-circle.png" type="image/x-icon">
         <?= $head ?? "" ?>
     </head>
 
@@ -27,28 +28,28 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         <header role="navigation" x-data="dropdown" class="flex flex-col p-4 text-xl text-white bg-purple-500">
             <div class="flex flex-row justify-between">
                 <div class="flex flex-row space-x-5">
-                    <a href="/" class="flex flex-row items-center justify-center space-x-2 ">
-                        <img class="object-contain h-14" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
-                        <p class="ml-1 mr-1 font-black text-white">E-LAN</p>
+                    <a href="/" class="flex flex-row items-center justify-center px-2 space-x-2 transition-shadow border-2 border-transparent border-dashed focus:border-white focus:outline-none focus:text-purple-900">
+                        <img class="object-contain h-12" alt="E-LAN logo" src="/public/images/Logo_E-LAN-removebg.png">
+                        <p class="ml-1 mr-1 font-black">E-LAN</p>
                     </a>
                     <div class="flex flex-col justify-center">
                         <div class="items-center hidden space-x-3 lg:flex">
-                            <a href="/home" class="h-full ml-10 font-bold hover:text-purple-900 focus:text-purple-900">Home</a>
-                            <a href="/lans" class="h-full font-bold hover:text-purple-900 focus:text-purple-900">Lans</a>
-                            <a href="/teams" class="h-full font-bold hover:text-purple-900 focus:text-purple-900">Teams</a>
+                            <a href="/home" class="h-full ml-10 font-bold hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Home</a>
+                            <a href="/lans" class="h-full font-bold hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Lans</a>
+                            <a href="/teams" class="h-full font-bold hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Teams</a>
                         </div>
                     </div>
                 </div>
                 <div class="flex-col items-center justify-center hidden lg:flex">
                     <div class="flex flex-row items-center space-x-3">
                         <?php if (empty($_SESSION["user"])) { ?>
-                            <a href="/authentication/login" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <a href="/authentication/login" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                 </svg>
                                 <p>Connexion</p>
                             </a>
-                            <a href="/authentication/register" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <a href="/authentication/register" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                                 </svg>
@@ -68,7 +69,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                             </div>
                             <form action="/authentication/logout" method="POST">
                                 <input type="hidden" name="confirm" value="true">
-                                <button type="submit" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none">
+                                <button type="submit" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
                                     </svg>
@@ -84,23 +85,23 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                     </svg>
                 </button>
             </div>
-            <div x-cloak class="relative flex flex-col overflow-hidden transition-all duration-300 lg:hidden" x-ref="collapsible" x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'" x-bind:class="{ 'invisible': !open }">
+            <div x-cloak class="relative flex flex-col p-1 overflow-hidden transition-all duration-300 lg:hidden" x-ref="collapsible" x-bind:style="open ? `max-height:${$refs.collapsible.scrollHeight}px` : 'max-height:0'" x-bind:class="{ 'invisible': !open }">
                 <div class="flex flex-col items-center mt-5 border-t border-white">
-                    <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900">Home</a>
-                    <a href="/lans" class="h-full hover:text-purple-900 focus:text-purple-900">Lans</a>
-                    <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900">Teams</a>
+                    <a href="/home" class="h-full hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Home</a>
+                    <a href="/lans" class="h-full hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Lans</a>
+                    <a href="/teams" class="h-full hover:text-purple-900 focus:text-purple-900 focus:underline focus:outline-none hover:underline">Teams</a>
                 </div>
                 <div class="flex flex-col items-center pt-2 mt-2 text-lg border-t border-white">
                     <?php if (empty($_SESSION["user"])) { ?>
                         <div class="flex flex-row items-center space-x-3">
 
-                            <a href="/authentication/login" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <a href="/authentication/login" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                 </svg>
                                 <p>Connexion</p>
                             </a>
-                            <a href="/authentication/register" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white">
+                            <a href="/authentication/register" class="flex items-center px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                                 </svg>
@@ -121,7 +122,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
 
                             <form action="/authentication/logout" method="POST" class="flex flex-row items-center justify-center w-full">
                                 <input type="hidden" name="confirm" value="true">
-                                <button type="submit" class="flex items-center justify-center w-full px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none">
+                                <button type="submit" class="flex items-center justify-center w-full px-3 py-2 space-x-1 text-purple-500 bg-white rounded-md hover:bg-purple-900 hover:text-white focus:outline-none focus:ring-white focus:ring focus:text-white focus:bg-purple-900">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
                                     </svg>
@@ -140,9 +141,9 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         </main>
         <footer class="flex flex-col justify-center p-2">
             <div class="flex flex-col justify-center pt-2 font-medium text-gray-700 border-t-2 border-purple-500 lg:flex-row lg:space-x-3">
-                <a href="/about" class="text-center hover:text-gray-900 hover:underline">E-LAN</a>
-                <a href="/protection" class="text-center hover:text-gray-900 hover:underline">Protection des données</a>
-                <a href="/condition" class="text-center hover:text-gray-900 hover:underline">Conditions d’utilisation</a>
+                <a href="/about" class="text-center hover:text-gray-900 hover:underline focus:underline focus:outline-none focus:text-gray-900">E-LAN</a>
+                <a href="/protection" class="text-center hover:text-gray-900 hover:underline focus:underline focus:outline-none focus:text-gray-900">Protection des données</a>
+                <a href="/condition" class="text-center hover:text-gray-900 hover:underline focus:underline focus:outline-none focus:text-gray-900">Conditions d’utilisation</a>
             </div>
         </footer>
         <div role="toast area" x-data class="fixed flex flex-col items-end space-y-2 right-2 bottom-4">

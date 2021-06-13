@@ -132,7 +132,7 @@ function viewTeam($team, $isMember, $isOwner)
         <?php /* Header */ ?>
             <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
                 <h2 class="font-medium">Expulsion</h2>
-                <button type="button" @click="$store.modal.kick.close()">
+                <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.kick.close()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -146,8 +146,8 @@ function viewTeam($team, $isMember, $isOwner)
             <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
                 <input type="hidden" name="team" :value="$store.modal.kick.team">
                 <input type="hidden" name="target" :value="$store.modal.kick.member">
-                <button type="button" @click="$store.modal.kick.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500">Non</button>
-                <button class="px-4 py-2 text-white bg-red-500 rounded-md">Oui</button>
+                <button type="button" @click="$store.modal.kick.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
             </div>
         </form>
     </div>
@@ -157,7 +157,7 @@ function viewTeam($team, $isMember, $isOwner)
         <?php /* Header */ ?>
             <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
                 <h2 class="font-medium">Nouveau propriétaire</h2>
-                <button type="button" @click="$store.modal.giveOwner.close()">
+                <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.giveOwner.close()">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
                         <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
@@ -171,8 +171,8 @@ function viewTeam($team, $isMember, $isOwner)
             <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
                 <input type="hidden" name="team" :value="$store.modal.giveOwner.team">
                 <input type="hidden" name="target" :value="$store.modal.giveOwner.member">
-                <button type="button" @click="$store.modal.giveOwner.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500">Non</button>
-                <button class="px-4 py-2 text-white bg-red-500 rounded-md">Oui</button>
+                <button type="button" @click="$store.modal.giveOwner.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
             </div>
         </form>
     </div>
