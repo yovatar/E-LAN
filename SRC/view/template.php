@@ -163,18 +163,23 @@ function viewTemplate($title, $content, $head = null, $foot = null)
         ?>
             <script>
                 document.addEventListener("alpine:initialized", () => {
-                    <?php foreach ($toasts["errors"] as $error) { ?>
+
+                    <?php foreach ($toasts["errors"] ?? [] as $error) { ?>
                         Alpine.store('toasts').error("<?= $error ?>")
                     <?php } ?>
-                    <?php foreach ($toasts["successes"] as $success) { ?>
+
+                    <?php foreach ($toasts["successes"] ?? [] as $success) { ?>
                         Alpine.store('toasts').success("<?= $success ?>")
                     <?php } ?>
-                    <?php foreach ($toasts["infos"] as $info) { ?>
+
+                    <?php foreach ($toasts["infos"] ?? [] as $info) { ?>
                         Alpine.store('toasts').info("<?= $info ?>")
                     <?php } ?>
-                    <?php foreach ($toasts["warnings"] as $warning) { ?>
+
+                    <?php foreach ($toasts["warnings"] ?? [] as $warning) { ?>
                         Alpine.store('toasts').warning("<?= $warning ?>")
                     <?php } ?>
+                    
                 })
             </script>
         <?php } ?>
