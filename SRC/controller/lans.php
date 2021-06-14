@@ -24,5 +24,5 @@ function controllerLanList($request)
 
     // Display lans
     require_once("view/lansList.php");
-    viewLansList($lans, $page, ceil($count / $items));
+    viewLansList($lans, $page, ceil($count / $items),true);
 }
