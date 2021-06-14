@@ -36,21 +36,41 @@ function countLans()
     $query = "SELECT COUNT(*) as 'count' FROM lans";
     return (int)executeQuerySelect($query)[0]["count"] ?? null;
 }
-
+/**
+ * Insert a lan in the database
+ * @param string $name
+ * @param string $description
+ * @param int $places
+ * @param string $startTime
+ * @param string $endTime
+ * @return int|null insert id
+ */
 function insertLan($name, $description, $places, $startTime, $endTime)
 {
     require_once("model/database.php");
     $query = "INSERT INTO lans (name, description, places, startTime, endTime) VALUES (:name, :description, :places, :startTime, :endTime:" . ($name === null ? "NULL" : ":name") . ")";
     return executeQueryInsert($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime]]));
 }
-
+/**
+ * Fetch a lan
+ * @param string $name
+ * @return array|null lan 1D array
+ */
 function selectLanByName($name)
 {
     require_once("model/database.php");
     $query = "SELECT Lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id WHERE name LIKE :name LIMIT 1";
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
-
+/**
+ * Update lans infos
+ * @param string $name
+ * @param string $description
+ * @param int $places
+ * @param string $startTime
+ * @param string $endTime
+ * @return int|null updated values
+ */
 function updateLan($name, $description, $places, $startTime, $endTime, $lanid)
 {
     require_once("model/database.php");
