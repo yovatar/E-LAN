@@ -146,7 +146,7 @@ function viewTemplate($title, $content, $head = null, $foot = null)
                 <a href="/condition" class="text-center hover:text-gray-900 hover:underline focus:underline focus:outline-none focus:text-gray-900">Conditions d’utilisation</a>
             </div>
         </footer>
-        <div role="toast area" x-data class="fixed flex flex-col items-end space-y-2 right-2 bottom-4">
+        <div role="toast area" x-data class="fixed right-0 flex flex-col items-end space-y-2 md:right-2 bottom-4">
             <template x-for="(toast,index) in $store.toasts.toasts" :key="index">
                 <div class="flex flex-row items-center px-3 py-2 space-x-2 rounded-md" :class="toast.class ?? 'bg-blue-500 text-white'">
                     <p x-text="`${toast.message}`" class="whitespace-pre-wrap"></p>
