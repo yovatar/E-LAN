@@ -57,7 +57,7 @@ function controllerRegister($request)
                 // Redirect
                 header("Location: /home");
             } catch (Exception $e) {
-                toast($e->getMessage(),"error");
+                toast($e->getMessage(), "error");
                 header("Location: /authentication/register");
             }
         }
@@ -100,7 +100,7 @@ function controllerLogin($request)
                 // Redirect
                 header("Location: /home");
             } catch (Exception $e) {
-                toast($e->getMessage(),"error");
+                toast($e->getMessage(), "error");
                 header("Location: /authentication/login");
             }
         }
@@ -174,7 +174,25 @@ function refreshLogin($email)
  * gets the current user from the database using $_SESSION
  * @return array|null
  */
-function getCurrentUser(){
+function getCurrentUser()
+{
     require_once("model/users.php");
     return selectUserByEmail($_SESSION["user"]["email"] ?? null);
+}
+
+/**
+ * Check if the current user is a moderator
+ * @return bool
+ */
+function isModerator()
+{
+    if (isAuthenticated()) {
+        require_once("model/roles.php");
+        $user = getCurrentUser();
+        $role = selectRoleByName("moderator");
+        if ($user["role_id"] === $role["id"]) {
+            $res = true;
+        }
+    }
+    return $res ?? false;
 }

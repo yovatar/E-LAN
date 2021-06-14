@@ -24,5 +24,21 @@ function controllerLanList($request)
 
     // Display lans
     require_once("view/lansList.php");
-    viewLansList($lans, $page, ceil($count / $items),true);
+    viewLansList($lans, $page, ceil($count / $items), isModerator());
+}
+
+/**
+ * displays the lan creation form
+ * @return void
+ */
+function controllerCreateLAN()
+{
+    require_once("controller/authentication.php");
+    if (isModerator()) {
+        require_once("view/createLAN.php");
+        viewCreateLAN();
+    } else {
+        toast("Vous n'êtes pas modérateurs", "warning");
+        header("Location: /forbidden");
+    }
 }
