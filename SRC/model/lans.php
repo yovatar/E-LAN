@@ -49,5 +49,12 @@ function selectLanByName($name)
     require_once("model/database.php");
     $query = "SELECT Lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id WHERE name LIKE :name LIMIT 1";
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
-
 }
+
+function updateLanByOwner($name, $description, $places, $startTime, $endTime, $lanid)
+{
+    require_once("model/database.php");
+    $query = "UPDATE lans SET (name = :name, description= :description, places= :places, startTime= :startTime, endTime= :endTime) WHERE id = :lanid";
+    return executeQueryIUDAffected($query, createBinds([[[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime],[":lanid", $lanid] ]]));
+}
+
