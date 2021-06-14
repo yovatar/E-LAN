@@ -104,6 +104,19 @@ function updateTeamImage($teamId, $imageId)
 }
 
 /**
+ * update team owner
+ * @param int $teamId
+ * @param int $ownerId
+ * @return int|null number of affected rows
+ */
+function updateTeamOwner($teamId, $ownerId)
+{
+    require_once("model/database.php");
+    $query = "UPDATE teams SET owner_id = :ownerId WHERE id = :teamId";
+    return executeQueryIUDAffected($query, createBinds([[":ownerId", $ownerId, PDO::PARAM_INT], [":teamId", $teamId, PDO::PARAM_INT]]));
+}
+
+/**
  * Remove an user from a team
  * @param int $teamId
  * @param int $userId
@@ -117,12 +130,35 @@ function deleteTeamMember($teamId, $userId)
 }
 
 /**
+ * Deletes a team and 
+ * @param int $teamId
+ * @return int|null number of affected rows
+ */
+function deleteTeam($teamId)
+{
+    require_once("model/database.php");
+    $query = "DELETE FROM teams WHERE id = :teamId ;";
+    return executeQueryIUDAffected($query, createBinds([[":teamId", $teamId, PDO::PARAM_INT]]));
+}
+
+/**
  * Count the number of teams
  * @return int|null number of teams
  */
 function countTeams()
 {
     require_once("model/database.php");
-    $query = "SELECT COUNT(*) as 'count' FROM teams";
+    $query = "SELECT COUNT(*) AS 'count' FROM teams";
     return (int)executeQuerySelect($query)[0]["count"] ?? null;
+}
+/**
+ * Count the number of members in a team
+ * @param int $teamId
+ * @return int|null number of members
+ */
+function countTeamMembers($teamId)
+{
+    require_once("model/database.php");
+    $query = "SELECT COUNT(*) AS 'count' FROM user_joins_team WHERE team_id = :teamId ;";
+    return (int)executeQuerySelect($query, createBinds([[":teamId", $teamId, PDO::PARAM_INT]]))[0]["count"] ?? null;
 }

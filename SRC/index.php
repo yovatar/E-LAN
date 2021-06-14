@@ -9,6 +9,8 @@ setlocale(LC_ALL, 'fr-CH');
 date_default_timezone_set("Europe/Zurich");
 include_once("config.php");
 $GLOBALS["config"] = getConfig();
+$GLOBALS["flash"] = $_SESSION["flash"] ?? null;
+unset($_SESSION["flash"]);
 
 // Controllers
 require_once("controller/static.php");
@@ -58,6 +60,9 @@ if ($api == false) {
             break;
         case '/team/kick':
             controllerKickMember($_POST);
+            break;
+        case '/team/ownership':
+            controllerGiveOwnership($_POST);
             break;
         case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
             controllerTeam($res[1]);

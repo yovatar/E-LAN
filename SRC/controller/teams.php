@@ -75,7 +75,8 @@ function controllerJoinTeam($request)
         // Validate input
         $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Get user from the database to avoid issues
@@ -99,7 +100,8 @@ function controllerJoinTeam($request)
                 // Reload team page
                 header("Location: /teams/" . $teamName);
             } catch (Exception $e) {
-                header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/" . $teamName);
             }
         }
     } else {
@@ -120,7 +122,8 @@ function controllerQuitTeam($request)
         // Validate input
         $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Get user from the database to avoid issues
@@ -141,10 +144,17 @@ function controllerQuitTeam($request)
                 // Remove user from the team
                 $affected = deleteTeamMember($team["id"], $user["id"]);
                 if ($affected === null) throw new Exception("Une erreur est survenue lors de l'expulsion de l'équipe");
-                // Reload team page
-                header("Location: /teams/" . $teamName);
+                // Check if the team is empty
+                $disbanded = disbandEmptyTeam($team["id"]);
+                if ($disbanded) {
+                    header("Location: /teams");
+                } else {
+                    // Reload team page
+                    header("Location: /teams/" . $teamName);
+                }
             } catch (Exception $e) {
-                header("Location: /teams/" . $teamName . "?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/" . $teamName);
             }
         }
     } else {
@@ -175,7 +185,8 @@ function controllerCreateTeam($request, $files)
             $user = getCurrentUser();
             if ($user === null) {
                 logout();
-                header("Location: /authentication/login?error=Il semblerait que votre session utilisateur ait des problèmes");
+                toast("Il semblerait que votre session utilisateur ait des problèmes", "error");
+                header("Location: /authentication/login");
             } else {
                 try {
                     // Check input
@@ -206,13 +217,15 @@ function controllerCreateTeam($request, $files)
                             if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ajout de votre image d'équipe");
                         }
                     } catch (Exception $e) {
-                        header("Location: /teams/$name?error=" . $e->getMessage());
+                        toast($e->getMessage(), "error");
+                        header("Location: /teams/$name");
                     }
 
                     // Redirect to the team page
                     header("Location: /teams/$name");
                 } catch (Exception $e) {
-                    header("Location: /createTeam?error=" . $e->getMessage());
+                    toast($e->getMessage(), "error");
+                    header("Location: /createTeam");
                 }
             }
         }
@@ -233,7 +246,8 @@ function controllerKickMember($request)
         // Validate input
         $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
         if (empty($teamName)) {
-            header("Location: /teams?error=Aucun nom d'équipe donné");
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
         } else {
             try {
                 // Check for permissions
@@ -255,16 +269,72 @@ function controllerKickMember($request)
                 }
                 if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
                 // Prevent self kicking
-                if($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous éjecter vous mêmes");
+                if ($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous éjecter vous mêmes");
                 // Remove target from the team
                 $affected = deleteTeamMember($team["id"], $target["id"]);
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
                 // Redirect to update visual
+                toast($target["username"] . " a été expulsé","success");
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
-                header("Location: /teams/$teamName?error=" . $e->getMessage());
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
+            }
+        }
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
+/**
+ * Handles ownership change requests
+ * @param array $request expects $_POST
+ * @return void
+ */
+function controllerGiveOwnership($request)
+{
+    require_once("controller/authentication.php");
+    if (isAuthenticated()) {
+        // Validate input
+        $teamName = filter_var($request["team"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
+        } else {
+            try {
+                // Check for permissions
+                if (!isTeamOwner($teamName)) throw new Exception("Vous n'êtes pas le propriétaire de cette équipe");
+                // Validate input
+                if (empty($request["target"])) throw new Exception("Aucun utilisateur ciblé");
+                // Check if target is valid
+                require_once("model/teams.php");
+                require_once("model/users.php");
+                $target = selectUserByEmail($request["target"]);
+                if (empty($target)) throw new Exception("Utilisateur cible invalide");
+                // Fetch team info
+                $team = selectTeamByName($teamName);
+                $team["members"] = selectTeamUsers($teamName);
+                // Check if target is found in the team
+                $tmp = false;
+                foreach ($team["members"] as $member) {
+                    if ($member["email"] == $target["email"]) $tmp = true;
+                }
+                if (!$tmp) throw new Exception("L'utilisateur ne fait pas partie de votre équipe");
+                // Prevent self kicking
+                if ($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous sélectionner vous mêmes");
+                // Update owner
+                $affected = updateTeamOwner($team["id"], $target["id"]);
+                // Handle save errors
+                if (empty($affected)) throw new Exception("Une erreur est survenue lors du changement.");
+                // Redirect to update visual
+                toast($target["username"] . " est le nouveau propriétaire de l'équipe","success");
+                header("Location: /teams/$teamName");
+            } catch (Exception $e) {
+                // Redirect with error message
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
             }
         }
     } else {
@@ -329,4 +399,32 @@ function ownsTeams($email)
 function canCreateTeam()
 {
     return isAuthenticated() && !ownsTeams($_SESSION["user"]["email"]);
+}
+
+/**
+ * Check if a given team is empty and disbands it if it's the case
+ * @param int $teamId
+ * @return bool true when the team was disbanded
+ */
+function disbandEmptyTeam($teamId)
+{
+    require_once("model/teams.php");
+    if (countTeamMembers($teamId) === 0) {
+        $res = disbandTeam($teamId);
+    }
+    return $res ?? false;
+}
+
+/**
+ * Disbands a team
+ * @todo prevent disbanding during lans
+ * @param int $teamId
+ * @return bool true on success
+ */
+function disbandTeam($teamId)
+{
+    // Remove team
+    require_once("model/teams.php");
+    $affected = deleteTeam($teamId);
+    return !empty($affected);
 }

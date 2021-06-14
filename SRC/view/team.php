@@ -14,7 +14,7 @@ function viewTeam($team, $isMember, $isOwner)
 ?>
     <div class="flex flex-col items-center">
         <div class="flex flex-col-reverse justify-center w-full px-4 py-2 space-y-5 space-y-reverse bg-white rounded-md md:max-w-2xl md:flex-row filter md:drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
-            <!-- Team members -->
+            <?php /* Team members */ ?>
             <div class="flex-grow">
                 <table class="table w-full border-collapse rounded-md table-auto ring-purple-500 ring-2">
                     <thead class="table-header-group min-w-full divide-blueGray-200">
@@ -25,6 +25,7 @@ function viewTeam($team, $isMember, $isOwner)
                     <tbody class="table-row-group text-lg ">
                         <?php foreach ($team["members"] as $member) { ?>
                             <tr class="table-row px-6 py-3 border-t-2 border-purple-500">
+                            <?php /* User icon */ ?>
                                 <td class="table-cell px-3 py-1">
                                     <?php if (empty($member["path"])) { ?>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="object-cover w-8 h-8 text-white bg-purple-500 rounded-full" viewBox="0 0 20 20" fill="currentColor">
@@ -34,6 +35,7 @@ function viewTeam($team, $isMember, $isOwner)
                                         <img src="<?= $member["path"] ?>" alt="member profile image" class="object-cover w-8 h-8 rounded-full">
                                     <?php } ?>
                                 </td>
+                                <?php /* Username */ ?>
                                 <td class="flex flex-row items-center px-3 py-1">
                                     <p class=text-xl><?= $member["username"] ?></p>
                                     <?php if ($member["id"] == $team["owner_id"]) { ?>
@@ -44,14 +46,35 @@ function viewTeam($team, $isMember, $isOwner)
                                     <?php } ?>
                                 </td>
                                 <?php if ($isOwner) { ?>
+                                    <?php /* Kick action */ ?>
                                     <td class="items-center table-cell px-3 py-1">
                                         <?php if ($member["id"] != $team["owner_id"]) { ?>
-                                            <form action="/team/kick" method="POST" class="flex flex-row items-center">
+                                            <form x-data action="/team/kick" method="POST" class="flex flex-row items-center">
                                                 <input type="hidden" name="team" value="<?= $team["name"] ?>">
                                                 <input type="hidden" name="target" value="<?= $member["email"] ?>">
-                                                <button type="submit" class="p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500">
+                                                <button type="submit" class="p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500" @click="$event.preventDefault();$store.modal.kick.team = '<?= $team["name"] ?>';$store.modal.kick.username = '<?= $member["username"] ?>';$store.modal.kick.member = '<?= $member["email"] ?>';$store.modal.kick.open();">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        <?php } ?>
+                                    </td>
+                                <?php } ?>
+                                <?php if ($isOwner) { ?>
+                                    <?php /* Give ownership action */ ?>
+                                    <td class="items-center table-cell px-3 py-1">
+                                        <?php if ($member["id"] != $team["owner_id"]) { ?>
+                                            <form x-data action="/team/ownership" method="POST" class="flex flex-row items-center">
+                                                <input type="hidden" name="team" value="<?= $team["name"] ?>">
+                                                <input type="hidden" name="target" value="<?= $member["email"] ?>">
+                                                <button type="submit" class="flex flex-row items-center p-1 rounded-full hover:text-purple-500 active:ring-purple-900 focus:outline-none focus:text-purple-500 focus:ring-2 active:text-purple-900 focus:ring-purple-500" @click="$event.preventDefault();$store.modal.giveOwner.team = '<?= $team["name"] ?>';$store.modal.giveOwner.username = '<?= $member["username"] ?>';$store.modal.giveOwner.member = '<?= $member["email"] ?>';$store.modal.giveOwner.open();">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                    </svg>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-yellow-300 fill-current" viewBox="0 0 24 24">
+                                                        <path stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l2 13h14l2-13-5 3-4-6-4 6-5-3z" />
+                                                        <circle cx="12" cy="14" r="2" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
                                                     </svg>
                                                 </button>
                                             </form>
@@ -63,9 +86,11 @@ function viewTeam($team, $isMember, $isOwner)
                     </tbody>
                 </table>
             </div>
-            <!-- Team info -->
+            <?php /* Team info */ ?>
             <div class="flex flex-col items-center">
+            <?php /* Team image */ ?>
                 <?php if (empty($team["path"])) { ?>
+                    <?php /* Default image */ ?>
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" class="w-32 h-32 text-white bg-purple-500 rounded-full" stroke="currentColor" viewBox="0 0 24 24" fill="#000000">
                         <g>
                             <g>
@@ -77,16 +102,21 @@ function viewTeam($team, $isMember, $isOwner)
                         </g>
                     </svg>
                 <?php } else { ?>
+                    <?php /* Custom team image */ ?>
                     <img src="<?= $team["path"] ?>" alt="team icon" class="object-cover w-32 h-32 bg-white rounded-full filter drop-shadow-md">
                 <?php } ?>
+                <?php /* Team name */ ?>
                 <h1 class="text-2xl font-medium"><?= $team["name"] ?></h1>
+                <?php /* Team abbreviation */ ?>
                 <p class="text-xl"> <?= $team["abbreviation"] ?></p>
                 <?php if (!$isMember) { ?>
+                    <?php /* Join team */ ?>
                     <form action="/joinTeam" method="POST" class="w-full mt-4 md:w-auto">
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
                         <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Rejoindre</button>
                     </form>
                 <?php } else { ?>
+                    <?php /* Quit team */ ?>
                     <form action="/quitTeam" method="POST" class="w-full mt-4 md:w-auto">
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
                         <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
@@ -94,6 +124,57 @@ function viewTeam($team, $isMember, $isOwner)
                 <?php } ?>
             </div>
         </div>
+    </div>
+    <?php /* Modals */ ?>
+    <?php /* Kick */ ?>
+    <div x-cloak x-data x-show="$store.modal.kick.visible" x-init="$store.modal.new('kick')" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.kick.visible && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
+        <form action="/team/kick" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
+        <?php /* Header */ ?>
+            <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
+                <h2 class="font-medium">Expulsion</h2>
+                <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.kick.close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <?php /* Body */ ?>
+            <div class="flex flex-row items-center px-4 py-2">
+                <p>Voulez-vous vraiment expulser <span class="text-purple-700" x-text="$store.modal.kick.username"></span> ?</p>
+            </div>
+            <?php /* Footer */ ?>
+            <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
+                <input type="hidden" name="team" :value="$store.modal.kick.team">
+                <input type="hidden" name="target" :value="$store.modal.kick.member">
+                <button type="button" @click="$store.modal.kick.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
+            </div>
+        </form>
+    </div>
+    <?php /* Give ownership */ ?>
+    <div x-cloak x-data x-show="$store.modal.giveOwner.visible" x-init="$store.modal.new('giveOwner')" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.giveOwner.visible && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
+        <form action="/team/ownership" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
+        <?php /* Header */ ?>
+            <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
+                <h2 class="font-medium">Nouveau propriétaire</h2>
+                <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.giveOwner.close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <?php /* Body */ ?>
+            <div class="flex flex-row items-center px-4 py-2">
+                <p>Voulez-vous vraiment donner le role de propriétaire à <span class="text-purple-700" x-text="$store.modal.giveOwner.username"></span> ?</p>
+            </div>
+            <?php /* Footer */ ?>
+            <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
+                <input type="hidden" name="team" :value="$store.modal.giveOwner.team">
+                <input type="hidden" name="target" :value="$store.modal.giveOwner.member">
+                <button type="button" @click="$store.modal.giveOwner.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
+            </div>
+        </form>
     </div>
 <?php
     $content = ob_get_clean();

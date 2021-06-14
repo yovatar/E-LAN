@@ -84,6 +84,8 @@ module.exports = {
       animation: ['hover', 'focus'],
       strokeWidth: ['hover', 'focus'],
       dropShadow: ['hover', 'focus'],
+      borderWidth: ['hover', 'focus'],
+      borderStyle: ['hover', 'focus'],
       backgroundColor: ['active'],
       textColor: ['active'],
       ringColor: ['active'],

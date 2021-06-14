@@ -11,83 +11,58 @@ function viewRegister()
     ob_start();
 ?>
     <div class="flex flex-row justify-center w-full">
-        <form action="/authentication/register" method="POST" class="flex flex-col px-6 py-3 space-y-2 bg-white rounded-md filter drop-shadow-md">
+        <form role="register form" x-data :class="{'md:ring-2 md:ring-red-500 box-border border-4 border-red-500 md:border-none':$store.register.valid === false}" action="/authentication/register" method="POST" class="flex flex-col w-full px-6 py-3 space-y-2 bg-white md:rounded-md filter drop-shadow-md md:w-auto">
+            <div x-show="$store.register.valid === false" x-cloak class="flex flex-row items-center justify-between px-4 py-2 text-white bg-red-500 rounded-md">
+                <p class="text-lg font-medium md:text-2xl">Vérifiez que vos données soient valides</p>
+                <button type="button" class="flex flex-col justify-center focus:outline-none hover:text-red-900 focus:text-red-900" @click="$store.register.valid = null">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
             <h1 class="mb-2 text-xl font-medium">Inscription</h1>
             <label for="username">Nom d'utilisateur</label>
-            <div role="username field" class="flex flex-col" x-data="{available : null}">
+            <div role="username field" class="flex flex-col">
                 <div class="relative w-full">
-                    <input x-ref="iptUsername" x-on:change="if($refs.iptUsername.value.length){
-                        let params = new FormData();
-                        params.append('username',$refs.iptUsername.value);
-                        $fetch({
-                                url:'/api/authentication/available/username',
-                                method:'post',
-                                headers:{
-                                    'content-type':'application/x-www-form-urlencoded'
-                                }
-                                , data:params
-                            }).then(res=>{
-                                if(res.data.code == 200){
-                                    available= res.data.data.available
-                                }
-                            })
-                    } else {
-                        available = null
-                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
+                    <input x-on:change="$store.register.username.check($event.target.value)" x-bind:class="{ 'border-blueGray-200' : $store.register.username.available === null, 'border-green-500': $store.register.username.available === true, 'border-red-500' : $store.register.username.available === false}" type="text" id="username" name="username" placeholder="bobby" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 h-11">
+                    <div x-show="$store.register.username.available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <div x-show="available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
+                    <div x-show="$store.register.username.available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
                     </div>
                 </div>
-                <p x-cloak x-show="available === false" class="text-red-500">Nom d'utilisateur déjà utilisé</p>
+                <p x-cloak x-show="$store.register.username.available === false" class="text-red-500">Nom d'utilisateur déjà utilisé</p>
             </div>
             <label for="email">Email</label>
-            <div role="email field" class="flex flex-col" x-data="{available : null}">
+            <div role="email field" class="flex flex-col">
                 <div class="relative w-full">
-                    <input x-ref="iptEmail" x-on:change="if($refs.iptEmail.value.length){
-                        let params = new FormData();
-                        params.append('email',$refs.iptEmail.value);
-                        $fetch({
-                                url:'/api/authentication/available/email',
-                                method:'post',
-                                headers:{
-                                    'content-type':'application/x-www-form-urlencoded'
-                                }
-                                , data:params
-                            }).then(res=>{
-                                if(res.data.code == 200){
-                                    available= res.data.data.available
-                                }
-                            })
-                    } else {
-                        available = null
-                    }" x-bind:class="{ 'border-blueGray-200' : available === null, 'border-green-500': available === true, 'border-red-500' : available === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    <div x-show="available === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
+                    <input x-on:change="$store.register.email.check($event.target.value)" x-bind:class="{ 'border-blueGray-200' : $store.register.email.available === null && $store.register.email.valid === null, 'border-green-500': $store.register.email.available === true, 'border-red-500' : $store.register.email.available === false || $store.register.email.valid === false}" type="email" id="email" name="email" placeholder="bob.ross@cpnv.ch" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 h-11 focus:ring-purple-500">
+                    <div x-show="$store.register.email.available === false || $store.register.email.valid === false" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-red-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <div x-show="available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
+                    <div x-show="$store.register.email.available === true" x-cloak class="absolute inset-y-0 right-0 flex items-center px-4 py-2 text-green-500 rounded-md">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                         </svg>
                     </div>
                 </div>
-                <p x-cloak x-show="available === false" class="text-red-500">Email déjà Utilisé</p>
+                <p x-cloak x-show="$store.register.email.available === false" class="text-red-500">Email déjà Utilisé</p>
+                <p x-cloak x-show="$store.register.email.valid === false" class="text-red-500">Email invalid</p>
             </div>
             <label for="lastName">Nom</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input type="text" id="lastName" name="lastName" placeholder="Ross" required class="border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <input type="text" id="firstName" name="firstName" placeholder="Bob" required class="border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
             <label for="password">Mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="password" name="password" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="password" name="password" required @change="$store.register.password.password = $event.target.value" class="w-full border-2 rounded-md border-blueGray-200 h-11 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -101,7 +76,7 @@ function viewRegister()
             </div>
             <label for="passwordCheck">Confirmation du mot de passe</label>
             <div role="passwordField" class="relative" x-data="{show : false}">
-                <input x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <input :class="{'border-blueGray-200':$store.register.password.valid === null,'border-red-500':$store.register.password.valid === false, 'border-green-500': $store.register.password.valid === true}" x-bind:type="show ? 'text' : 'password'" id="passwordCheck" name="passwordCheck" required @change="$store.register.password.confirm = $event.target.value" class="w-full border-2 rounded-md h-11 border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 <button type="button" tabindex="-1" class="absolute inset-y-0 right-0 flex items-center px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" @click="show = !show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
@@ -113,8 +88,9 @@ function viewRegister()
                     </svg>
                 </button>
             </div>
-            <div class="flex flex-col space-y-2 lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
-                <button type="submit" class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">
+            <p x-cloak x-show="$store.register.password.valid === false" class="text-red-500">Les mots de passes ne correspondent pas</p>
+            <div role="submit" x-data class="flex flex-col space-y-2 lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0">
+                <button type="submit" class="flex flex-row items-center justify-center px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700" @click="if(!$store.register.valid){$event.preventDefault(); $store.register.valid = false}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z" />
                     </svg>
@@ -124,9 +100,15 @@ function viewRegister()
             </div>
         </form>
     </div>
-<?php
+    <?php
     $content = ob_get_clean();
 
+    ob_start();
+    ?>
+    <script src="/public/js/register.js"></script>
+<?php
+    $scripts = ob_get_clean();
+
     require_once "view/template.php";
-    viewTemplate($title, $content);
+    viewTemplate($title, $content, null, $scripts);
 }
