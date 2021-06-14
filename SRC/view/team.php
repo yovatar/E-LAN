@@ -25,7 +25,7 @@ function viewTeam($team, $isMember, $isOwner)
                     <tbody class="table-row-group text-lg ">
                         <?php foreach ($team["members"] as $member) { ?>
                             <tr class="table-row px-6 py-3 border-t-2 border-purple-500">
-                            <?php /* User icon */ ?>
+                                <?php /* User icon */ ?>
                                 <td class="table-cell px-3 py-1">
                                     <?php if (empty($member["path"])) { ?>
                                         <svg xmlns="http://www.w3.org/2000/svg" class="object-cover w-8 h-8 text-white bg-purple-500 rounded-full" viewBox="0 0 20 20" fill="currentColor">
@@ -88,7 +88,7 @@ function viewTeam($team, $isMember, $isOwner)
             </div>
             <?php /* Team info */ ?>
             <div class="flex flex-col items-center">
-            <?php /* Team image */ ?>
+                <?php /* Team image */ ?>
                 <?php if (empty($team["path"])) { ?>
                     <?php /* Default image */ ?>
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" class="w-32 h-32 text-white bg-purple-500 rounded-full" stroke="currentColor" viewBox="0 0 24 24" fill="#000000">
@@ -121,6 +121,13 @@ function viewTeam($team, $isMember, $isOwner)
                         <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
                         <button class="w-full px-4 py-2 font-medium text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md" type="submit">Quitter</button>
                     </form>
+                    <?php if ($isOwner) { ?>
+                        <?php /* Disband team */ ?>
+                        <form action="/team/disband" method="POST" class="w-full mt-4 md:w-auto">
+                            <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
+                            <button class="w-full px-4 py-2 font-medium text-white bg-red-500 rounded-md focus:outline-none hover:bg-red-700 focus:bg-red-700 focus:ring-2 focus:ring-red-500 filter focus:drop-shadow-md" type="submit">Dissiper l'équipe</button>
+                        </form>
+                    <?php } ?>
                 <?php } ?>
             </div>
         </div>
@@ -129,7 +136,7 @@ function viewTeam($team, $isMember, $isOwner)
     <?php /* Kick */ ?>
     <div x-cloak x-data x-show="$store.modal.kick.visible" x-init="$store.modal.new('kick')" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.kick.visible && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
         <form action="/team/kick" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
-        <?php /* Header */ ?>
+            <?php /* Header */ ?>
             <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
                 <h2 class="font-medium">Expulsion</h2>
                 <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.kick.close()">
@@ -154,7 +161,7 @@ function viewTeam($team, $isMember, $isOwner)
     <?php /* Give ownership */ ?>
     <div x-cloak x-data x-show="$store.modal.giveOwner.visible" x-init="$store.modal.new('giveOwner')" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.giveOwner.visible && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
         <form action="/team/ownership" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
-        <?php /* Header */ ?>
+            <?php /* Header */ ?>
             <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
                 <h2 class="font-medium">Nouveau propriétaire</h2>
                 <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.giveOwner.close()">
