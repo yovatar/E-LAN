@@ -153,9 +153,9 @@ function controllerQuitTeam($request)
                     // Check if the user is the team owner
                     if (isTeamOwner($team["name"])) {
                         $target = selectTeamUsers($team["name"])[0] ?? null;
-                        if(!empty($target)){
+                        if (!empty($target)) {
                             $affected = updateTeamOwner($team["id"], $target["id"]);
-                            toast($target["username"] ." est le nouveau propriétaire de l'équipe","info");
+                            toast($target["username"] . " est le nouveau propriétaire de l'équipe", "info");
                         }
                     }
                     // Reload team page
@@ -340,6 +340,38 @@ function controllerGiveOwnership($request)
                 // Redirect to update visual
                 toast($target["username"] . " est le nouveau propriétaire de l'équipe", "success");
                 header("Location: /teams/$teamName");
+            } catch (Exception $e) {
+                // Redirect with error message
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
+            }
+        }
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
+function controllerTeamDisband($request)
+{
+    require_once("controller/authentication.php");
+    if (isAuthenticated()) {
+        // Validate input
+        $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
+        } else {
+            try {
+                // Check for permissions
+                if (!isTeamOwner($teamName)) throw new Exception("Vous n'êtes pas le propriétaire de cette équipe");
+                // Delete team
+                require_once("model/teams.php");
+                $team = selectTeamByName($teamName);
+                $disbanded = disbandTeam($team["id"]);
+                if(empty($disbanded)) throw new Exception("Votre équipe n'as pas pu être dissipée");
+                // Redirect to update visual
+                toast("Équipe a été dissipée", "success");
+                header("Location: /teams");
             } catch (Exception $e) {
                 // Redirect with error message
                 toast($e->getMessage(), "error");

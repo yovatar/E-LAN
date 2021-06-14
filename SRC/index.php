@@ -61,6 +61,9 @@ if ($api == false) {
         case '/team/kick':
             controllerKickMember($_POST);
             break;
+        case '/team/disband':
+            controllerTeamDisband($_POST);
+            break;
         case '/team/ownership':
             controllerGiveOwnership($_POST);
             break;
