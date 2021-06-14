@@ -51,10 +51,10 @@ function selectLanByName($name)
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
 
-function updateLanByOwner($name, $description, $places, $startTime, $endTime, $lanid)
+function updateLan($name, $description, $places, $startTime, $endTime, $lanid)
 {
     require_once("model/database.php");
-    $query = "UPDATE lans SET (name = :name, description= :description, places= :places, startTime= :startTime, endTime= :endTime) WHERE id = :lanid";
+    $query = "UPDATE lans SET name = :name, description= :description, places= :places, start= :startTime, end= :endTime WHERE id = :lanid";
     return executeQueryIUDAffected($query, createBinds([[[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime],[":lanid", $lanid] ]]));
 }
 
