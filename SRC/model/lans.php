@@ -40,7 +40,7 @@ function countLans()
 function insertLan($name, $description, $places, $startTime, $endTime)
 {
     require_once("model/database.php");
-    $query = "INSERT INTO lans (name, description, places, startTime, endTime) VALUES (:name, :description, :places, :startTime, :endTime:" . ($name === null ? "NULL" : ":name") . ")";
+    $query = "INSERT INTO lans (name, description, places, start, end) VALUES (:name, :description, :places, :startTime, :endTime )";
     return executeQueryInsert($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime]]));
 }
 

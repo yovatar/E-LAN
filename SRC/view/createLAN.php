@@ -12,28 +12,28 @@ function viewCreateLAN()
     ob_start();
     ?>
     <div class="flex flex-row justify-center w-full p-8">
-        <form action="/LAN/creation" method="POST"
+        <form action="/lan/create" method="POST" enctype="multipart/form-data"
               class="flex flex-col w-8/12 px-6 py-3 space-y-2 bg-white rounded-md filter drop-shadow-md">
             <h1 class="mb-2 text-xl font-medium">Création de LAN</h1>
             <label for="name">Nom de LAN</label>
-            <input type="name" id="name" name="name" placeholder="1Vs1 Tic-tac-to" required
+            <input type="text" id="name" name="name" placeholder="1Vs1 Tic-tac-to" required
                    class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
 
-            <label for="name">Description</label>
-            <input type="text" id="text" name="text" placeholder="Description courte" required
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" placeholder="Description courte" required
                    class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
 
-            <label for="name">Nombre de place</label>
-            <input type="number" id="number" name="number" placeholder="Ex : 23" required
+            <label for="places">Nombre de place</label>
+            <input type="number" id="places" name="places" placeholder="Ex : 23" required
                    class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
 
 
-            <label for="date">Date de début</label>
-            <input type="date" id="date1" name="date1" placeholder="31.05.2021" required
+            <label for="start">Date de début</label>
+            <input type="date" id="start" name="start" placeholder="31.05.2021" required
                    class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
 
-            <label for="date">Date de fin</label>
-            <input type="date" id="date2" name="date2" placeholder="6.06.2021" required
+            <label for="end">Date de fin</label>
+            <input type="date" id="end" name="end" placeholder="6.06.2021" required
                    class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
 
             <label for="image">Image</label>
