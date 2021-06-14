@@ -140,6 +140,7 @@ Le site web cible desktop et mobile, le site doit donc être responsive pour ces
 | 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
 | 11/05/2021 8:20  | Sprint 1 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
 | 25/05/2021 8:10  | Sprint 2 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
+| 08/06/2021 8:05  | Sprint 3 review                                             | Pedro P. , Yoann B. , Kenan A. et Xavier C. |
 
 
 ## Bilan des objectifs atteints / non-atteints
