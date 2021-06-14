@@ -9,6 +9,8 @@ setlocale(LC_ALL, 'fr-CH');
 date_default_timezone_set("Europe/Zurich");
 include_once("config.php");
 $GLOBALS["config"] = getConfig();
+$GLOBALS["flash"] = $_SESSION["flash"] ?? null;
+unset($_SESSION["flash"]);
 
 // Controllers
 require_once("controller/static.php");

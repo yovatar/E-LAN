@@ -48,3 +48,48 @@ function reformatFiles(array $files)
     }
     return $tmp;
 }
+
+/**
+ * Set a flash message
+ * @param string|int $key
+ * @param null|bool|int|float|string|array $value
+ * @param bool $append will try to append value to the key
+ * @return void
+ */
+function flashMessage($key, $value, $append = false)
+{
+    if ($append) {
+        if (empty($_SESSION["flash"][$key])) $_SESSION["flash"][$key] = [];
+        $_SESSION["flash"][$key] += $value;
+    } else {
+        $_SESSION["flash"][$key] = $value;
+    }
+}
+
+/**
+ * Stores a toast as a flash message
+ * @param string $message
+ * @param string $type currently supports 'info', 'error', 'success', 'warning'
+ * @return void
+ */
+function toast($message, $type = 'info')
+{
+    switch ($type) {
+        case 'warning':
+            $type = 'warnings';
+            break;
+        case 'error':
+            $type = 'errors';
+            break;
+        case 'success':
+            $type = 'successes';
+            break;
+        case 'info':
+            $type = 'infos';
+            break;
+        default:
+            $type = 'infos';
+    }
+    if (empty($_SESSION["flash"]["toasts"][$type])) $_SESSION["flash"]["toasts"][$type] = [];
+    $_SESSION["flash"]["toasts"][$type] += [$message];
+}
