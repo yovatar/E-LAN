@@ -147,8 +147,17 @@ function controllerQuitTeam($request)
                 // Check if the team is empty
                 $disbanded = disbandEmptyTeam($team["id"]);
                 if ($disbanded) {
+                    toast("Votre équipe à été dissipée car il ne reste aucun membre", "info");
                     header("Location: /teams");
                 } else {
+                    // Check if the user is the team owner
+                    if (isTeamOwner($team["name"])) {
+                        $target = selectTeamUsers($team["name"])[0] ?? null;
+                        if(!empty($target)){
+                            $affected = updateTeamOwner($team["id"], $target["id"]);
+                            toast($target["username"] ." est le nouveau propriétaire de l'équipe","info");
+                        }
+                    }
                     // Reload team page
                     header("Location: /teams/" . $teamName);
                 }
@@ -275,7 +284,7 @@ function controllerKickMember($request)
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors de l'ejection.");
                 // Redirect to update visual
-                toast($target["username"] . " a été expulsé","success");
+                toast($target["username"] . " a été expulsé", "success");
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
@@ -329,7 +338,7 @@ function controllerGiveOwnership($request)
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors du changement.");
                 // Redirect to update visual
-                toast($target["username"] . " est le nouveau propriétaire de l'équipe","success");
+                toast($target["username"] . " est le nouveau propriétaire de l'équipe", "success");
                 header("Location: /teams/$teamName");
             } catch (Exception $e) {
                 // Redirect with error message
