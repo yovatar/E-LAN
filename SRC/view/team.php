@@ -123,9 +123,9 @@ function viewTeam($team, $isMember, $isOwner)
                     </form>
                     <?php if ($isOwner) { ?>
                         <?php /* Disband team */ ?>
-                        <form action="/team/disband" method="POST" class="w-full mt-4 md:w-auto">
+                        <form x-data action="/team/disband" method="POST" class="w-full mt-4 md:w-auto">
                             <input type="hidden" name="teamName" value="<?= $team["name"] ?>">
-                            <button class="w-full px-4 py-2 font-medium text-white bg-red-500 rounded-md focus:outline-none hover:bg-red-700 focus:bg-red-700 focus:ring-2 focus:ring-red-500 filter focus:drop-shadow-md" type="submit">Dissiper l'équipe</button>
+                            <button class="w-full px-4 py-2 font-medium text-white bg-red-500 rounded-md focus:outline-none hover:bg-red-700 focus:bg-red-700 focus:ring-2 focus:ring-red-500 filter focus:drop-shadow-md" type="submit" @click="$event.preventDefault();$store.modal.disband.team = '<?= $team["name"] ?>';$store.modal.disband.open();">Dissiper l'équipe</button>
                         </form>
                     <?php } ?>
                 <?php } ?>
@@ -179,6 +179,30 @@ function viewTeam($team, $isMember, $isOwner)
                 <input type="hidden" name="team" :value="$store.modal.giveOwner.team">
                 <input type="hidden" name="target" :value="$store.modal.giveOwner.member">
                 <button type="button" @click="$store.modal.giveOwner.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
+                <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
+            </div>
+        </form>
+    </div>
+    <?php /* Disband */ ?>
+    <div x-cloak x-data x-show="$store.modal.disband.visible" x-init="$store.modal.new('disband')" class="fixed top-0 left-0 flex flex-col items-center justify-center w-screen h-screen bg-black bg-opacity-25" @keyup.window.tab="if($store.modal.disband.visible && !$($el).has($event.target).length) {$event.prevent;$($el).find('button:visible').first().focus()}">
+        <form action="/team/disband" method="POST" class="w-full text-lg bg-white divide-y divide-black rounded-md md:w-auto md:max-w-7xl filter drop-shadow-lg">
+            <?php /* Header */ ?>
+            <div class="flex flex-row items-center justify-between px-4 py-2 space-x-3">
+                <h2 class="font-medium">Dissiper l'équipe</h2>
+                <button class="focus:outline-none focus:text-purple-500" type="button" @click="$store.modal.disband.close()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <?php /* Body */ ?>
+            <div class="flex flex-row items-center px-4 py-2">
+                <p>Voulez-vous vraiment dissiper l'équipe?</p>
+            </div>
+            <?php /* Footer */ ?>
+            <div class="flex flex-row items-center justify-end px-4 py-2 space-x-3">
+                <input type="hidden" name="teamName" :value="$store.modal.disband.team">
+                <button type="button" @click="$store.modal.disband.close()" class="px-4 py-2 text-white rounded-md bg-blueGray-500 focus:outline-none focus:bg-blueGray-700">Non</button>
                 <button class="px-4 py-2 text-white bg-red-500 rounded-md focus:bg-red-700 hover:bg-red-700 focus:outline-none">Oui</button>
             </div>
         </form>
