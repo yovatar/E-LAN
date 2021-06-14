@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `elan`.`images` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `path` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `UniqueImage` (`path` ASC))
- ENGINE = InnoDB;
+  UNIQUE INDEX `UniqueImage` (`path` ASC)
+) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`users`
 -- -----------------------------------------------------
@@ -55,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `elan`.`users` (
   UNIQUE INDEX `UniqueUserEmail` (`email` ASC),
   CONSTRAINT `fk_Users_Roles1` FOREIGN KEY (`role_id`) REFERENCES `elan`.`roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_users_images1` FOREIGN KEY (`image_id`) REFERENCES `elan`.`images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`states`
@@ -84,7 +83,6 @@ CREATE TABLE IF NOT EXISTS `elan`.`lans` (
   INDEX `fk_lans_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_Lans_Stats1` FOREIGN KEY (`state_id`) REFERENCES `elan`.`states` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_lans_images1` FOREIGN KEY (`images_id`) REFERENCES `elan`.`images` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-  
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`locations`
@@ -125,17 +123,11 @@ CREATE TABLE IF NOT EXISTS `elan`.`teams` (
   UNIQUE INDEX `UniqueTeam` (`name` ASC),
   INDEX `fk_Teams_Users1_idx` (`owner_id` ASC),
   INDEX `fk_teams_images1_idx` (`images_id` ASC),
-  CONSTRAINT `fk_Teams_Users1`
-    FOREIGN KEY (`owner_id`)
-    REFERENCES `elan`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_teams_images1`
-    FOREIGN KEY (`images_id`)
-    REFERENCES `elan`.`images` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  CONSTRAINT `fk_Teams_Users1` FOREIGN KEY (`owner_id`) REFERENCES `elan`.`users` (`id`) ON DELETE
+  SET NULL ON UPDATE CASCADE,
+    CONSTRAINT `fk_teams_images1` FOREIGN KEY (`images_id`) REFERENCES `elan`.`images` (`id`) ON DELETE
+  SET NULL ON UPDATE CASCADE
+) ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `elan`.`tournaments`
 -- -----------------------------------------------------
@@ -165,8 +157,8 @@ CREATE TABLE IF NOT EXISTS `elan`.`matches` (
   INDEX `fk_Matches_Teams1_idx` (`team2_id` ASC),
   INDEX `fk_Matches_Tournaments1_idx` (`tournament_id` ASC),
   UNIQUE INDEX `UniqueMatch` (`match_number` ASC),
-  CONSTRAINT `fk_Matches_Teams` FOREIGN KEY (`team1_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Matches_Teams1` FOREIGN KEY (`team2_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Matches_Teams` FOREIGN KEY (`team1_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Matches_Teams1` FOREIGN KEY (`team2_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Matches_Tournaments1` FOREIGN KEY (`tournament_id`) REFERENCES `elan`.`tournaments` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE = InnoDB;
 -- -----------------------------------------------------
@@ -250,8 +242,8 @@ CREATE TABLE IF NOT EXISTS `elan`.`user_joins_team` (
   INDEX `fk_Teams_has_Users_Teams1_idx` (`team_id` ASC),
   PRIMARY KEY (`id`),
   UNIQUE INDEX `UniqueUserTeam` (`user_id` ASC, `team_id` ASC),
-  CONSTRAINT `fk_Teams_has_Users_Teams1` FOREIGN KEY (`team_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Teams_has_Users_Users1` FOREIGN KEY (`user_id`) REFERENCES `elan`.`users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_Teams_has_Users_Teams1` FOREIGN KEY (`team_id`) REFERENCES `elan`.`teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_Teams_has_Users_Users1` FOREIGN KEY (`user_id`) REFERENCES `elan`.`users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 SET SQL_MODE = @OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;

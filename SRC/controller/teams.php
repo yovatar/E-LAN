@@ -144,8 +144,14 @@ function controllerQuitTeam($request)
                 // Remove user from the team
                 $affected = deleteTeamMember($team["id"], $user["id"]);
                 if ($affected === null) throw new Exception("Une erreur est survenue lors de l'expulsion de l'équipe");
-                // Reload team page
-                header("Location: /teams/" . $teamName);
+                // Check if the team is empty
+                $disbanded = disbandEmptyTeam($team["id"]);
+                if ($disbanded) {
+                    header("Location: /teams");
+                } else {
+                    // Reload team page
+                    header("Location: /teams/" . $teamName);
+                }
             } catch (Exception $e) {
                 toast($e->getMessage(), "error");
                 header("Location: /teams/" . $teamName);
@@ -393,4 +399,32 @@ function ownsTeams($email)
 function canCreateTeam()
 {
     return isAuthenticated() && !ownsTeams($_SESSION["user"]["email"]);
+}
+
+/**
+ * Check if a given team is empty and disbands it if it's the case
+ * @param int $teamId
+ * @return bool true when the team was disbanded
+ */
+function disbandEmptyTeam($teamId)
+{
+    require_once("model/teams.php");
+    if (countTeamMembers($teamId) === 0) {
+        $res = disbandTeam($teamId);
+    }
+    return $res ?? false;
+}
+
+/**
+ * Disbands a team
+ * @todo prevent disbanding during lans
+ * @param int $teamId
+ * @return bool true on success
+ */
+function disbandTeam($teamId)
+{
+    // Remove team
+    require_once("model/teams.php");
+    $affected = deleteTeam($teamId);
+    return !empty($affected);
 }
