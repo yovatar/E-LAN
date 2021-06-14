@@ -58,8 +58,6 @@ Tables utilisées :
 
 
 ## Astuces
-- Nous utilisont beaucoup les documentation de alpine js et tailwind pour nous aider.
-- nous n'avont pas vraiment d'autre particularité dans notre travaille nous avancons de maniére standard.
 
 
 
