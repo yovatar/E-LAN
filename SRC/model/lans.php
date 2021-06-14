@@ -36,3 +36,18 @@ function countLans()
     $query = "SELECT COUNT(*) as 'count' FROM lans";
     return (int)executeQuerySelect($query)[0]["count"] ?? null;
 }
+
+function insertLan($name, $description, $places, $startTime, $endTime)
+{
+    require_once("model/database.php");
+    $query = "INSERT INTO lans (name, description, places, startTime, endTime) VALUES (:name, :description, :places, :startTime, :endTime:" . ($name === null ? "NULL" : ":name") . ")";
+    return executeQueryInsert($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime]]));
+}
+
+function selectLanByName($name)
+{
+    require_once("model/database.php");
+    $query = "SELECT Lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id WHERE name LIKE :name LIMIT 1";
+    return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
+
+}
