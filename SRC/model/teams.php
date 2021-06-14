@@ -26,12 +26,17 @@ function selectTeamByName($name)
 /**
  * Fetches every team member
  * @param string $teamName
+ * @param bool $notOwner only select team members without team ownership
  * @return array|null users 2D array
  */
-function selectTeamUsers($teamName)
+function selectTeamUsers($teamName, $notOwner = false)
 {
     require_once("model/database.php");
-    $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
+    if($notOwner){
+        $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id LEFT JOIN teams AS t ON t.owner_id = users.id WHERE teams.name LIKE :teamName AND t.id IS NULL";
+    } else {
+        $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
+    }
     return executeQuerySelect($query, createBinds([[":teamName", $teamName]]));
 }
 
