@@ -49,5 +49,4 @@ function selectLanByName($name)
     require_once("model/database.php");
     $query = "SELECT Lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id WHERE name LIKE :name LIMIT 1";
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
-
 }
