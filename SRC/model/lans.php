@@ -37,6 +37,15 @@ function countLans()
     return (int)executeQuerySelect($query)[0]["count"] ?? null;
 }
 
+/**
+ * Store a LAN in the database
+ * @param string $name
+ * @param string $description
+ * @param int $places
+ * @param string $startTime date("Y-m-d H:i:s",$yourTimeStamp)
+ * @param string $endTime date("Y-m-d H:i:s",$yourTimeStamp)
+ * @return int|null last insert id
+ */
 function insertLan($name, $description, $places, $startTime, $endTime)
 {
     require_once("model/database.php");
@@ -44,6 +53,11 @@ function insertLan($name, $description, $places, $startTime, $endTime)
     return executeQueryInsert($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime]]));
 }
 
+/**
+ * Fetch a lan with a given name
+ * @param string $name
+ * @return array 1D array
+ */
 function selectLanByName($name)
 {
     require_once("model/database.php");
@@ -51,6 +65,17 @@ function selectLanByName($name)
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
 
+// TODO: add state_id update
+/**
+ * Update a lan
+ * @param string $name
+ * @param string $description
+ * @param int $places
+ * @param string $startTime date("Y-m-d H:i:s",$yourTimeStamp)
+ * @param string $endTime date("Y-m-d H:i:s",$yourTimeStamp)
+ * @param int $lanid
+ * @return int|null number of affected rows
+ */
 function updateLan($name, $description, $places, $startTime, $endTime, $lanid)
 {
     require_once("model/database.php");
