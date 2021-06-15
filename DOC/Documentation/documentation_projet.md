@@ -74,6 +74,7 @@ Nous avons pour base les cours suivants :
 
 Sprints (2 semaines par sprint)
 
+
 1. 26/04/2021 - 09/05/2021
     - Être prêt pour le premier vrai sprint
 2. 10/05/2021 - 25/05/2021
@@ -81,6 +82,7 @@ Sprints (2 semaines par sprint)
 3. 26/05/2021 - 07/06/2021
     - Sprint review le mardi 25.05.2021
 5. 08/06/2021 - 21/06/2021
+    - Sprint review le mardi 8.06.2021
 6. 21/06/2021 - 24/06/2021
 
 ## Stratégie de test
