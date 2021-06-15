@@ -31,9 +31,9 @@ function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
                 </button>
             </div>
             <div class="relative w-full" :class="results.length == 0 ? 'hidden': ''">
-                <div class="absolute z-10 flex flex-col w-full px-3 py-1 bg-white rounded-b-md filter drop-shadow-md">
+                <div class="absolute z-10 flex flex-col w-full px-2 py-1 space-x-1 bg-white rounded-b-md filter drop-shadow-md">
                     <template x-for="result in results">
-                        <a :href="`/teams/${result.name}`">
+                        <a :href="`/teams/${result.name}`" class="px-2 py-1 rounded-md focus:outline-none focus:ring-1 focus:ring-purple-500 hover:bg-purple-200 focus:bg-purple-200">
                             <p x-text="result.name"></p>
                         </a>
                     </template>
