@@ -23,18 +23,15 @@ function viewHome()
     <div class="flex flex-col items-center justify-center bg-gradient-to-r h-96 from-purple-500 to-pink-300">
         <div class="text-3xl text-center text-gray-100 text-bold"> Meilleurs evénements de l'année</div>
         <br>
-        <div class="relative flex-initial w-full px-12 mx-auto" x-data="{
+        <div class="relative flex-initial w-full px-12 mx-auto md:object-scale-down" x-data="{
                 activeSlide: 1,
                  slides: [
-                 {id:1,src:'public/images/PolyLAN.png',text:`La polylan est la plus grosse lan de suisse, elle a lieu à l'EPFL a Lausanne. Elle comporte plusieurs evenements et acticitées`},
-                 {id:2,src:'public/images/NumerikGames.PNG',text:`Le NumerikGames est une convention de jeux suisse ce deroulant a yverdon avec le soutien de la maison d'ailleurs`},
-                 {id:3,src:'public/images/E3.png',text:`L'E3 est un salon consacré exclusivement aux jeux vidéo organisé par l'Entertainment Software Association. L'évènement se déroulera du 12 au 15 juin 2021.`},
-                 {id:4,src:'public/images/gamescom.png',text:`La Gamescom est un salon international consacré au jeu vidéo. Elle est à ce jour le plus gros évènement consacré au jeux vidéos  `},
-                 {id:5,src:'public/images/Japan_impact.png',text:`Japan Impact est une convention dédiée à la culture japonaise qui se déroule tous les ans sur un week-end en février à l'École polytechnique fédérale de Lausanne.On y trouve également plusieurs événement consacré aux jeux japonais`},
-                 {id:6,src:'public/images/herofestival.png',text:`Le HeroFestival est un événement culturel qui a vu le jour à Marseille en 2014. Ce festival transgénérationnel se déroule autour du thème des héros de tout univers : BD, cinéma, séries, manga, comics, jeux vidéo, cosplay`},
-                 {id:7,src:'public/images/GameAwards.png',text:`The Game Awards est une soirée de récompenses annuelle, qui distingue une sélection de jeux vidéo sortis tout au long de l'année, aussi bien que des jeux vidéo sortis récemment, ou même certains annoncés officiellement avant la soirée de remise de prix. Cette soirée est produite et présentée par le journaliste canadien Geoff Keighley. les Game Awards présentent également de nouveaux jeux et du gameplay de jeux récemment annoncés.`},
-                 {id:8,src:'public/images/Blizzconline.png',text:`La BlizzCon est une convention organisée chaque année depuis 2005 par Blizzard Entertainment au Anaheim Convention Center de Anaheim en Californie, pour présenter les nouveautés de leurs licences, mettre à disposition des versions de démonstration jouables, rencontrer les joueurs et proposer divers autres activités et panels liés aux univers de Warcraft, StarCraft, Diablo, Hearthstone, Heroes of the Storm et Overwatch.`},
-                 {id:9,src:'public/images/SummerGameFest.png',text:`Le Summer Game Fest est l’équivalent de l’E3 mais diffusée en direct en ligne sur plusieurs plateformes de streaming telles que Twitch ou YouTube. Ils compte également avec la présence de  Geoff Keighley.`}
+                 {id:1,class:'', src:'public/images/PolyLAN.png',text:`La polylan est la plus grosse lan de suisse, elle a lieu à l'EPFL a Lausanne. Elle comporte plusieurs evenements et acticitées`},
+                 {id:2, src:'public/images/NumerikGames.PNG',text:`Le NumerikGames est une convention de jeux suisse ce deroulant a yverdon avec le soutien de la maison d'ailleurs`},
+                 {id:3, src:'public/images/E3.png',text:`L'E3 est un salon consacré exclusivement aux jeux vidéo organisé par l'Entertainment Software Association. L'évènement se déroulera du 12 au 15 juin 2021.`},
+                 {id:4, src:'public/images/gamescom.png',text:`La Gamescom est un salon international consacré au jeu vidéo. Elle est à ce jour le plus gros évènement consacré au jeux vidéos  `},
+                 {id:5, src:'public/images/herofestival.png',text:`Le HeroFestival est un événement culturel qui a vu le jour à Marseille en 2014. Ce festival transgénérationnel se déroule autour du thème des héros de tout univers : BD, cinéma, séries, manga, comics, jeux vidéo, cosplay`},
+                 {id:6, src:'public/images/SummerGameFest.png',text:`Le Summer Game Fest est l’équivalent de l’E3 mais diffusée en direct en ligne sur plusieurs plateformes de streaming telles que Twitch ou YouTube. Ils compte également avec la présence de  Geoff Keighley.`}
                  ]
                 }">
             <div>
@@ -103,25 +100,12 @@ function viewHome()
                 <img src="public/images/PolyLAN.png" class="pt-16 px-8 " alt="Swiss LAN img">
             </div>
             <div class="w-full bg-white rounded-3xl m-8">
-                <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8 ">
+                <h2 class="font-normal subpixel-antialiased px-8 font-serif pt-8">
                     Depuis 2002,
                     <a href="https://polylan.ch/" class="font-bold italic text-indigo-700 ">PolyLAN</a> organise des LAN
-                    (ou LAN party) deux fois par an. Ces rassemblements, qui se sont déroulé à l'EPFL, successivement
-                    dans le hall du bâtiment
-                    SG, au Rolex Learning Center, à l'Amphimax à l'UNIL et plus récemment au SwissTech Convention
-                    Center,
-                    voient s'affronter jusqu'à 1250 personnes au travers d'un réseau local. Le comité, formé
-                    principalement
-                    d'étudiantes et étudiants de la faculté IC, est composé d'une vingtaine
-                    de membres, qui mettent en pratique les connaissances acquises dans le cadre de leurs études, et
-                    plus
-                    encore. Bénéficiant de l'infrastructure électrique, informatique et logistique de l'EPFL,
-                    l'association
-                    propose une manifestation de grande qualité pour un prix abordable. Contrairement aux autres
-                    événements
-                    de ce type, où l'esprit de compétition prime avant tout, la convivialité ainsi que le côté ludique
-                    des
-                    jeux vidéo sont privilégiés.
+                    deux fois par an. Ces rassemblements, qui se sont déroulé à l'EPFL, successivement
+                    dans le hall du bâtimentSG, au Rolex Learning Center, à l'Amphimax à l'UNIL et plus récemment au
+                    SwissTech Convention Center on y voient s'affronter jusqu'à 1250 personnes au travers d'un réseau local.
                 </h2>
             </div>
         </div>
@@ -135,10 +119,9 @@ function viewHome()
                             href="https://www.numerik-games.ch/" class="font-bold italic text-indigo-700">Numerik Games
                         Festival</a>
                     est une manifestation tout public dédiée à l’art et la culture numériques.
-                    Depuis 2016, cet événement convainc des foules de plus en plus nombreuses: enfants, familles,
-                    adolescents, adultes – tous trouvent leur compte dans ce festival interdisciplinaire faisant la part
-                    belle à une créativité qui, c’est le point commun de toutes les activités proposées, implique les
-                    ressources permises par le digital.
+                    Depuis 2016, cet événement convainc des foules de plus en plus nombreuses.
+                    Toutes trouvent leur compte dans ce festival interdisciplinaire faisant la part
+                    belle à une créativité.
                 </h2>
             </div>
 
