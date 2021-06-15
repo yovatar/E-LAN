@@ -94,6 +94,7 @@ if ($api == false) {
 } else {
     // api dependencies
     require_once("controller/api/authentication.php");
+    require_once("controller/api/teams.php");
 
     switch ($uri) {
         case '/api':
@@ -104,6 +105,9 @@ if ($api == false) {
             break;
         case '/api/authentication/available/email':
             $response = apiAvailableEmail($_POST);
+            break;
+        case '/api/teams/search':
+            $response = apiTeamSearch($_POST);
             break;
         default:
             $response = ["code" => 400, "status" => "fail", "data" => ["message" => "unknown route"]];

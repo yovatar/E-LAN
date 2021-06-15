@@ -23,6 +23,14 @@ function selectTeamByName($name)
     return executeQuerySelect($query, createBinds([[":name", $name]]))[0] ?? null;
 }
 
+function selectTeamsSearch($search, $max)
+{
+    require_once("model/database.php");
+    $search = "%$search%";
+    $query = "SELECT teams.name, images.path FROM teams LEFT JOIN images ON teams.images_id = images.id WHERE teams.name LIKE :search LIMIT :max ;";
+    return executeQuerySelect($query, createBinds([[":search", $search], [":max", $max, PDO::PARAM_INT]]));
+}
+
 /**
  * Fetches every team member
  * @param string $teamName
@@ -32,7 +40,7 @@ function selectTeamByName($name)
 function selectTeamUsers($teamName, $notOwner = false)
 {
     require_once("model/database.php");
-    if($notOwner){
+    if ($notOwner) {
         $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id LEFT JOIN teams AS t ON t.owner_id = users.id WHERE teams.name LIKE :teamName AND t.id IS NULL";
     } else {
         $query = "SELECT users.id, users.username, users.email, images.path FROM teams LEFT JOIN user_joins_team ON teams.id = user_joins_team.team_id LEFT JOIN users on users.id = user_joins_team.user_id LEFT JOIN images ON users.image_id = images.id WHERE teams.name LIKE :teamName";
