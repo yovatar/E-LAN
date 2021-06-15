@@ -49,12 +49,3 @@ function controllerCondition()
     require_once("view/Condition.php");
     viewCondition();
 }
-
-/**
- * displays the lan creation form
- * @return void
- */
-function controllerCreateLAN(){
-    require_once("view/createLAN.php");
-    viewCreateLAN();
-}

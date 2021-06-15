@@ -6,7 +6,7 @@
  */
 function viewForbidden()
 {
-    $title = "lost";
+    $title = "forbidden";
 
     ob_start();
 ?>

@@ -15,7 +15,7 @@ function viewLansList($lans, $page, $maxPage, $canCreate = false)
 ?>
     <?php if($canCreate){ ?>
         <div class="flex justify-end w-full my-2 ">
-            <a href="/createLAN" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une LAN</a>
+            <a href="/lan/create" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une LAN</a>
         </div>
     <?php } ?>
     <? /* List */ ?>
