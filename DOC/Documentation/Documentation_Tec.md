@@ -59,7 +59,8 @@ Tables utilisées :
 
 ## Astuces
 
-
+Tester les messages d'erreur via la fonction toast:
+- Nous pouvons grace a la fonction Toast faire des affichages de messages d'erreur test parmis lesquels ont trouve (Warning, Info, Error et Succés). Donc Il est important d'apprendre l'existance de la fonction toast.
 
 ## Interpréteur
 L’installation est à votre convenance.

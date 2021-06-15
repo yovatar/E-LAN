@@ -38,13 +38,13 @@ function countLans()
 }
 
 /**
- * Store a LAN in the database
+ * Insert a lan in the database
  * @param string $name
  * @param string $description
  * @param int $places
  * @param string $startTime date("Y-m-d H:i:s",$yourTimeStamp)
  * @param string $endTime date("Y-m-d H:i:s",$yourTimeStamp)
- * @return int|null last insert id
+ * @return int|null insert id
  */
 function insertLan($name, $description, $places, $startTime, $endTime)
 {
@@ -54,9 +54,9 @@ function insertLan($name, $description, $places, $startTime, $endTime)
 }
 
 /**
- * Fetch a lan with a given name
+ * Fetch a lan
  * @param string $name
- * @return array 1D array
+ * @return array|null lan 1D array
  */
 function selectLanByName($name)
 {
