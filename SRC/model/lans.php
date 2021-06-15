@@ -40,7 +40,7 @@ function countLans()
 function insertLan($name, $description, $places, $startTime, $endTime)
 {
     require_once("model/database.php");
-    $query = "INSERT INTO lans (name, description, places, start, end) VALUES (:name, :description, :places, :startTime, :endTime )";
+    $query = "INSERT INTO lans (name, description, places, start, end ,state_id) SELECT :name, :description, :places, :startTime, :endTime , id FROM states WHERE type LIKE 'disabled'";
     return executeQueryInsert($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime]]));
 }
 
