@@ -74,7 +74,6 @@ Nous avons pour base les cours suivants :
 
 Sprints (2 semaines par sprint)
 
-
 1. 26/04/2021 - 09/05/2021
     - Être prêt pour le premier vrai sprint
 2. 10/05/2021 - 25/05/2021
@@ -146,9 +145,26 @@ Le site web cible desktop et mobile, le site doit donc être responsive pour ces
 
 
 ## Bilan des objectifs atteints / non-atteints
+| atteints         | description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| Interface tailwind |  nous avons mis en place une structure tailwind 2.X.X pour traiter la partie graphique de notre projet.                           |
+| Struckture MVC | Nous avons une Structure MVC au point pour qu'on puise gérer aux mieux notre code |
+| CRUD | Nous avons des équipes ainsi que des profiles qui respecte le CRUD        |
+| faire un  | Nous avons un systéme de login, logout, Creation de compte qui ont des pass word hashé                                           |
+| édition des profils  | Sprint 3 review                                             |
+|   | Sprint 3 review                                             |
+| édition des profils  | Sprint 3 review                                             |
 
 ## Bilan des points positifs / négatifs
+| date             | description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| 03/05/2021 15:30 | Validation du MCD par le PO                                 |
+| 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 |
+| 11/05/2021 8:20  | Sprint 1 review                                             |
+| 25/05/2021 8:10  | Sprint 2 review                                             |
+| 08/06/2021 8:05  | Sprint 3 review                                             |
 
 ## Difficultés particulières rencontrées
+
 
 ## Suites possibles
