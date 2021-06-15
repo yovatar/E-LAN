@@ -86,7 +86,7 @@ if ($api == false) {
             controllerCreateTeam($_POST, $_FILES);
             break;
         case '/lan/create':
-            controllerCreateLAN($_POST);
+            controllerCreateLAN($_POST,$_FILES);
             break;
         default:
             controllerLost();

@@ -83,3 +83,15 @@ function updateLan($name, $description, $places, $startTime, $endTime, $lanid)
     return executeQueryIUDAffected($query, createBinds([[[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime],[":lanid", $lanid] ]]));
 }
 
+/**
+ * updates lan image
+ * @param int $teamId
+ * @param int $lanId
+ * @return int|null number of affected rows
+ */
+function updateLanImage($lanId, $imageId)
+{
+    require_once("model/database.php");
+    $query = "UPDATE lans SET images_id = :imageId WHERE id = :lanId";
+    return executeQueryIUDAffected($query, createBinds([[":imageId", $imageId, PDO::PARAM_INT], [":lanId", $lanId, PDO::PARAM_INT]]));
+}
