@@ -102,11 +102,11 @@ INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Zontrax', 'ZTX' , id F
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fnatic', 'FNC' , id FROM users WHERE username LIKE 'abalsom5';
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'SKT1', 'SKT1' , id FROM users WHERE username LIKE 'Mon';
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flexity', 'FXY' , id FROM users WHERE username LIKE 'learsman2';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fusion', 'CGD' , id FROM users WHERE username LIKE 'bayer6';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'G2', 'VBT' , id FROM users WHERE username LIKE 'Yoann';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'underrated', 'Viva' , id FROM users WHERE username LIKE 'gfessby7';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'TSM', 'HI' , id FROM users WHERE username LIKE 'learsman2';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'C9', 'TCP' , id FROM users WHERE username LIKE 'Mon';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fusion', 'FON' , id FROM users WHERE username LIKE 'bayer6';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Gear2', 'G2' , id FROM users WHERE username LIKE 'Yoann';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'underrated', 'UND' , id FROM users WHERE username LIKE 'gfessby7';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Team solo mid', 'TSM' , id FROM users WHERE username LIKE 'learsman2';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Cloud9', 'C9' , id FROM users WHERE username LIKE 'Mon';
 
 
 -- -----------------------------------------------------
