@@ -152,10 +152,15 @@ function controllerQuitTeam($request)
                 } else {
                     // Check if the user is the team owner
                     if (isTeamOwner($team["name"])) {
-                        $target = selectTeamUsers($team["name"])[0] ?? null;
-                        if(!empty($target)){
-                            $affected = updateTeamOwner($team["id"], $target["id"]);
-                            toast($target["username"] ." est le nouveau propriétaire de l'équipe","info");
+                        $target = selectTeamUsers($team["name"],true)[0] ?? null;
+                        if (!empty($target)) {
+                            $affected = giveOwnership($team["id"], $target);
+                            if ($affected) {
+                                toast($target["username"] . " est le nouveau propriétaire de l'équipe", "info");
+                            }
+                        } else {
+                            disbandTeam($team["id"]);
+                            toast("Votre équipe a été dissipée car aucun membre ne pouvait prendre le role de propriétaire","warning");
                         }
                     }
                     // Reload team page
@@ -334,12 +339,44 @@ function controllerGiveOwnership($request)
                 // Prevent self kicking
                 if ($target["id"] == $team["owner_id"]) throw new Exception("Vous ne pouvez pas vous sélectionner vous mêmes");
                 // Update owner
-                $affected = updateTeamOwner($team["id"], $target["id"]);
+                $affected = giveOwnership($team["id"], $target);
                 // Handle save errors
                 if (empty($affected)) throw new Exception("Une erreur est survenue lors du changement.");
                 // Redirect to update visual
                 toast($target["username"] . " est le nouveau propriétaire de l'équipe", "success");
                 header("Location: /teams/$teamName");
+            } catch (Exception $e) {
+                // Redirect with error message
+                toast($e->getMessage(), "error");
+                header("Location: /teams/$teamName");
+            }
+        }
+    } else {
+        header("Location: /authentication/login");
+    }
+}
+
+function controllerTeamDisband($request)
+{
+    require_once("controller/authentication.php");
+    if (isAuthenticated()) {
+        // Validate input
+        $teamName = filter_var($request["teamName"], FILTER_SANITIZE_STRING);
+        if (empty($teamName)) {
+            toast("Aucun nom d'équipe donné", "error");
+            header("Location: /teams");
+        } else {
+            try {
+                // Check for permissions
+                if (!isTeamOwner($teamName)) throw new Exception("Vous n'êtes pas le propriétaire de cette équipe");
+                // Delete team
+                require_once("model/teams.php");
+                $team = selectTeamByName($teamName);
+                $disbanded = disbandTeam($team["id"]);
+                if (empty($disbanded)) throw new Exception("Votre équipe n'as pas pu être dissipée");
+                // Redirect to update visual
+                toast("Équipe a été dissipée", "success");
+                header("Location: /teams");
             } catch (Exception $e) {
                 // Redirect with error message
                 toast($e->getMessage(), "error");
@@ -422,6 +459,23 @@ function disbandEmptyTeam($teamId)
         $res = disbandTeam($teamId);
     }
     return $res ?? false;
+}
+
+/**
+ * give team ownership to an user, provides prevention against abuses
+ * @param int $teamId
+ * @param array $user user object
+ * @return bool
+ */
+function giveOwnership($teamId, $user)
+{
+    require_once("model/teams.php");
+    if (!ownsTeams($user["email"])) {
+        $affected = updateTeamOwner($teamId, $user["id"]);
+    } else {
+        toast($user["username"] . " est déjà propriétaire d'une équipe", "warning");
+    }
+    return !empty($affected) ?? false;
 }
 
 /**

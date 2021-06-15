@@ -61,6 +61,9 @@ if ($api == false) {
         case '/team/kick':
             controllerKickMember($_POST);
             break;
+        case '/team/disband':
+            controllerTeamDisband($_POST);
+            break;
         case '/team/ownership':
             controllerGiveOwnership($_POST);
             break;
@@ -82,8 +85,8 @@ if ($api == false) {
         case '/createTeam':
             controllerCreateTeam($_POST, $_FILES);
             break;
-        case '/createLAN':
-            controllerCreateLAN();
+        case '/lan/create':
+            controllerCreateLAN($_POST,$_FILES);
             break;
         default:
             controllerLost();

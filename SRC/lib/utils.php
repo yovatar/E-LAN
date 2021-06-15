@@ -91,5 +91,5 @@ function toast($message, $type = 'info')
             $type = 'infos';
     }
     if (empty($_SESSION["flash"]["toasts"][$type])) $_SESSION["flash"]["toasts"][$type] = [];
-    $_SESSION["flash"]["toasts"][$type] += [$message];
+    array_push($_SESSION["flash"]["toasts"][$type],$message);
 }

@@ -24,7 +24,11 @@ INSERT INTO images ( path) VALUES ( '/public/images/Zontrax.jpg');
 INSERT INTO images ( path) VALUES ( '/public/images/Fnatic-Logo.png');
 INSERT INTO images ( path) VALUES ( '/public/images/SKT1-logo.png');
 INSERT INTO images ( path) VALUES ( '/public/images/Flexity-logo.png');
-INSERT INTO images ( path) VALUES ( '/public/images/Cardguard-logo.png');
+INSERT INTO images ( path) VALUES ( '/public/images/Fusion_logo.png');
+INSERT INTO images ( path) VALUES ( '/public/images/G2_logo.png');
+INSERT INTO images ( path) VALUES ( '/public/images/underrated.jpg');
+INSERT INTO images ( path) VALUES ( '/public/images/TSM_logo');
+INSERT INTO images ( path) VALUES ( '/public/images/C9_logo.png');
 
 -- -----------------------------------------------------
 -- Events data
@@ -33,13 +37,13 @@ INSERT INTO images ( path) VALUES ( '/public/images/Cardguard-logo.png');
 INSERT INTO events ( name, description, type, start, end) values ( 'Vagram', 'Dyche', 'Quizz', '2020-08-23', '2022-03-16');
 INSERT INTO events ( name, description, type, start, end) values ( 'Quo Lux', 'Olenchenko', 'Shop', '2020-05-06', '2021-06-21');
 INSERT INTO events ( name, description, type, start, end) values ( 'It', 'Smorthwaite', 'other', '2020-07-16', '2022-04-27');
-INSERT INTO events ( name, description, type, start, end) values ( 'Opela', 'Copyn', 'Tournement', '2021-10-21', '2021-01-05');
+INSERT INTO events ( name, description, type, start, end) values ( 'Opela', 'Copyn', 'Tournement', '2021-01-21', '2021-11-05');
 INSERT INTO events ( name, description, type, start, end) values ( 'Alpha', 'Zellick', 'Quizz', '2020-10-27', '2021-05-20');
 INSERT INTO events ( name, description, type, start, end) values ( 'Konklux', 'Tomisch', 'other', '2021-10-15', '2022-04-24');
 INSERT INTO events ( name, description, type, start, end) values ( 'Tin', 'Caseley', 'Shop', '2020-06-06', '2021-05-03');
 INSERT INTO events ( name, description, type, start, end) values ( 'Solarbreeze', 'Auchterlony', 'other', '2021-01-11', '2021-06-24');
 INSERT INTO events ( name, description, type, start, end) values ( 'Voyatouch', 'Bradburne', 'other', '2021-02-20', '2022-04-26');
-INSERT INTO events ( name, description, type, start, end) values ( 'Subin', 'Batte', 'Shop', '2021-04-22', '2020-09-20');
+INSERT INTO events ( name, description, type, start, end) values ( 'Subin', 'Batte', 'Shop', '2021-04-22', '2022-09-20');
 
 -- -----------------------------------------------------
 -- States data
@@ -52,16 +56,16 @@ INSERT INTO states ( type) values ( 'disabled');
 -- Lans data
 -- -----------------------------------------------------
 
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Regrant', 'Revision of Autol Sub in R Knee Jt, Open Approach', 34984, '2020-06-16', '2021-11-23' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bitwolf', 'Bypass L Atrium to L Pulm Vn w Synth Sub, Perc Endo', 59957, '2021-02-03', '2021-06-15' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Gembucket', 'Inspection of Right Hand, External Approach', 63359, '2021-08-16', '2021-01-29' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bigtax', 'Fluency Treatment using Voice Analysis Equipment', 12615, '2021-04-19', '2020-06-26' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Sonsing', 'Insertion of Intramed Fix into L Ulna, Perc Endo Approach', 90611, '2020-07-04', '2021-09-08' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Greenlam', 'Bypass L Com Iliac Art to L Femor A w Synth Sub, Perc Endo', 16854, '2020-08-30', '2021-05-05' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Toughjoyfax', 'Revision of Ext Fix in R Metatarsotars Jt, Extern Approach', 33124, '2021-12-31', '2021-04-03' , id FROM states WHERE type LIKE 'disabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Home Ing', 'Revise of Nonaut Sub in L Metatarsotars Jt, Extern Approach', 44663, '2021-09-04', '2021-06-09' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Y-Solowarm', 'Supplement Perineum Tendon with Nonaut Sub, Open Approach', 26622, '2021-01-20', '2020-08-05' , id FROM states WHERE type LIKE 'enabled';
-INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Trippledex', 'Excision of Left Hepatic Duct, Open Approach', 35051, '2020-08-15', '2021-04-10' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'PolyLan', 'Lan Suisse orgalisée a EPFL a LAusanne', 34984, '2020-06-16', '2021-11-23' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'NumerikGames', 'Le Numerik Games est un festival de jeux vidéos organisé par la maison d ailleur comportant plusieurs LANS gaming', 59957, '2021-02-03', '2021-06-15' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'MontreuxLANS', 'LANS multigaming de monteux', 63359, '2021-08-16', '2021-01-29' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Bigtax', 'Bigtax est une lan francaise porposant plusuers tournois sur des jeux E-sportif', 12615, '2021-04-19', '2021-06-26' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'LOL_LAN', 'La LOL_Lan est une lan uniqement dédiée a league of legends', 90611, '2020-07-04', '2021-09-08' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'Greenlan', 'Greenlan est une lan multigaming a ciel ouvert', 16854, '2020-08-30', '2021-05-05' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'GameJam', 'La GameJam est un atelier de creation de JV qui propose également des LANS', 33124, '2021-12-31', '2022-04-03' , id FROM states WHERE type LIKE 'disabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'HardGames', 'HardGames est une LAN composée uniquement de jeu tres difficiles', 44663, '2021-09-04', '2022-06-09' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'SpeedLAN', 'La speedLAN est organisée par speedrun.com est a pour but de montrer des speedrun de multiples jeux', 26622, '2021-01-20', '2022-08-05' , id FROM states WHERE type LIKE 'enabled';
+INSERT INTO lans ( name, description, places, start, end, state_id) SELECT  'FPS_LAN', 'FPS_LAN est une lan proposant uniquements des jeux tir', 35051, '2020-08-15', '2021-04-10' , id FROM states WHERE type LIKE 'disabled';
 
 -- -----------------------------------------------------
 -- Roles data
@@ -77,8 +81,8 @@ INSERT INTO roles ( name, description) values ( 'user', 'default user');
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Pedro', 'Pinto', 'Pedro.PINTO@cpnv.ch', 'Django', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.', id FROM roles WHERE name LIKE 'moderator';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Yoann', 'Bonzon', 'Yoann.BONZON@cpnv.ch', 'Yoann', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Kenan', 'Augsburger', 'Kenan.AUGSBURGER@cpnv.ch', 'Mon', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Lancelot', 'Estrella', 'lestrella3@newyorker.com', 'lestrella3', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
-INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Herbie', 'Perrelle', 'hperrelle4@soundcloud.com', 'hperrelle4', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Xavier', 'Carrel', 'Xavier.CARREL@cpnv.ch', 'Xavier', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
+INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Andre', 'Mpttier', 'Andre.MOTTIER@cpnv.ch', 'Andre', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'user';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Anastasia', 'Balsom', 'abalsom5@cpanel.net', 'abalsom5', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Boonie', 'Ayer', 'bayer6@baidu.com', 'bayer6', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
 INSERT INTO users ( firstname, lastname, email, username, Password, role_id) SELECT 'Gearalt', 'Fessby', 'gfessby7@ustream.tv', 'gfessby7', '$2y$10$gOj1W759Igxk9oln3q5mYOM4EBujsUJxrde8.h62dXF9y2Q2pXan.' , id FROM roles WHERE name LIKE 'moderator';
@@ -97,28 +101,28 @@ INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flowdesk', 'FDK' , id 
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Zontrax', 'ZTX' , id FROM users WHERE username LIKE 'Django';
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fnatic', 'FNC' , id FROM users WHERE username LIKE 'abalsom5';
 INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'SKT1', 'SKT1' , id FROM users WHERE username LIKE 'Mon';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flexidy', 'FXY' , id FROM users WHERE username LIKE 'learsman2';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Cardguard', 'CGD' , id FROM users WHERE username LIKE 'bayer6';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Veribet', 'VBT' , id FROM users WHERE username LIKE 'Yoann';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Viva', 'Viva' , id FROM users WHERE username LIKE 'gfessby7';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Home Ing', 'HI' , id FROM users WHERE username LIKE 'learsman2';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Tresomcorp', 'TCP' , id FROM users WHERE username LIKE 'Mon';
-INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'lafrenchcolection', 'LFC' , id FROM users WHERE username LIKE 'Yoann';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Flexity', 'FXY' , id FROM users WHERE username LIKE 'learsman2';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Fusion', 'FON' , id FROM users WHERE username LIKE 'bayer6';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Gear2', 'G2' , id FROM users WHERE username LIKE 'Yoann';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'underrated', 'UND' , id FROM users WHERE username LIKE 'gfessby7';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Team solo mid', 'TSM' , id FROM users WHERE username LIKE 'learsman2';
+INSERT INTO teams ( name, abbreviation, owner_id) SELECT 'Cloud9', 'C9' , id FROM users WHERE username LIKE 'Mon';
+
 
 -- -----------------------------------------------------
 -- Tournaments data
 -- -----------------------------------------------------
 
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Zicam', 331, 'Y-Solowarm');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Bryophyllum e fol. 10', 60, 'Domainer');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Head and Shoulders', 310, 'Treeflex');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'ISA KNOX WXII PLUS WHITENING REVOLUTION SERUM', 392, 'Gembucket');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Grains and Gluten Intolerances', 182, 'Greenlam');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Coppertone Tanning Dry Oil', 29, 'Wrapsafe');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Lotrel', 7, 'Zoolab');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Prednisone', 318, 'Prodder');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Goongsecret Calming Bath', 348, 'Glltournament');
-INSERT INTO tournaments ( game, max_teams, name) values ( 'Oxygen', 155, 'Daltfresh');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'League Of Legents et CS GO', 300, 'Fight 4 Fun');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Overwatch', 60, 'Overwatch league');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Hearthstone', 300, 'Grand Masters Hearthstone');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Rocket League', 400, 'RLWC');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Rocket League et Rainbow-Six', 180, 'Rainbow Rockets');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Rainbow-Six, CS GO, APEX et CALL OF DUTY', 20, 'Pro Shooters');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'APEX et Fortnite', 100, 'Battle Royanl');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Heartstone et YU-GI-OH', 300, 'Card games tournament');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Mario cart', 340, 'Mario Racers');
+INSERT INTO tournaments ( game, max_teams, name) values ( 'Need For Speed', 150, 'Faster than light');
 
 -- -----------------------------------------------------
 -- Matches data
