@@ -27,7 +27,7 @@ function selectTeamsSearch($search, $max)
 {
     require_once("model/database.php");
     $search = "%$search%";
-    $query = "SELECT teams.name, images.path FROM teams LEFT JOIN images ON teams.images_id = images.id WHERE teams.name LIKE :search LIMIT :max ;";
+    $query = "SELECT teams.name, images.path FROM teams LEFT JOIN images ON teams.images_id = images.id WHERE teams.name LIKE :search OR teams.abbreviation LIKE :search LIMIT :max ;";
     return executeQuerySelect($query, createBinds([[":search", $search], [":max", $max, PDO::PARAM_INT]]));
 }
 
