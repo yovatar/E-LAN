@@ -70,6 +70,9 @@ if ($api == false) {
         case (preg_match('/^\/teams\/(.+)$/', $uri, $res) ? $uri : false):
             controllerTeam($res[1]);
             break;
+        case (preg_match('/^\/lans\/(.+)$/', $uri, $res) ? $uri : false):
+            controllerLan($res[1]);
+            break;
         case '/protection':
             controllerProtection();
             break;
