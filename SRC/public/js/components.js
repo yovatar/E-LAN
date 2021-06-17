@@ -36,6 +36,20 @@ document.addEventListener("alpine:initializing", () => {
         toggle() { this.visible = !this.visible }
     }))
 
+    Alpine.data('search', () => ({
+        results : [],
+        url : "",
+        post(data) {
+            $.post(this.url,data,(e)=>{
+                let response = JSON.parse(e)
+                if (response.code == 200) {
+                    this.results = response.data.teams
+                }
+
+            })
+        }
+    }))
+
     Alpine.store('modal', {
         new(name, value = {
             visible: false,

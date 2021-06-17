@@ -14,11 +14,35 @@ function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
     ob_start();
 ?>
     <?php if ($canCreate) { ?>
-        <div class="flex justify-end w-full my-2 ">
-            <a href="/createTeam" class="px-4 py-2 space-x-2 text-white bg-purple-500 rounded-md hover:bg-purple-700">Créer une équipe</a>
+        <div class="flex justify-end w-full px-2 my-2">
+            <a href="/createTeam" class="w-full px-4 py-2 space-x-2 text-center text-white bg-purple-500 rounded-md md:w-auto hover:bg-purple-700">Créer une équipe</a>
         </div>
     <?php } ?>
-    <? /* List */ ?>
+    <?php /* Search */ ?>
+    <div class="flex justify-center">
+        <form x-data="search" @click.outside="results = []" x-init="url = '/api/teams/search'" @submit="$event.preventDefault()" action="/team/search" method="POST" class="flex flex-col w-full max-w-lg px-2 my-2">
+            <label for="query">Rechercher</label>
+            <div class="relative">
+                <input @input.debounce="post([{name:'query',value:$el.value}])" type="text" id="query" name="query" placeholder="..." autocomplete="off" class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="submit" class="absolute inset-y-0 right-0 flex flex-col items-center justify-center px-2 focus:outline-none focus:border-none hover:text-purple-500 focus:text-purple-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="relative w-full" :class="results.length == 0 ? 'hidden': ''">
+                <div class="absolute z-10 flex flex-col w-full px-2 py-1 space-y-1 bg-white rounded-b-md filter drop-shadow-md">
+                    <template x-for="result in results">
+                        <a :href="`/teams/${result.name}`" class="flex flex-row items-center px-2 py-1 space-x-2 rounded-md focus:outline-none focus:ring-1 focus:ring-purple-500 hover:bg-purple-200 focus:bg-purple-200">
+                            <img :src="result.path ?? '/public/images/controller.svg'" class="object-contain h-6">
+                            <p x-text="result.name"></p>
+                        </a>
+                    </template>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php /* List */ ?>
     <div class="flex flex-row justify-center w-full px-6 py-3 bg-white rounded-md filter drop-shadow-md">
         <div class="flex flex-col w-full space-y-3">
             <?php foreach ($teams as $team) { ?>
@@ -38,7 +62,7 @@ function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
             <?php } ?>
         </div>
     </div>
-    <? /* Pagination */ ?>
+    <?php /* Pagination */ ?>
     <div class="flex flex-row justify-center">
         <div role="pagination" class="flex flex-row items-center justify-center mt-3 overflow-hidden bg-white border-2 divide-x-2 rounded-md border-blueGray-200 w-min filter drop-shadow">
             <a <?= $page > 1 ? 'href="/teams?page=' . ($page - 1) . '"' : '' ?> class="px-3 py-2 h-full flex flex-col justify-center focus:outline-none focus:text-white focus:bg-purple-500 <?= $page > 1 ? 'hover:bg-purple-500 hover:text-white' : 'bg-blueGray-100 text-gray-600' ?>">

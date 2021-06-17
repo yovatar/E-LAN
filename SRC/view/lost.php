@@ -12,10 +12,10 @@ function viewLost()
 ?>
 
     <div class="flex justify-center">
-        <p class="text-7xl font-mono text-center sm:text-left cursor-not-allowed">404 <a class="hover:bg-red-600 rounded-full py-1 px-2" href="https://fr.wiktionary.org/wiki/se_perdre">PERDU</a></p>
+        <p class="font-mono text-center cursor-not-allowed text-7xl sm:text-left">404 <a class="px-2 py-1 rounded-full hover:bg-red-600" href="https://fr.wiktionary.org/wiki/se_perdre">PERDU</a></p>
     </div>
     <div class="flex justify-center">
-        <img src="public/images/lost3.jpg">
+        <img src="/public/images/lost3.jpg">
     </div>
 <?php
     $content = ob_get_clean();
