@@ -100,3 +100,25 @@ function controllerCreateLAN($request, $files)
         header("Location: /forbidden");
     }
 }
+
+/**
+ * Handles lan view requests
+ * @param string $name name of the lan
+ * @return void
+ */
+function controllerLan($name)
+{
+    // Fetch lan
+    require_once("model/lans.php");
+    $lan = selectLanByName($name);
+
+    if (empty($lan)) {
+        // Show error
+        require_once("view/lost.php");
+        viewLost();
+    } else {
+        // Show lan page
+        require_once("view/lan.php");
+        viewLan($lan, isModerator());
+    }
+}
