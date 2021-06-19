@@ -25,15 +25,28 @@ function ViewCreateEvent($lan)
 
 
                      <label for="start">Début</label>
-                     <input type="datetime-local" id="start" name="start" placeholder="31.05.2021" required class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500" min="<?= date("Y-m-d\TH:i",strtotime($lan["start"])) ?>" max="<?= date("Y-m-d\TH:i",strtotime($lan["end"])) ?>">
-                     
+                     <input type="datetime-local" id="start" name="start" placeholder="31.05.2021" required class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500" @change="$store.form.start = $el.value" min="<?= date("Y-m-d\TH:i", strtotime($lan["start"])) ?>" max="<?= date("Y-m-d\TH:i", strtotime($lan["end"])) ?>">
+
                      <label for="end">Fin</label>
-                     <input type="datetime-local" id="end" name="end" placeholder="6.06.2021" required class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500" min="<?= date("Y-m-d\TH:i",strtotime($lan["start"])) ?>" max="<?= date("Y-m-d\TH:i",strtotime($lan["end"])) ?>">
+                     <input type="datetime-local" id="end" name="end" placeholder="6.06.2021" required class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500" @change="$store.form.end = $el.value" min="<?= date("Y-m-d\TH:i", strtotime($lan["start"])) ?>" max="<?= date("Y-m-d\TH:i", strtotime($lan["end"])) ?>">
                      <?php /* TODO: add start and length to the card */ ?>
                      <div class="flex flex-row justify-center">
                             <div class="relative w-full" x-data="imageSelector">
                                    <div class="flex flex-col object-cover w-full h-64 px-4 py-2 overflow-hidden bg-purple-500 rounded-md cursor-pointer md:h-48 bg-hero-endless-clouds-purple400-100" :class="imageUrl ? '' : 'bg-hero-endless-clouds-purple400-100'" :style="imageUrl ? `background:url(${imageUrl}) no-repeat center center; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;`:''" @click="$('#image').click()">
                                           <h1 class="text-2xl font-medium text-white md:text-3xl" x-text="$store.form.name ?? ''"></h1>
+                                          <div x-cloak x-show="$store.form.start !== null" class="flex flex-row items-center space-x-2 text-xl text-white">
+                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                                 </svg>
+                                                 <p x-text="$store.form.start ?? ''"></p>
+                                          </div>
+                                          <div x-cloak x-show="$store.form.diff !== null" class="flex flex-row items-center space-x-2 text-xl text-white">
+                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                                                 </svg> </svg>
+                                                 <p x-text="$store.form.diff ?? ''"></p>
+                                          </div>
+
                                           <p class="text-lg text-white whitespace-pre-line md:text-xl" x-text="$store.form.description ?? ''"></p>
                                    </div>
                                    <label for="image" class="absolute bottom-0 right-0 flex flex-row px-2 py-1 space-x-2 bg-white border-2 border-gray-100 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500">

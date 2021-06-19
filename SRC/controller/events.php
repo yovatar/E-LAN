@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Handles event creation requests
+ * @param string $lanName
+ * @param array $request Expects $_POST
+ * @param array $files Expects $_FILES
+ * @return void
+ */
 function controllerCreateEvent($lanName, $request, $files)
 {
     require_once("controller/authentication.php");
