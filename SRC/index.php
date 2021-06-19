@@ -18,6 +18,7 @@ require_once("controller/authentication.php");
 require_once("controller/settings.php");
 require_once("controller/lans.php");
 require_once("controller/teams.php");
+require_once("controller/events.php");
 
 // Router
 // Remove get parameters
@@ -87,6 +88,9 @@ if ($api == false) {
             break;
         case '/createTeam':
             controllerCreateTeam($_POST, $_FILES);
+            break;
+        case '/event/create':
+            controllerCreateEvent($_GET["lan"],$_POST, $_FILES);
             break;
         case '/lan/create':
             controllerCreateLAN($_POST,$_FILES);

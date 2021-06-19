@@ -15,11 +15,11 @@ function viewLan($lan, $isModerator)
     <div class="flex flex-col items-center">
         <div class="flex flex-col-reverse items-center justify-center w-full px-4 py-2 space-y-5 space-y-reverse bg-white rounded-md md:max-w-2xl md:flex-row filter md:drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
             <div class="flex flex-col space-y-3">
-                <p class="hidden text-xl font-medium md:block"><?= strftime("%A %e %B %Y", strtotime($lan["start"])) ?> - <?= strftime("%A %e %B %Y", strtotime($lan["end"])) ?></p>
+                <p class="hidden text-xl font-medium md:block"><?= utf8_encode(strftime("%A %e %B %Y", strtotime($lan["start"]))) ?> - <?= utf8_encode(strftime("%A %e %B %Y", strtotime($lan["end"]))) ?></p>
                 <div class="flex flex-col items-center text-xl font-medium md:hidden">
-                    <p><?= strftime("%a %e %b %Y", strtotime($lan["start"])) ?></p>
+                    <p><?= utf8_encode(strftime("%a %e %b %Y", strtotime($lan["start"]))) ?></p>
                     <p>à</p>
-                    <p><?= strftime("%a %e %b %Y", strtotime($lan["end"])) ?></p>
+                    <p><?= utf8_encode(strftime("%a %e %b %Y", strtotime($lan["end"]))) ?></p>
                 </div>
                 <p class="text-lg whitespace-pre-line"><?= $lan["description"] ?></p>
             </div>
@@ -37,6 +37,9 @@ function viewLan($lan, $isModerator)
                 <p class="text-xl"><?= $lan["places"] ?> places</p>
                 <?php if ($isModerator) { ?>
                     <a href="/lan/update?lan=<?= $lan["name"] ?>" class="w-full px-4 py-2 font-medium text-center text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md">Modifier</a>
+                <?php } ?>
+                <?php if ($isModerator) { ?>
+                    <a href="/event/create?lan=<?= $lan["name"] ?>" class="w-full px-4 py-2 font-medium text-center text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md">Nouvel événement</a>
                 <?php } ?>
             </div>
         </div>

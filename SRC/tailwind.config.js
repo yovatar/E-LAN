@@ -103,12 +103,21 @@ module.exports = {
       // the list of patterns you want to generate a class for
       // the names must be in kebab-case
       // an empty array will generate all 87 patterns
-      patterns: ["diagonal-lines"],
+      patterns: ["diagonal-lines", "endless-clouds"],
 
       // The foreground colors of the pattern
       colors: {
         default: "#9C92AC",
-        "pink": colors.purple["500"] //also works with rgb(0,0,205)
+        "pink": colors.purple["500"], //also works with rgb(0,0,205)
+        "purple100": colors.purple["100"], 
+        "purple200": colors.purple["200"], 
+        "purple300": colors.purple["300"], 
+        "purple400": colors.purple["400"], 
+        "purple500": colors.purple["500"], 
+        "purple600": colors.purple["600"], 
+        "purple700": colors.purple["700"], 
+        "purple800": colors.purple["800"], 
+        "purple900": colors.purple["900"], 
       },
 
       // The foreground opacity
