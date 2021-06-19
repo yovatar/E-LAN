@@ -95,3 +95,27 @@ function updateLanImage($lanId, $imageId)
     $query = "UPDATE lans SET images_id = :imageId WHERE id = :lanId";
     return executeQueryIUDAffected($query, createBinds([[":imageId", $imageId, PDO::PARAM_INT], [":lanId", $lanId, PDO::PARAM_INT]]));
 }
+
+/**
+ * Adds a relationship between a lan and an event
+ * @param int $lanId
+ * @param int $eventId
+ * @return int|null inserted row id
+ */
+function insertLanEvent($lanId, $eventId)
+{
+    require_once("model/database.php");
+    $query = "INSERT INTO lan_contains_event (lan_id, event_id) VALUES(:lanId, :eventId)";
+    return executeQueryInsert($query, createBinds([[":lanId", $lanId, PDO::PARAM_INT], [":eventId", $eventId, PDO::PARAM_INT]]));
+}
+
+/**
+ * Fetch every event in a lan
+ * @param int $lanId
+ * @return array|null
+ */
+function selectLanEvents($lanId){
+    require_once("model/database.php");
+    $query = "SELECT events.*, images.path FROM lans LEFT JOIN lan_contains_event AS j ON lans.id = j.lan_id LEFT JOIN events ON events.id = j.event_id LEFT JOIN images ON images.id = events.image_id WHERE lans.id = :lanId ORDER BY events.start ASC;";
+    return executeQuerySelect($query,createBinds([[":lanId",$lanId,PDO::PARAM_INT]]));
+}
