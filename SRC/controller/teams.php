@@ -225,7 +225,7 @@ function controllerCreateTeam($request, $files)
                         $row = insertTeamMember($teamId, $user["id"]);
                         if (empty($row)) throw new Exception("Erreur lors de votre ajout à l'équipe");
                         // Image handling
-                        if (!empty($files["image"])) {
+                        if (!empty($files["image"]) && !empty($files["image"]["size"])) {
                             $picture = $files["image"];
                             // Save image
                             require_once("model/images.php");

@@ -21,7 +21,7 @@ function selectLansList($limit, $offset = 0)
 {
     require_once("model/database.php");
     // Create query string
-    $query = "SELECT lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id LIMIT :offset , :limit";
+    $query = "SELECT lans.*, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id ORDER BY DATE(lans.start) DESC LIMIT :offset , :limit";
     // Fetch lans
     return executeQuerySelect($query, createBinds([[":offset", $offset, PDO::PARAM_INT], [":limit", $limit, PDO::PARAM_INT]]));
 }
@@ -73,14 +73,14 @@ function selectLanByName($name)
  * @param int $places
  * @param string $startTime date("Y-m-d H:i:s",$yourTimeStamp)
  * @param string $endTime date("Y-m-d H:i:s",$yourTimeStamp)
- * @param int $lanid
+ * @param int $lanId
  * @return int|null number of affected rows
  */
-function updateLan($name, $description, $places, $startTime, $endTime, $lanid)
+function updateLan($name, $description, $places, $startTime, $endTime, $lanId)
 {
     require_once("model/database.php");
-    $query = "UPDATE lans SET name = :name, description= :description, places= :places, start= :startTime, end= :endTime WHERE id = :lanid";
-    return executeQueryIUDAffected($query, createBinds([[[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime],[":lanid", $lanid] ]]));
+    $query = "UPDATE lans SET name = :name, description= :description, places= :places, start= :startTime, end= :endTime WHERE id = :lanId";
+    return executeQueryIUDAffected($query, createBinds([[":name", $name], [":description", $description], [":places", $places, PDO::PARAM_INT], [":startTime", $startTime], [":endTime", $endTime], [":lanId", $lanId, PDO::PARAM_INT]]));
 }
 
 /**

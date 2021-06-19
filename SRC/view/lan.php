@@ -15,15 +15,15 @@ function viewLan($lan, $isModerator)
     <div class="flex flex-col items-center">
         <div class="flex flex-col-reverse items-center justify-center w-full px-4 py-2 space-y-5 space-y-reverse bg-white rounded-md md:max-w-2xl md:flex-row filter md:drop-shadow-md md:px-8 md:py-6 md:space-x-6 md:space-y-0">
             <div class="flex flex-col space-y-3">
-                <p class="hidden text-xl font-medium md:block"><?= strftime("%A %e %B %Y",strtotime($lan["start"])) ?> - <?= strftime("%A %e %B %Y",strtotime($lan["end"])) ?></p>
+                <p class="hidden text-xl font-medium md:block"><?= strftime("%A %e %B %Y", strtotime($lan["start"])) ?> - <?= strftime("%A %e %B %Y", strtotime($lan["end"])) ?></p>
                 <div class="flex flex-col items-center text-xl font-medium md:hidden">
-                <p><?= strftime("%a %e %b %Y",strtotime($lan["start"])) ?></p>
-                <p>à</p>
-                <p><?= strftime("%a %e %b %Y",strtotime($lan["end"])) ?></p>
+                    <p><?= strftime("%a %e %b %Y", strtotime($lan["start"])) ?></p>
+                    <p>à</p>
+                    <p><?= strftime("%a %e %b %Y", strtotime($lan["end"])) ?></p>
                 </div>
                 <p class="text-lg whitespace-pre-line"><?= $lan["description"] ?></p>
             </div>
-            <div class="flex flex-col items-center space-y-3">
+            <div class="flex flex-col items-center w-full space-y-3 md:w-auto">
                 <?php if (empty($lan["path"])) { ?>
                     <?php /* Default image */ ?>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-32 h-32 text-white bg-purple-500 rounded-full" viewBox="0 0 20 20" fill="currentColor">
@@ -33,8 +33,11 @@ function viewLan($lan, $isModerator)
                     <?php /* Custom team image */ ?>
                     <img src="<?= $lan["path"] ?>" alt="team icon" class="object-cover w-32 h-32 bg-white rounded-full filter drop-shadow-md">
                 <?php } ?>
-                    <h1 class="text-2xl font-medium"><?= $lan["name"] ?></h1>
-                    <p class="text-xl"><?= $lan["places"] ?> places</p>
+                <h1 class="text-2xl font-medium"><?= $lan["name"] ?></h1>
+                <p class="text-xl"><?= $lan["places"] ?> places</p>
+                <?php if ($isModerator) { ?>
+                    <a href="/lan/update?lan=<?= $lan["name"] ?>" class="w-full px-4 py-2 font-medium text-center text-white bg-purple-500 rounded-md focus:outline-none hover:bg-purple-700 focus:bg-purple-700 focus:ring-2 focus:ring-purple-500 filter focus:drop-shadow-md">Modifier</a>
+                <?php } ?>
             </div>
         </div>
     </div>

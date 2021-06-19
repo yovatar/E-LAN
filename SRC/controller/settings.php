@@ -39,7 +39,7 @@ function ControllerSettingsAccount($request, $files)
                 switch ($request["action"]) {
                     case "updatePicture":
                         // Validate input
-                        if (empty($files["profilePicture"])) throw new Exception("Aucune image donnée");
+                        if (empty($files["profilePicture"]) || empty($files["profilePicture"]["size"])) throw new Exception("Aucune image donnée");
                         $picture = $files["profilePicture"];
 
                         // Save image

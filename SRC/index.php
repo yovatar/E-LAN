@@ -91,6 +91,9 @@ if ($api == false) {
         case '/lan/create':
             controllerCreateLAN($_POST,$_FILES);
             break;
+        case '/lan/update':
+            controllerUpdateLan(@$_GET["lan"],$_POST,$_FILES);
+            break;
         default:
             controllerLost();
     }
