@@ -36,11 +36,30 @@ document.addEventListener("alpine:initializing", () => {
         toggle() { this.visible = !this.visible }
     }))
 
+    Alpine.data('imageSelector', () => ({
+        imageUrl: null,
+
+        fileChosen(event) {
+            this.fileToDataUrl(event, src => this.imageUrl = src)
+        },
+
+        fileToDataUrl(event, callback) {
+            if (!event.target.files.length) return
+
+            let file = event.target.files[0],
+                reader = new FileReader()
+
+            reader.readAsDataURL(file)
+            reader.onload = e => callback(e.target.result)
+        },
+
+    }))
+
     Alpine.data('search', () => ({
-        results : [],
-        url : "",
+        results: [],
+        url: "",
         post(data) {
-            $.post(this.url,data,(e)=>{
+            $.post(this.url, data, (e) => {
                 let response = JSON.parse(e)
                 if (response.code == 200) {
                     this.results = response.data.teams
