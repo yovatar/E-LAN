@@ -119,6 +119,7 @@ function controllerLan($name)
         require_once("view/lost.php");
         viewLost();
     } else {
+        $lan["events"] = selectLanEvents($lan["id"]);
         // Show lan page
         require_once("view/lan.php");
         viewLan($lan, isModerator());
