@@ -69,6 +69,8 @@ function controllerCreateLAN($request, $files)
                 $start = date("Y-m-d H:i:s", $start);
                 $end = date("Y-m-d H:i:s", $end);
 
+                // Clean name to avoid visual duplicates
+                $name = trim($name);
                 // Validate constraints
                 require_once("model/lans.php");
                 if (!empty(selectLanByName($name))) throw new Exception("Ce nom de LAN est déjà utilisé");

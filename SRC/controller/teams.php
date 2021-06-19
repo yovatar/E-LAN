@@ -210,6 +210,10 @@ function controllerCreateTeam($request, $files)
                     // Team abréviation
                     $abbreviation = filter_var($request["abbreviation"], FILTER_SANITIZE_STRING);
                     if (empty($abbreviation)) throw new Exception("Vous n'avez pas fourni d'abréviation'");
+
+                    // Clean up abbreviation and name
+                    $name = trim($name);
+                    $abbreviation = trim($abbreviation);
                     // Check unique constraints
                     require_once("model/teams.php");
                     if (!empty(selectTeamByName($name))) throw new Exception("Nom d'équipe indisponible");

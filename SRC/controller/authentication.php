@@ -39,6 +39,9 @@ function controllerRegister($request)
 
                 if ($password != $request["passwordCheck"]) throw new Exception("Le mot de passe n'est pas identique");
 
+                // Clean important values
+                $username = trim($username);
+                $email = trim($email);
                 // Check constraints
                 require_once("model/users.php");
                 if (!empty(selectUserByEmail($email))) throw new Exception("Email déjà utilisé");
@@ -87,6 +90,8 @@ function controllerLogin($request)
                 $password = $request["password"];
                 if (empty($password)) throw new Exception("Mot de passe vide");
 
+                // Clean email to match register
+                $email = trim($email);
                 // Compare to database
                 require_once("model/users.php");
                 $user = selectUserByEmail($email);
