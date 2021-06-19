@@ -360,6 +360,11 @@ function controllerGiveOwnership($request)
     }
 }
 
+/**
+ * Handle team disbanding requests
+ * @param array $request expects $_POST
+ * @return void
+ */
 function controllerTeamDisband($request)
 {
     require_once("controller/authentication.php");
