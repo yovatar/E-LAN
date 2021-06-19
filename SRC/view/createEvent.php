@@ -29,7 +29,6 @@ function ViewCreateEvent($lan)
 
                      <label for="end">Fin</label>
                      <input type="datetime-local" id="end" name="end" placeholder="6.06.2021" required class="px-4 py-2 border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500" @change="$store.form.end = $el.value" min="<?= date("Y-m-d\TH:i", strtotime($lan["start"])) ?>" max="<?= date("Y-m-d\TH:i", strtotime($lan["end"])) ?>">
-                     <?php /* TODO: add start and length to the card */ ?>
                      <div class="flex flex-row justify-center">
                             <div class="relative w-full" x-data="imageSelector">
                                    <div class="flex flex-col object-cover w-full h-64 px-4 py-2 overflow-hidden bg-purple-500 rounded-md cursor-pointer md:h-48 bg-hero-endless-clouds-purple400-100" :class="imageUrl ? '' : 'bg-hero-endless-clouds-purple400-100'" :style="imageUrl ? `background:url(${imageUrl}) no-repeat center center; -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;`:''" @click="$('#image').click()">
