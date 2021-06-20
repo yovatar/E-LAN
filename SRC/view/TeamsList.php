@@ -20,7 +20,7 @@ function viewTeamsList($teams, $page, $maxPage, $canCreate = false)
     <?php } ?>
     <?php /* Search */ ?>
     <div class="flex justify-center">
-        <form x-data="search" @click.outside="results = []" x-init="url = '/api/teams/search'" @submit="$event.preventDefault()" action="/team/search" method="POST" class="flex flex-col w-full max-w-lg px-2 my-2">
+        <form x-data="search" @click.outside="results = []" x-init="url = '/api/teams/search' ; responseData = 'teams'" @submit="$event.preventDefault()" action="/team/search" method="POST" class="flex flex-col w-full max-w-lg px-2 my-2">
             <label for="query">Rechercher</label>
             <div class="relative">
                 <input @input.debounce="post([{name:'query',value:$el.value}])" type="text" id="query" name="query" placeholder="..." autocomplete="off" class="w-full border-2 rounded-md border-blueGray-200 focus:outline-none focus:ring-2 focus:ring-purple-500">
