@@ -119,3 +119,17 @@ function selectLanEvents($lanId){
     $query = "SELECT events.*, images.path FROM lans LEFT JOIN lan_contains_event AS j ON lans.id = j.lan_id LEFT JOIN events ON events.id = j.event_id LEFT JOIN images ON images.id = events.image_id WHERE lans.id = :lanId ORDER BY events.start ASC;";
     return executeQuerySelect($query,createBinds([[":lanId",$lanId,PDO::PARAM_INT]]));
 }
+
+/**
+ * Search a lan with a search term
+ * @param string $search
+ * @param int $max
+ * @return array|null
+ */
+function selectLansSearch($search, $max)
+{
+    require_once("model/database.php");
+    $search = "%$search%";
+    $query = "SELECT lans.name, images.path FROM lans LEFT JOIN images ON lans.images_id = images.id WHERE lans.name LIKE :search LIMIT :max ;";
+    return executeQuerySelect($query, createBinds([[":search", $search], [":max", $max, PDO::PARAM_INT]]));
+}

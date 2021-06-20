@@ -38,11 +38,12 @@ document.addEventListener("alpine:initializing", () => {
     Alpine.data('search', () => ({
         results: [],
         url: "",
+        responseData: 0,
         post(data) {
             $.post(this.url, data, (e) => {
                 let response = JSON.parse(e)
                 if (response.code == 200) {
-                    this.results = response.data.teams
+                    this.results = response.data[this.responseData]
                 }
 
             })

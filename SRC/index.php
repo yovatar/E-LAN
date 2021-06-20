@@ -105,6 +105,7 @@ if ($api == false) {
     // api dependencies
     require_once("controller/api/authentication.php");
     require_once("controller/api/teams.php");
+    require_once("controller/api/lans.php");
 
     switch ($uri) {
         case '/api':
@@ -118,6 +119,9 @@ if ($api == false) {
             break;
         case '/api/teams/search':
             $response = apiTeamSearch($_POST);
+            break;
+        case '/api/lans/search':
+            $response = apiLanSearch($_POST);
             break;
         default:
             $response = ["code" => 400, "status" => "fail", "data" => ["message" => "unknown route"]];
