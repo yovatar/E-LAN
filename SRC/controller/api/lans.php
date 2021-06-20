@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Handles live lan search
+ * @param array $request Expects $_POST
+ * @return array
+ */
 function apiLanSearch($request){
     try {
         // Validate input

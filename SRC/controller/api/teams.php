@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Handles live team search
+ * @param array $request Expects $_POST
+ * @return array
+ */
 function apiTeamSearch($request){
     try {
         // Validate input
