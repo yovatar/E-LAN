@@ -59,6 +59,15 @@ module.exports = {
         '3': '3',
         '4': '4',
       },
+      minHeight:{
+        '0':'0',
+        'full':'100%',
+        'screen':'100vh',
+        '48':'12rem',
+        '64':'16rem',
+        '72':'18rem',
+        '128':'32rem',
+      },
       keyframes: {
         wiggle: {
           '0%, 100%': { transform: 'translateX(-0.5rem)' },
