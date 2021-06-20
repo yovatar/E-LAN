@@ -49,7 +49,7 @@ function selectImageById($id)
 function insertImage($fileName, $tempName, $directory = "/public/upload/img/")
 {
     // Check file extension validity
-    if (!preg_match("/.*(\.(?:(?:jpeg)|(?:jpg)|(?:png)|(?:gif)|(?:svg)))$/", $fileName, $extension)) {
+    if (!preg_match("/.*(\.(?:(?:jpeg)|(?:jpg)|(?:png)|(?:gif)|(?:svg)))$/i", $fileName, $extension)) {
         throw new Exception("Invalid filename filename => $fileName");
     }
 
