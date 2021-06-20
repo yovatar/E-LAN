@@ -92,6 +92,9 @@ if ($api == false) {
         case '/event/create':
             controllerCreateEvent($_GET["lan"],$_POST, $_FILES);
             break;
+        case '/event/update':
+            controllerUpdateEvent($_GET["event"],$_POST, $_FILES);
+            break;
         case '/lan/create':
             controllerCreateLAN($_POST,$_FILES);
             break;
