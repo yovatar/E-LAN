@@ -12,7 +12,7 @@ E-LAN
     -   User / Password chiffré
     -   2 Rôles user et admin
     -   Concept d’événement
-        -   lieu
+        -   Lieu
         -   Date/heure
         -   Titre
         -   Description
@@ -39,7 +39,7 @@ Il propose un système de profil utilisateur personnalisable ainsi que des rôle
 
 ## Dans quel contexte le projet est-il réalisé ?
 
-Nous réalisons ce Projet de développement web avec base de donnée lors de notre 2ᵉ année d’apprentissage le but et de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétences en tant que développeur et de gestion de projet.
+Nous réalisons ce Projet de développement web avec base de données lors de notre 2ᵉ année d’apprentissage le but est de nous faire travailler sur un gros projet en groupe de 3 pour prouver nos compétences en tant que développeur et de gestion de projet.
 Nous avons pour base les cours suivants :
 
 -   ICT133 (PHP)
@@ -125,19 +125,19 @@ Le site web cible desktop et mobile, le site doit donc être responsive pour ces
 
 ## Entités
 
--   Utilisateurs (Contient tout les informations pour chaque rôle d’utilisateur cette entité est composé du Nom, Prénom, Email, Pseudo, Password )
+-   Utilisateurs (Contient toutes les informations pour chaque rôle d’utilisateur cette entité est composé du Nom, Prénom, Email, Pseudo, Password )
 -   Rôles (Propose les rôles correspondant au type d’utilisateur cette entité est composé du Nom, Description)
--   Lans (Comporte tout les informations des LANS cette entité est composé du Nom, Description, Places, Début, Fin)
--   Lieux (information de l’endroit ou se trouve les événements cette entité est composé du Nom, Adresse)
+-   Lans (Comporte toutes les informations des LANS cette entité est composé du Nom, Description, Places, Début, Fin)
+-   Lieux (information de l’endroit où se trouve les événements cette entité est composé du Nom, Adresse)
 -   Équipes (liste des noms de groupes de joueurs créer dans la LAN cette entité est composé du Nom, Abréviation)
 -   Événements (liste les activités organisées cette entité est composé du nom, description, type, date de début et date de fin d’un événement)
 -   Tournois (Contient les informations liées aux différents tournois cette entité est composé du nom du jeu, maximum d’équipe et du nom du tournoi)
 -   Matches (Liste les différents matches liés aux tournois cette entité est composé de la date de début et date de fin, numéro de match)
--   état (l’état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
+-   État (l’état exprime si une LAN est ouvert, fermé ou en création cette entité est composé du type)
 
 ## Journal de bord
 
-| date             | description                                                 | participant                                 |
+| Date             | Description                                                 | Participant                                 |
 | ---------------- | ----------------------------------------------------------- | ------------------------------------------- |
 | 03/05/2021 15:30 | Validation du MCD par le PO                                 | Pedro P. , Kenan A. et Xavier C.            |
 | 10/05/2021 13:40 | Fermeture du sprint 1 pour commencer les taches du sprint 2 | Pedro P., Kenan A. et Yoann B.              |
@@ -153,46 +153,42 @@ Le site web cible desktop et mobile, le site doit donc être responsive pour ces
 | atteints                    | description                                                                                            |
 | --------------------------- | ------------------------------------------------------------------------------------------------------ |
 | Interface tailwind          | nous avons mis en place une structure tailwind 2.X.X pour traiter la partie graphique de notre projet. |
-| Struckture MVC              | Nous avons une Structure MVC au point pour qu'on puise gérer aux mieux notre code                      |
+| Structure MVC               | Nous avons une Structure MVC au point pour qu'on puise gérer aux mieux notre code                      |
 | CRUD                        | Nous avons des équipes ainsi que des profiles qui respecte le CRUD                                     |
-| faire une gestion de profil | Nous avons un systéme de login, logout, Creation de compte qui ont des pass word hashé                 |
-|                             |
+| faire une gestion de profil | Nous avons un système de login, logout, Creation de compte qui ont des password hashé                  |
 
 ## Points non-atteints
 
-| Non-atteints          | description                                                                                                                                                                            |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Création de tourois   | Nous n'avons pas eu le temps de mettre en place la struckture de creation de tournois cependant on trouve toujours les infomations pour la gestion du tournois sur la Base de données. |
-| Modiffier un tournois | Vue que nous n'avons pas pu mettre ne place la création de tournois la modiffiction des tournois est également pas mise en place                                                       |
+| Non-atteints         | Description                                                                                                                                                                            |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Création de tournois | Nous n'avons pas eu le temps de mettre en place la structure de création de tournois cependant on trouve toujours les informations pour la gestion du tournois sur la Base de données. |
+| Modifier un tournois | Vue que nous n'avons pas pu mettre ne place la création de tournois la modification des tournois n'est également pas mise en place                                                     |
 
 # Bilan des points positifs / négatifs
 
 ## Points positifs
 
-| Consept                               | description                                                                                                                                                 |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Apprentisage nouvelles technologies   | Nous avons pu decouvrir et apprendre de nouvelle technologies telles que Tailwind et Alipn.JS.                                                              |
-| Réalisation d'un site web opérationel | Malgré le manque de temps pour la gestion des tournois nous avons pu mettre en place une struckture oppérationnelle et utile avec les autres point atteints |
+| Concept                                | Description                                                                                                                                               |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Apprentissage nouvelles technologies   | Nous avons pu découvrir et apprendre de nouvelles technologies telles que Tailwind et Alipn.JS.                                                           |
+| Réalisation d'un site web opérationnel | Malgré le manque de temps pour la gestion des tournois nous avons pu mettre en place une structure opérationnelle et utile avec les autres point atteints |
 
 ## Points négatifs
 
-| Consept         | description                                                                                                                              |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Viser trop gros | Nous avons eu les yeux plus grand que le ventre et de ce fait nous n'avons pas pu compléter un parte de notre projet par manque de temps |
+| Concept         | Description                                                                                                                               |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Viser trop gros | Nous avons eu les yeux plus grands que le ventre et de ce fait nous n'avons pas pu compléter un parte de notre projet par manque de temps |
 
 ## Difficultés particulières rencontrées
 
 ### Difficultés rencontrées
 
-| Difficulté                   | description                                                                                                                                                                                                       | solution                                           |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| l'envie de trop complexifier | Nous avons eu a plusieurs reprise l'envie d'ajouter des fonctinallitées supplémentaires hors du conssépte de basse ce qui nous aurra réguliérement pris du temps qui n'était pas forcément pour le projet de base | Pour contréer ce probléme nous avons investit plus |
-| l'envie de trop complexifier | Nous avons eu a plusieurs reprise l'envie d'ajouter des fonctinallitées supplémentaires hors du conssépte de basse ce qui nous aurra réguliérement pris du temps qui n'était pas forcément pour le projet de base | Pour contréer ce probléme nous avons investit plus |
+| Difficulté                   | Description                                                                                                                                                                                                    | Solution                                         |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| L'envie de trop complexifier | Nous avons eu à plusieurs reprise l'envie d'ajouter des fonctionnalités supplémentaires hors du concepts de base ce qui nous aura régulièrement pris du temps qui n'était pas forcément pour le projet de base | Pour contrer ce problème nous avons investi plus |
 
 ## Suites possibles
 
--   Génération d'un arborécense automatique du matchmaking d'un tournois en fonction des équipes.
-
--   Implémenter un systéme de demande et d'acceptation lors de la création d'un équipe avec des conditions de création plus stricktes.
-
--   Ajout a l'acceuil un calendrier intéractif affichant les lans le tournois et les évenements avec les dates et heures et une redirective sur la page en question.
+-   Génération d'un arborescence automatique du matchmaking d'un tournois en fonction des équipes.
+-   Implémenter un système de demande et d'acceptation lors de la création d'une équipe avec des conditions de création plus strictes.
+-   Ajout a l'accueil un calendrier interactif affichant les lans le tournois et les événements avec les dates et heures et une redirection sur la page en question.
