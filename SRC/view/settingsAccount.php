@@ -79,7 +79,7 @@ function viewSettingsAccount($user)
                         </button>
                     </form>
                 </div>
-                <form action="/settings/account" method="POST" enctype="multipart/form-data" class="flex flex-col items-center space-y-4 lg:items-start" x-data="imageViewer()">
+                <form action="/settings/account" method="POST" enctype="multipart/form-data" class="flex flex-col items-center space-y-4 lg:items-start" x-data="imageSelector">
                     <div class="relative">
                         <img src="<?= $user["image"]["path"] ?? "/public/images/userDefault.jpg" ?>" :src="imageUrl ?? '<?= $user["image"]["path"] ?? "/public/images/userDefault.jpg" ?>'" alt="Image de profile" class="object-cover w-64 h-64 rounded-full" loading="lazy">
                         <label for="profilePicture" tabindex="0" class="absolute bottom-0 left-0 flex flex-row px-2 py-1 space-x-2 bg-white border-2 border-gray-100 rounded-md cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500">
